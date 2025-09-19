@@ -1,0 +1,318 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const recipes = [
+  {
+    id: 1,
+    title: 'Power Protein Smoothie Bowl',
+    description: 'Start your day with this nutrient-dense smoothie bowl packed with protein and antioxidants.',
+    image: 'smoothie-bowl',
+    prepTime: 10,
+    servings: 1,
+    calories: 450,
+    protein: 25,
+    difficulty: 'Easy',
+    ingredients: [
+      '2 tbsp PowerButter Protein Elite',
+      '1 frozen banana',
+      '1/2 cup frozen mixed berries',
+      '1/2 cup almond milk',
+      '1 tbsp chia seeds',
+      '1/4 cup granola',
+      'Fresh berries for topping'
+    ],
+    instructions: [
+      'Blend banana, berries, almond milk, and PowerButter until smooth',
+      'Pour into a bowl and top with chia seeds and granola',
+      'Add fresh berries and enjoy immediately'
+    ]
+  },
+  {
+    id: 2,
+    title: 'Pre-Workout Energy Balls',
+    description: 'Quick energy boost before your workout with these no-bake protein balls.',
+    image: 'energy-balls',
+    prepTime: 15,
+    servings: 12,
+    calories: 120,
+    protein: 6,
+    difficulty: 'Easy',
+    ingredients: [
+      '1/2 cup PowerButter Classic Power',
+      '1/3 cup rolled oats',
+      '1/4 cup protein powder',
+      '2 tbsp honey',
+      '2 tbsp chia seeds',
+      '1/4 cup mini dark chocolate chips'
+    ],
+    instructions: [
+      'Mix all ingredients in a large bowl until well combined',
+      'Roll mixture into 12 balls using your hands',
+      'Place on parchment paper and refrigerate for 30 minutes',
+      'Store in refrigerator for up to one week'
+    ]
+  },
+  {
+    id: 3,
+    title: 'Post-Workout Recovery Shake',
+    description: 'Accelerate recovery with this protein-rich shake perfect after intense training.',
+    image: 'recovery-shake',
+    prepTime: 5,
+    servings: 1,
+    calories: 380,
+    protein: 35,
+    difficulty: 'Easy',
+    ingredients: [
+      '2 tbsp PowerButter Recovery Blend',
+      '1 cup chocolate almond milk',
+      '1 scoop vanilla protein powder',
+      '1/2 frozen banana',
+      '1 cup ice',
+      '1 tsp vanilla extract'
+    ],
+    instructions: [
+      'Add all ingredients to a blender',
+      'Blend on high speed for 60 seconds until smooth',
+      'Pour into glass and consume within 30 minutes post-workout'
+    ]
+  },
+  {
+    id: 4,
+    title: 'Overnight Protein Oats',
+    description: 'Meal prep these protein-packed overnight oats for busy mornings.',
+    image: 'overnight-oats',
+    prepTime: 5,
+    servings: 1,
+    calories: 420,
+    protein: 20,
+    difficulty: 'Easy',
+    ingredients: [
+      '1/2 cup rolled oats',
+      '2 tbsp PowerButter of choice',
+      '1 cup almond milk',
+      '1 tbsp maple syrup',
+      '1 tbsp chia seeds',
+      '1/4 cup sliced almonds',
+      'Cinnamon to taste'
+    ],
+    instructions: [
+      'Mix oats, PowerButter, almond milk, and maple syrup in a jar',
+      'Add chia seeds and stir well',
+      'Cover and refrigerate overnight',
+      'Top with almonds and cinnamon before eating'
+    ]
+  },
+  {
+    id: 5,
+    title: 'High-Protein Pancakes',
+    description: 'Fluffy pancakes loaded with protein for the perfect weekend breakfast.',
+    image: 'protein-pancakes',
+    prepTime: 20,
+    servings: 2,
+    calories: 350,
+    protein: 22,
+    difficulty: 'Medium',
+    ingredients: [
+      '3 tbsp PowerButter Protein Elite',
+      '2 eggs',
+      '1/4 cup oat flour',
+      '1/4 cup Greek yogurt',
+      '1 tsp baking powder',
+      '1 tbsp honey',
+      '1/4 cup almond milk',
+      'Pinch of salt'
+    ],
+    instructions: [
+      'Whisk eggs in a bowl, then add PowerButter and Greek yogurt',
+      'Mix in oat flour, baking powder, honey, and salt',
+      'Add almond milk gradually until smooth',
+      'Cook pancakes on medium heat for 2-3 minutes per side',
+      'Serve with fresh fruit and a drizzle of honey'
+    ]
+  },
+  {
+    id: 6,
+    title: 'Endurance Trail Mix',
+    description: 'Perfect trail mix for long training sessions and outdoor adventures.',
+    image: 'trail-mix',
+    prepTime: 10,
+    servings: 8,
+    calories: 280,
+    protein: 12,
+    difficulty: 'Easy',
+    ingredients: [
+      '1/4 cup PowerButter Endurance Fuel',
+      '1 cup mixed nuts',
+      '1/2 cup dried fruit',
+      '1/4 cup dark chocolate chips',
+      '1/4 cup coconut flakes',
+      '2 tbsp pumpkin seeds'
+    ],
+    instructions: [
+      'Warm PowerButter slightly to make mixing easier',
+      'Toss nuts with warmed PowerButter until coated',
+      'Add dried fruit, chocolate chips, coconut, and seeds',
+      'Mix well and store in airtight container',
+      'Portion into small bags for on-the-go snacking'
+    ]
+  }
+];
+---
+
+<Layout title="Performance Recipes - PowerButter" description="Discover delicious, high-protein recipes using PowerButter to fuel your fitness journey and enhance your performance.">
+  <Header />
+  
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-6">
+          Performance Recipes
+        </h1>
+        <p class="text-xl text-neutral-300 max-w-3xl mx-auto">
+          Fuel your fitness journey with these delicious, high-protein recipes designed by nutrition experts for peak performance.
+        </p>
+      </div>
+    </section>
+
+    <!-- Recipe Categories -->
+    <section class="py-8 bg-neutral-900 sticky top-16 z-40 border-b border-neutral-800">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-4">
+          <button class="bg-accent-500 text-white px-6 py-2 rounded-full font-medium">All Recipes</button>
+          <button class="bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white px-6 py-2 rounded-full font-medium transition-colors">Breakfast</button>
+          <button class="bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white px-6 py-2 rounded-full font-medium transition-colors">Pre-Workout</button>
+          <button class="bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white px-6 py-2 rounded-full font-medium transition-colors">Post-Workout</button>
+          <button class="bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white px-6 py-2 rounded-full font-medium transition-colors">Snacks</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recipes Grid -->
+    <section class="py-16 bg-neutral-900">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {recipes.map(recipe => (
+            <article class="bg-neutral-800 rounded-2xl overflow-hidden hover:bg-neutral-750 transition-all duration-300 transform hover:scale-105 group">
+              <!-- Recipe Image -->
+              <div class="aspect-video bg-gradient-to-br from-neutral-700 to-neutral-800 flex items-center justify-center">
+                <div class="text-neutral-500">
+                  <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Recipe Content -->
+              <div class="p-6 space-y-4">
+                <!-- Header -->
+                <div>
+                  <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent-400 transition-colors">
+                    {recipe.title}
+                  </h3>
+                  <p class="text-neutral-400 text-sm leading-relaxed">{recipe.description}</p>
+                </div>
+                
+                <!-- Recipe Stats -->
+                <div class="flex items-center gap-4 text-xs text-neutral-500">
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>{recipe.prepTime} min</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span>{recipe.servings} servings</span>
+                  </div>
+                  <span class="bg-accent-500/10 text-accent-400 px-2 py-1 rounded-full">
+                    {recipe.difficulty}
+                  </span>
+                </div>
+                
+                <!-- Nutrition Info -->
+                <div class="bg-neutral-700 rounded-lg p-4 space-y-2">
+                  <h4 class="font-semibold text-white text-sm">Nutrition per serving:</h4>
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="text-neutral-300">Calories: <span class="text-white font-medium">{recipe.calories}</span></div>
+                    <div class="text-neutral-300">Protein: <span class="text-white font-medium">{recipe.protein}g</span></div>
+                  </div>
+                </div>
+                
+                <!-- Ingredients Preview -->
+                <div class="space-y-2">
+                  <h4 class="font-semibold text-white text-sm">Ingredients:</h4>
+                  <div class="space-y-1">
+                    {recipe.ingredients.slice(0, 3).map(ingredient => (
+                      <div class="text-xs text-neutral-400">• {ingredient}</div>
+                    ))}
+                    {recipe.ingredients.length > 3 && (
+                      <div class="text-xs text-accent-400">+ {recipe.ingredients.length - 3} more...</div>
+                    )}
+                  </div>
+                </div>
+                
+                <!-- View Recipe Button -->
+                <button class="w-full bg-accent-500 hover:bg-accent-600 text-white py-3 rounded-lg font-medium transition-colors group-hover:shadow-lg">
+                  View Full Recipe
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Recipe Tips Section -->
+    <section class="py-16 bg-neutral-950">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+            Pro Tips for Performance Nutrition
+          </h2>
+          <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
+            Expert advice to maximize your nutrition and performance
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-neutral-900 rounded-xl p-6 text-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Pre-Workout Timing</h3>
+            <p class="text-neutral-400 text-sm">Consume 30-60 minutes before training for optimal energy and performance.</p>
+          </div>
+          
+          <div class="bg-neutral-900 rounded-xl p-6 text-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Recovery Window</h3>
+            <p class="text-neutral-400 text-sm">Post-workout nutrition within 30 minutes maximizes muscle protein synthesis.</p>
+          </div>
+          
+          <div class="bg-neutral-900 rounded-xl p-6 text-center">
+            <div class="w-12 h-12 bg-gradient-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Portion Control</h3>
+            <p class="text-neutral-400 text-sm">Match your intake to your training intensity and body weight for best results.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

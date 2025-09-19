@@ -1,0 +1,103 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed w-full top-0 z-50 bg-neutral-950/80 backdrop-blur-lg border-b border-neutral-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="w-8 h-8 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center">
+            <span class="text-white font-bold text-sm">PB</span>
+          </div>
+          <span class="font-display font-bold text-xl text-white">PowerButter</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:block">
+        <div class="flex items-baseline space-x-8">
+          <a 
+            href="/" 
+            class={`px-3 py-2 text-sm font-medium transition-colors ${
+              currentPath === '/' 
+                ? 'text-accent-400 border-b-2 border-accent-400' 
+                : 'text-neutral-300 hover:text-white'
+            }`}
+          >
+            Home
+          </a>
+          <a 
+            href="/products" 
+            class={`px-3 py-2 text-sm font-medium transition-colors ${
+              currentPath === '/products' 
+                ? 'text-accent-400 border-b-2 border-accent-400' 
+                : 'text-neutral-300 hover:text-white'
+            }`}
+          >
+            Products
+          </a>
+          <a 
+            href="/recipes" 
+            class={`px-3 py-2 text-sm font-medium transition-colors ${
+              currentPath === '/recipes' 
+                ? 'text-accent-400 border-b-2 border-accent-400' 
+                : 'text-neutral-300 hover:text-white'
+            }`}
+          >
+            Recipes
+          </a>
+          <a 
+            href="/about" 
+            class={`px-3 py-2 text-sm font-medium transition-colors ${
+              currentPath === '/about' 
+                ? 'text-accent-400 border-b-2 border-accent-400' 
+                : 'text-neutral-300 hover:text-white'
+            }`}
+          >
+            About
+          </a>
+        </div>
+      </nav>
+      
+      <!-- CTA Button -->
+      <div class="hidden md:block">
+        <a 
+          href="/products" 
+          class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-accent-500/25"
+        >
+          Shop Now
+        </a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button type="button" class="mobile-menu-button text-neutral-400 hover:text-white">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-menu hidden md:hidden bg-neutral-900 border-t border-neutral-800">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="/" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Home</a>
+      <a href="/products" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Products</a>
+      <a href="/recipes" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">Recipes</a>
+      <a href="/about" class="block px-3 py-2 text-base font-medium text-neutral-300 hover:text-white">About</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>
