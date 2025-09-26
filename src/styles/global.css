@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+  /* Brand accent color scale (PowerButter Red) */
+  --color-accent-50:  #ffe5e9;
+  --color-accent-100: #fdccd2;
+  --color-accent-200: #f9a6b0;
+  --color-accent-300: #ef7a86;
+  --color-accent-400: #dc4b59; /* used in gradients and highlights */
+  --color-accent-500: #C32136; /* primary accent */
+  --color-accent-600: #a81c2e;
+  --color-accent-700: #8f1928;
+  --color-accent-800: #751522;
+  --color-accent-900: #5d101b;
+
+  /* Cream background color */
+  --color-cream: rgb(255 249 237);
+
+  /* Custom mid-step between neutral-700 and neutral-800 for hover states */
+  --color-neutral-750: #2f2f2f;
+  
+  /* Fonts */
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+}
