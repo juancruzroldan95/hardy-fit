@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import hardyBlackLogo from '../assets/images/hardy-black-logo.webp';
+
 const currentPath = Astro.url.pathname;
 ---
 
@@ -8,7 +11,7 @@ const currentPath = Astro.url.pathname;
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/" class="flex items-center">
-          <img src="/assets/hardy-black.png" alt="HARDY" class="h-10 md:h-12 w-auto" />
+          <Image src={hardyBlackLogo} alt="Hardy Black Logo" class="h-10 md:h-12 w-auto" />
         </a>
       </div>
       
@@ -51,7 +54,9 @@ const currentPath = Astro.url.pathname;
       <!-- CTA Button -->
       <div class="hidden md:block">
         <a 
-          href="/products" 
+          href="https://www.hardymarket.com.ar/" 
+          target="_blank"
+          rel="noopener noreferrer"
           class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-accent-500/25"
         >
           Comprar ahora
