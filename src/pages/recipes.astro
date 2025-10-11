@@ -1,167 +1,167 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const recipes = [
+export const recipes = [
   {
     id: 1,
-    title: 'Power Protein Smoothie Bowl',
-    description: 'Start your day with this nutrient-dense smoothie bowl packed with protein and antioxidants.',
+    title: 'Bowl de Smoothie Proteico',
+    description: 'Empezá tu día con este bowl nutritivo cargado de proteína y antioxidantes.',
     image: 'smoothie-bowl',
     prepTime: 10,
     servings: 1,
     calories: 450,
     protein: 25,
-    difficulty: 'Easy',
+    difficulty: 'Fácil',
     ingredients: [
-      '2 tbsp PowerButter Protein Elite',
-      '1 frozen banana',
-      '1/2 cup frozen mixed berries',
-      '1/2 cup almond milk',
-      '1 tbsp chia seeds',
-      '1/4 cup granola',
-      'Fresh berries for topping'
+      '2 cdas HARDY Pasta de Maní Chocolate',
+      '1 banana congelada',
+      '1/2 taza de frutos rojos congelados',
+      '1/2 taza de leche de almendras',
+      '1 cda de semillas de chía',
+      '1/4 taza de granola',
+      'Frutos rojos frescos para decorar'
     ],
     instructions: [
-      'Blend banana, berries, almond milk, and PowerButter until smooth',
-      'Pour into a bowl and top with chia seeds and granola',
-      'Add fresh berries and enjoy immediately'
+      'Licuá la banana, frutos rojos, leche de almendras y HARDY hasta que esté cremoso',
+      'Serví en un bowl y decorá con semillas de chía y granola',
+      'Agregá frutos rojos frescos y disfrutá inmediatamente'
     ]
   },
   {
     id: 2,
-    title: 'Pre-Workout Energy Balls',
-    description: 'Quick energy boost before your workout with these no-bake protein balls.',
+    title: 'Bolitas Energéticas Pre-Entreno',
+    description: 'Boost de energía rápido antes de entrenar con estas bolitas de proteína sin horno.',
     image: 'energy-balls',
     prepTime: 15,
     servings: 12,
     calories: 120,
     protein: 6,
-    difficulty: 'Easy',
+    difficulty: 'Fácil',
     ingredients: [
-      '1/2 cup PowerButter Classic Power',
-      '1/3 cup rolled oats',
-      '1/4 cup protein powder',
-      '2 tbsp honey',
-      '2 tbsp chia seeds',
-      '1/4 cup mini dark chocolate chips'
+      '1/2 taza HARDY Pasta de Maní Original',
+      '1/3 taza de avena arrollada',
+      '1/4 taza de proteína en polvo',
+      '2 cdas de miel',
+      '2 cdas de semillas de chía',
+      '1/4 taza de chips de chocolate amargo'
     ],
     instructions: [
-      'Mix all ingredients in a large bowl until well combined',
-      'Roll mixture into 12 balls using your hands',
-      'Place on parchment paper and refrigerate for 30 minutes',
-      'Store in refrigerator for up to one week'
+      'Mezclá todos los ingredientes en un bowl grande hasta que estén bien combinados',
+      'Formá 12 bolitas con las manos',
+      'Colocalas en papel manteca y refrigerá por 30 minutos',
+      'Guardá en la heladera hasta una semana'
     ]
   },
   {
     id: 3,
-    title: 'Post-Workout Recovery Shake',
-    description: 'Accelerate recovery with this protein-rich shake perfect after intense training.',
+    title: 'Licuado de Recuperación Post-Entreno',
+    description: 'Acelerá la recuperación con este licuado rico en proteína perfecto después del entrenamiento intenso.',
     image: 'recovery-shake',
     prepTime: 5,
     servings: 1,
     calories: 380,
     protein: 35,
-    difficulty: 'Easy',
+    difficulty: 'Fácil',
     ingredients: [
-      '2 tbsp PowerButter Recovery Blend',
-      '1 cup chocolate almond milk',
-      '1 scoop vanilla protein powder',
-      '1/2 frozen banana',
-      '1 cup ice',
-      '1 tsp vanilla extract'
+      '2 cdas HARDY Pasta de Maní Coco',
+      '1 taza de leche de almendras con chocolate',
+      '1 scoop de proteína de vainilla',
+      '1/2 banana congelada',
+      '1 taza de hielo',
+      '1 cdta de extracto de vainilla'
     ],
     instructions: [
-      'Add all ingredients to a blender',
-      'Blend on high speed for 60 seconds until smooth',
-      'Pour into glass and consume within 30 minutes post-workout'
+      'Agregá todos los ingredientes a la licuadora',
+      'Licuá a alta velocidad por 60 segundos hasta que esté cremoso',
+      'Serví en un vaso y consumí dentro de los 30 minutos post-entreno'
     ]
   },
   {
     id: 4,
-    title: 'Overnight Protein Oats',
-    description: 'Meal prep these protein-packed overnight oats for busy mornings.',
+    title: 'Avena Proteica Overnight',
+    description: 'Prepará esta avena cargada de proteína para las mañanas ocupadas.',
     image: 'overnight-oats',
     prepTime: 5,
     servings: 1,
     calories: 420,
     protein: 20,
-    difficulty: 'Easy',
+    difficulty: 'Fácil',
     ingredients: [
-      '1/2 cup rolled oats',
-      '2 tbsp PowerButter of choice',
-      '1 cup almond milk',
-      '1 tbsp maple syrup',
-      '1 tbsp chia seeds',
-      '1/4 cup sliced almonds',
-      'Cinnamon to taste'
+      '1/2 taza de avena arrollada',
+      '2 cdas de HARDY a elección',
+      '1 taza de leche de almendras',
+      '1 cda de jarabe de arce',
+      '1 cda de semillas de chía',
+      '1/4 taza de almendras fileteadas',
+      'Canela a gusto'
     ],
     instructions: [
-      'Mix oats, PowerButter, almond milk, and maple syrup in a jar',
-      'Add chia seeds and stir well',
-      'Cover and refrigerate overnight',
-      'Top with almonds and cinnamon before eating'
+      'Mezclá la avena, HARDY, leche de almendras y jarabe de arce en un frasco',
+      'Agregá las semillas de chía y revolvé bien',
+      'Tapá y refrigerá toda la noche',
+      'Decorá con almendras y canela antes de comer'
     ]
   },
   {
     id: 5,
-    title: 'High-Protein Pancakes',
-    description: 'Fluffy pancakes loaded with protein for the perfect weekend breakfast.',
+    title: 'Panqueques Altos en Proteína',
+    description: 'Panqueques esponjosos cargados de proteína para el desayuno perfecto del fin de semana.',
     image: 'protein-pancakes',
     prepTime: 20,
     servings: 2,
     calories: 350,
     protein: 22,
-    difficulty: 'Medium',
+    difficulty: 'Medio',
     ingredients: [
-      '3 tbsp PowerButter Protein Elite',
-      '2 eggs',
-      '1/4 cup oat flour',
-      '1/4 cup Greek yogurt',
-      '1 tsp baking powder',
-      '1 tbsp honey',
-      '1/4 cup almond milk',
-      'Pinch of salt'
+      '3 cdas HARDY Pasta de Maní Chocolate',
+      '2 huevos',
+      '1/4 taza de harina de avena',
+      '1/4 taza de yogur griego',
+      '1 cdta de polvo de hornear',
+      '1 cda de miel',
+      '1/4 taza de leche de almendras',
+      'Una pizca de sal'
     ],
     instructions: [
-      'Whisk eggs in a bowl, then add PowerButter and Greek yogurt',
-      'Mix in oat flour, baking powder, honey, and salt',
-      'Add almond milk gradually until smooth',
-      'Cook pancakes on medium heat for 2-3 minutes per side',
-      'Serve with fresh fruit and a drizzle of honey'
+      'Batí los huevos en un bowl, luego agregá HARDY y yogur griego',
+      'Mezclá la harina de avena, polvo de hornear, miel y sal',
+      'Agregá la leche de almendras gradualmente hasta que esté suave',
+      'Cociná los panqueques a fuego medio por 2-3 minutos de cada lado',
+      'Serví con fruta fresca y un hilo de miel'
     ]
   },
   {
     id: 6,
-    title: 'Endurance Trail Mix',
-    description: 'Perfect trail mix for long training sessions and outdoor adventures.',
+    title: 'Mix de Frutos Secos para Resistencia',
+    description: 'Mix perfecto para sesiones de entrenamiento largas y aventuras al aire libre.',
     image: 'trail-mix',
     prepTime: 10,
     servings: 8,
     calories: 280,
     protein: 12,
-    difficulty: 'Easy',
+    difficulty: 'Fácil',
     ingredients: [
-      '1/4 cup PowerButter Endurance Fuel',
-      '1 cup mixed nuts',
-      '1/2 cup dried fruit',
-      '1/4 cup dark chocolate chips',
-      '1/4 cup coconut flakes',
-      '2 tbsp pumpkin seeds'
+      '1/4 taza HARDY Miel Líquida',
+      '1 taza de frutos secos mixtos',
+      '1/2 taza de fruta deshidratada',
+      '1/4 taza de chips de chocolate amargo',
+      '1/4 taza de coco rallado',
+      '2 cdas de semillas de zapallo'
     ],
     instructions: [
-      'Warm PowerButter slightly to make mixing easier',
-      'Toss nuts with warmed PowerButter until coated',
-      'Add dried fruit, chocolate chips, coconut, and seeds',
-      'Mix well and store in airtight container',
-      'Portion into small bags for on-the-go snacking'
+      'Calentá ligeramente la miel HARDY para facilitar la mezcla',
+      'Revolvé los frutos secos con la miel calentada hasta que estén cubiertos',
+      'Agregá fruta deshidratada, chips de chocolate, coco y semillas',
+      'Mezclá bien y guardá en un recipiente hermético',
+      'Dividí en bolsitas pequeñas para snackear en el camino'
     ]
   }
 ];
 ---
 
 <Layout
-  title="Performance Recipes - PowerButter"
-  description="Discover delicious, high-protein recipes using PowerButter to fuel your fitness journey and enhance your performance."
+  title="Recetas de Alto Rendimiento - HARDY"
+  description="Descubrí recetas deliciosas y altas en proteína usando HARDY para potenciar tu fitness y mejorar tu rendimiento."
 >
   <main class="pt-16">
     <!-- Hero Section -->
@@ -170,10 +170,10 @@ const recipes = [
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"></div>
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h1 class="text-5xl md:text-6xl font-display font-bold text-neutral-900 mb-6">
-          Performance Recipes
+          Recetas de Alto Rendimiento
         </h1>
         <p class="text-xl text-neutral-700 max-w-3xl mx-auto">
-          Fuel your fitness journey with these delicious, high-protein recipes designed by nutrition experts for peak performance.
+          Potenciá tu fitness con estas recetas deliciosas y altas en proteína diseñadas por expertos en nutrición para el máximo rendimiento.
         </p>
       </div>
     </section>
@@ -182,10 +182,10 @@ const recipes = [
     <section class="py-8 bg-white sticky top-16 z-40 border-b border-neutral-200">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex flex-wrap justify-center gap-4">
-          <button class="bg-accent-500 text-white px-6 py-2 rounded-full font-medium">All Recipes</button>
-          <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Breakfast</button>
-          <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Pre-Workout</button>
-          <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Post-Workout</button>
+          <button class="bg-accent-500 text-white px-6 py-2 rounded-full font-medium">Todas las Recetas</button>
+          <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Desayuno</button>
+          <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Pre-Entreno</button>
+          <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Post-Entreno</button>
           <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Snacks</button>
         </div>
       </div>
@@ -206,9 +206,7 @@ const recipes = [
                 </div>
               </div>
               
-              <!-- Recipe Content -->
               <div class="p-6 space-y-4">
-                <!-- Header -->
                 <div>
                   <h3 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-accent-600 transition-colors">
                     {recipe.title}
@@ -216,7 +214,6 @@ const recipes = [
                   <p class="text-neutral-700 text-sm leading-relaxed">{recipe.description}</p>
                 </div>
                 
-                <!-- Recipe Stats -->
                 <div class="flex items-center gap-4 text-xs text-neutral-600">
                   <div class="flex items-center gap-1">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,38 +225,35 @@ const recipes = [
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
-                    <span>{recipe.servings} servings</span>
+                    <span>{recipe.servings} porciones</span>
                   </div>
                   <span class="bg-accent-500/10 text-accent-400 px-2 py-1 rounded-full">
                     {recipe.difficulty}
                   </span>
                 </div>
                 
-                <!-- Nutrition Info -->
                 <div class="bg-neutral-100 rounded-lg p-4 space-y-2">
-                  <h4 class="font-semibold text-neutral-900 text-sm">Nutrition per serving:</h4>
+                  <h4 class="font-semibold text-neutral-900 text-sm">Nutrición por porción:</h4>
                   <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div class="text-neutral-700">Calories: <span class="text-neutral-900 font-medium">{recipe.calories}</span></div>
-                    <div class="text-neutral-700">Protein: <span class="text-neutral-900 font-medium">{recipe.protein}g</span></div>
+                    <div class="text-neutral-700">Calorías: <span class="text-neutral-900 font-medium">{recipe.calories}</span></div>
+                    <div class="text-neutral-700">Proteína: <span class="text-neutral-900 font-medium">{recipe.protein}g</span></div>
                   </div>
                 </div>
                 
-                <!-- Ingredients Preview -->
                 <div class="space-y-2">
-                  <h4 class="font-semibold text-neutral-900 text-sm">Ingredients:</h4>
+                  <h4 class="font-semibold text-neutral-900 text-sm">Ingredientes:</h4>
                   <div class="space-y-1">
                     {recipe.ingredients.slice(0, 3).map(ingredient => (
                       <div class="text-xs text-neutral-700">• {ingredient}</div>
                     ))}
                     {recipe.ingredients.length > 3 && (
-                      <div class="text-xs text-accent-400">+ {recipe.ingredients.length - 3} more...</div>
+                      <div class="text-xs text-accent-400">+ {recipe.ingredients.length - 3} más...</div>
                     )}
                   </div>
                 </div>
                 
-                <!-- View Recipe Button -->
                 <button class="w-full bg-accent-500 hover:bg-accent-600 text-white py-3 rounded-lg font-medium transition-colors group-hover:shadow-lg shadow-md">
-                  View Full Recipe
+                  Ver Receta Completa
                 </button>
               </div>
             </article>
@@ -273,10 +267,10 @@ const recipes = [
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">
-            Pro Tips for Performance Nutrition
+            Tips Pro para Nutrición de Alto Rendimiento
           </h2>
           <p class="text-xl text-neutral-700 max-w-3xl mx-auto">
-            Expert advice to maximize your nutrition and performance
+            Consejos de expertos para maximizar tu nutrición y rendimiento
           </p>
         </div>
         
@@ -287,8 +281,8 @@ const recipes = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900 mb-2">Pre-Workout Timing</h3>
-            <p class="text-neutral-700 text-sm">Consume 30-60 minutes before training for optimal energy and performance.</p>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">Timing Pre-Entreno</h3>
+            <p class="text-neutral-700 text-sm">Consumí 30-60 minutos antes del entrenamiento para energía y rendimiento óptimos.</p>
           </div>
           
           <div class="bg-white rounded-xl p-6 text-center ring-1 ring-neutral-200">
@@ -297,8 +291,8 @@ const recipes = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900 mb-2">Recovery Window</h3>
-            <p class="text-neutral-700 text-sm">Post-workout nutrition within 30 minutes maximizes muscle protein synthesis.</p>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">Ventana de Recuperación</h3>
+            <p class="text-neutral-700 text-sm">La nutrición post-entreno dentro de los 30 minutos maximiza la síntesis de proteína muscular.</p>
           </div>
           
           <div class="bg-white rounded-xl p-6 text-center ring-1 ring-neutral-200">
@@ -307,8 +301,8 @@ const recipes = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900 mb-2">Portion Control</h3>
-            <p class="text-neutral-700 text-sm">Match your intake to your training intensity and body weight for best results.</p>
+            <h3 class="text-xl font-bold text-neutral-900 mb-2">Control de Porciones</h3>
+            <p class="text-neutral-700 text-sm">Ajustá tu ingesta a la intensidad del entrenamiento y tu peso corporal para mejores resultados.</p>
           </div>
         </div>
       </div>

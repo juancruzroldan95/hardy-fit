@@ -1,0 +1,68 @@
+---
+// Hero component
+---
+
+<!-- Background -->
+<div class="absolute inset-0 bg-cream"></div>
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.10),transparent_55%)]"></div>
+
+<!-- Content -->
+<div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+  <div class="space-y-8">
+    <div class="space-y-4">
+      <h1 class="text-5xl md:text-7xl font-display font-bold text-neutral-900 leading-tight">
+        Potenciá tu
+        <span class="bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">
+          Rendimiento
+        </span>
+      </h1>
+      <p class="text-xl md:text-2xl text-neutral-700 max-w-3xl mx-auto leading-relaxed">
+        Pasta de maní ultra premium para atletas que exigen lo mejor.
+        Ingredientes puros, calidad sin concesiones y rendimiento máximo.
+      </p>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+      <a 
+        href="/products" 
+        class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-2xl hover:shadow-accent-500/25 transform hover:scale-105"
+      >
+        Ver Colección Premium
+      </a>
+      <a 
+        href="/about" 
+        class="border-2 border-neutral-300 hover:border-accent-500 text-neutral-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-accent-50"
+      >
+        Nuestra Historia
+      </a>
+    </div>
+    
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold text-accent-400">30g</div>
+        <div class="text-neutral-600 text-sm mt-1">Proteína por porción</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold text-accent-400">0</div>
+        <div class="text-neutral-600 text-sm mt-1">Azúcares agregados</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold text-accent-400">100%</div>
+        <div class="text-neutral-600 text-sm mt-1">Ingredientes naturales</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl md:text-4xl font-bold text-accent-400">1M+</div>
+        <div class="text-neutral-600 text-sm mt-1">Atletas nos eligen</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scroll indicator -->
+<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+  <svg class="w-6 h-6 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+  </svg>
+</div>
+

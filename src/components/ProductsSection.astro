@@ -1,0 +1,20 @@
+---
+import ProductItem from './ProductItem.astro';
+import { PRODUCTS } from '../consts/products';
+---
+
+<div class="text-center mb-16">
+  <h2 class="text-4xl md:text-5xl font-display font-bold text-neutral-900 mb-4">
+    Colección Premium
+  </h2>
+  <p class="text-xl text-neutral-700 max-w-3xl mx-auto">
+    Cada frasco está elaborado con los mejores ingredientes para impulsar tu entrenamiento
+  </p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {PRODUCTS.map((product) => (
+    <ProductItem product={product} variant="simple" />
+  ))}
+</div>
+

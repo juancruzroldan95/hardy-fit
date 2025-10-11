@@ -1,103 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const products = [
-  {
-    id: 1,
-    name: 'Classic Power',
-    description: 'Pure roasted peanuts with a touch of sea salt. Perfect for pre-workout fuel and daily nutrition.',
-    price: 24.99,
-    image: 'classic-power',
-    nutrition: {
-      calories: 190,
-      protein: 8,
-      fat: 16,
-      carbs: 6
-    },
-    ingredients: ['Roasted Peanuts', 'Sea Salt'],
-    benefits: ['High Protein', 'Natural Energy', 'No Added Sugar']
-  },
-  {
-    id: 2,
-    name: 'Protein Elite',
-    description: 'Enhanced with plant-based protein powder for maximum muscle recovery and growth.',
-    price: 29.99,
-    image: 'protein-elite',
-    nutrition: {
-      calories: 220,
-      protein: 35,
-      fat: 14,
-      carbs: 5
-    },
-    ingredients: ['Roasted Peanuts', 'Pea Protein', 'Hemp Protein', 'Sea Salt'],
-    benefits: ['35g Protein', 'Complete Amino Profile', 'Post-Workout Recovery']
-  },
-  {
-    id: 3,
-    name: 'Recovery Blend',
-    description: 'Infused with MCT oil and adaptogenic mushrooms for optimal recovery and performance.',
-    price: 34.99,
-    image: 'recovery-blend',
-    nutrition: {
-      calories: 210,
-      protein: 9,
-      fat: 18,
-      carbs: 6
-    },
-    ingredients: ['Roasted Peanuts', 'MCT Oil', 'Reishi Mushroom', 'Ashwagandha', 'Sea Salt'],
-    benefits: ['Stress Reduction', 'Enhanced Recovery', 'Mental Clarity']
-  },
-  {
-    id: 4,
-    name: 'Endurance Fuel',
-    description: 'Specially formulated with natural carbohydrates for sustained energy during long workouts.',
-    price: 27.99,
-    image: 'endurance-fuel',
-    nutrition: {
-      calories: 200,
-      protein: 8,
-      fat: 15,
-      carbs: 12
-    },
-    ingredients: ['Roasted Peanuts', 'Dates', 'Coconut Sugar', 'Chia Seeds', 'Sea Salt'],
-    benefits: ['Sustained Energy', 'Natural Carbs', 'Endurance Support']
-  },
-  {
-    id: 5,
-    name: 'Keto Power',
-    description: 'Ultra-low carb formula perfect for ketogenic diets and fat-adapted athletes.',
-    price: 32.99,
-    image: 'keto-power',
-    nutrition: {
-      calories: 180,
-      protein: 7,
-      fat: 17,
-      carbs: 2
-    },
-    ingredients: ['Roasted Peanuts', 'MCT Oil', 'Stevia', 'Sea Salt'],
-    benefits: ['Keto Friendly', 'High Fat', 'Ultra Low Carb']
-  },
-  {
-    id: 6,
-    name: 'Chocolate Thunder',
-    description: 'Rich cocoa blend that satisfies cravings while delivering premium nutrition.',
-    price: 31.99,
-    image: 'chocolate-thunder',
-    nutrition: {
-      calories: 200,
-      protein: 9,
-      fat: 16,
-      carbs: 8
-    },
-    ingredients: ['Roasted Peanuts', 'Raw Cacao', 'Coconut Sugar', 'Vanilla', 'Sea Salt'],
-    benefits: ['Antioxidant Rich', 'Mood Booster', 'Natural Sweetness']
-  }
-];
+import ProductItem from '../components/ProductItem.astro';
+import { PRODUCTS } from '../consts/products';
 ---
 
 <Layout
-  title="Premium Products - PowerButter"
-  description="Discover our collection of ultra-premium peanut butter varieties crafted for athletes and fitness enthusiasts."
+  title="Productos Premium - HARDY"
+  description="Descubrí nuestra colección de pastas de maní ultra premium elaboradas para atletas y fanáticos del fitness."
 >
   <main class="pt-16">
     <!-- Hero Section -->
@@ -106,10 +15,10 @@ const products = [
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"></div>
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h1 class="text-5xl md:text-6xl font-display font-bold text-neutral-900 mb-6">
-          Premium Collection
+          Colección Premium
         </h1>
         <p class="text-xl text-neutral-700 max-w-3xl mx-auto">
-          Each jar represents the pinnacle of performance nutrition, crafted with the finest ingredients for athletes who demand excellence.
+          Cada frasco representa la cúspide de la nutrición deportiva, elaborado con los mejores ingredientes para atletas que exigen excelencia.
         </p>
       </div>
     </section>
@@ -118,51 +27,8 @@ const products = [
     <section class="py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map(product => (
-            <div class="bg-cream rounded-2xl p-6 ring-1 ring-neutral-200 hover:ring-neutral-300 transition-all duration-300 transform hover:scale-[1.02] group">
-              <!-- Product Image -->
-              <div class="aspect-square bg-gradient-to-br from-white to-neutral-100 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
-                <div class="w-32 h-32 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center shadow-lg">
-                  <span class="text-white font-bold text-2xl">PB</span>
-                </div>
-              </div>
-              
-              <!-- Product Info -->
-              <div class="space-y-4">
-                <div>
-                  <h3 class="text-2xl font-bold text-neutral-900 mb-2">{product.name}</h3>
-                  <p class="text-neutral-700 text-sm leading-relaxed">{product.description}</p>
-                </div>
-                
-                <!-- Benefits -->
-                <div class="flex flex-wrap gap-2">
-                  {product.benefits.map(benefit => (
-                    <span class="bg-accent-500/10 text-accent-400 px-3 py-1 rounded-full text-xs font-medium">
-                      {benefit}
-                    </span>
-                  ))}
-                </div>
-                
-                <!-- Nutrition Info -->
-                <div class="bg-neutral-100 rounded-lg p-4 space-y-2">
-                  <h4 class="font-semibold text-neutral-900 text-sm">Per 2 tbsp serving:</h4>
-                  <div class="grid grid-cols-2 gap-2 text-xs">
-                    <div class="text-neutral-700">Calories: <span class="text-neutral-900 font-medium">{product.nutrition.calories}</span></div>
-                    <div class="text-neutral-700">Protein: <span class="text-neutral-900 font-medium">{product.nutrition.protein}g</span></div>
-                    <div class="text-neutral-700">Fat: <span class="text-neutral-900 font-medium">{product.nutrition.fat}g</span></div>
-                    <div class="text-neutral-700">Carbs: <span class="text-neutral-900 font-medium">{product.nutrition.carbs}g</span></div>
-                  </div>
-                </div>
-                
-                <!-- Price and CTA -->
-                <div class="flex justify-between items-center pt-2">
-                  <span class="text-2xl font-bold text-accent-400">${product.price}</span>
-                  <button class="bg-accent-500 hover:bg-accent-600 text-white px-6 py-2 rounded-full font-medium transition-colors group-hover:shadow-lg shadow-md">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
+          {PRODUCTS.map(product => (
+            <ProductItem product={product} variant="detailed" />
           ))}
         </div>
       </div>
@@ -173,7 +39,7 @@ const products = [
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-display font-bold text-neutral-900 mb-4">
-            Why Athletes Choose PowerButter
+            Por qué los Atletas Eligen HARDY
           </h2>
         </div>
         
@@ -184,8 +50,8 @@ const products = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900">Lab Tested</h3>
-            <p class="text-neutral-700">Every batch is tested for purity, potency, and quality assurance.</p>
+            <h3 class="text-xl font-bold text-neutral-900">Probado en Laboratorio</h3>
+            <p class="text-neutral-700">Cada lote es probado para pureza, potencia y garantía de calidad.</p>
           </div>
           
           <div class="text-center space-y-4">
@@ -194,8 +60,8 @@ const products = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900">Fresh Made</h3>
-            <p class="text-neutral-700">Small batches ensure maximum freshness and optimal taste.</p>
+            <h3 class="text-xl font-bold text-neutral-900">Elaborado Fresco</h3>
+            <p class="text-neutral-700">Pequeños lotes aseguran máxima frescura y sabor óptimo.</p>
           </div>
           
           <div class="text-center space-y-4">
@@ -204,8 +70,8 @@ const products = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900">Free Shipping</h3>
-            <p class="text-neutral-700">Complimentary shipping on all orders over $50 nationwide.</p>
+            <h3 class="text-xl font-bold text-neutral-900">Envío Gratis</h3>
+            <p class="text-neutral-700">Envío gratuito en todas las compras superiores a $50 en todo el país.</p>
           </div>
         </div>
       </div>
