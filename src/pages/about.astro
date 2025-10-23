@@ -1,12 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SectionContainer from '../components/SectionContainer.astro';
-import AboutHeroSection from '../components/AboutHeroSection.astro';
-import StorySection from '../components/StorySection.astro';
-import ValuesSection from '../components/ValuesSection.astro';
-import TeamSection from '../components/TeamSection.astro';
-import StatsSection from '../components/StatsSection.astro';
-import AboutCTASection from '../components/AboutCTASection.astro';
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import AboutHeroSection from "../components/AboutHeroSection.astro";
+import StorySection from "../components/StorySection.astro";
+import ValuesSection from "../components/ValuesSection.astro";
+import TeamSection from "../components/TeamSection.astro";
+import StatsSection from "../components/StatsSection.astro";
+import AboutCTASection from "../components/AboutCTASection.astro";
 ---
 
 <Layout
@@ -15,8 +15,16 @@ import AboutCTASection from '../components/AboutCTASection.astro';
 >
   <main class="pt-16">
     <!-- Hero Section -->
-    <SectionContainer id="hero" class="relative overflow-hidden" noContainer={true}>
-      <AboutHeroSection />
+    <SectionContainer
+      id="hero"
+      class="relative overflow-hidden"
+      noContainer={true}
+    >
+      <AboutHeroSection
+        titleColor="text-primary"
+        titleSize="text-5xl md:text-6xl"
+        descriptionColor="text-black"
+      />
     </SectionContainer>
 
     <!-- Story Section -->
@@ -25,8 +33,14 @@ import AboutCTASection from '../components/AboutCTASection.astro';
     </SectionContainer>
 
     <!-- Values Section -->
-    <SectionContainer id="values" class="py-24 bg-cream">
-      <ValuesSection />
+    <SectionContainer id="values" class="py-24 bg-neutral-50">
+      <ValuesSection
+        titleColor="text-primary"
+        bgColor="bg-white"
+        iconColor="text-primary"
+        cardTitleColor="text-primary"
+        cardDescriptionColor="text-neutral-700"
+      />
     </SectionContainer>
 
     <!-- Team Section -->
@@ -35,7 +49,10 @@ import AboutCTASection from '../components/AboutCTASection.astro';
     </SectionContainer>
 
     <!-- Stats Section -->
-    <SectionContainer id="stats" class="py-24 bg-gradient-to-r from-accent-900 via-accent-800 to-accent-900">
+    <SectionContainer
+      id="stats"
+      class="py-24 bg-gradient-to-r from-accent-900 via-accent-800 to-accent-900"
+    >
       <StatsSection />
     </SectionContainer>
 
@@ -44,5 +61,4 @@ import AboutCTASection from '../components/AboutCTASection.astro';
       <AboutCTASection />
     </SectionContainer>
   </main>
-  
 </Layout>

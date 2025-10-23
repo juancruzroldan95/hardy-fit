@@ -1,95 +1,126 @@
 ---
-import { Image } from 'astro:assets';
-import hardyBlackLogo from '../assets/images/hardy-black-logo.webp';
+import { Image } from "astro:assets";
+import hardyLogo from "../assets/images/hardy-red.webp";
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-neutral-200">
+<header
+  class="fixed w-full top-0 z-50 bg-white backdrop-blur-lg border-b border-neutral-200"
+>
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/" class="flex items-center">
-          <Image src={hardyBlackLogo} alt="Hardy Black Logo" class="h-10 md:h-12 w-auto" />
+          <Image
+            src={hardyLogo}
+            alt="Hardy Black Logo"
+            class="h-8 md:h-10 w-auto"
+          />
         </a>
       </div>
-      
+
       <!-- Desktop Navigation -->
       <nav class="hidden md:block">
         <div class="flex items-baseline space-x-8">
-          <a 
-            href="/products" 
+          <a
+            href="/products"
             class={`px-3 py-2 text-sm font-medium transition-colors ${
-              currentPath === '/products' 
-                ? 'text-accent-600 border-b-2 border-accent-600' 
-                : 'text-neutral-600 hover:text-neutral-900'
+              currentPath === "/products"
+                ? "text-primary border-b-2 border-primary"
+                : "text-neutral-600 hover:text-neutral-900"
             }`}
           >
             Productos
           </a>
-          <a 
-            href="/recipes" 
+          <a
+            href="/recipes"
             class={`px-3 py-2 text-sm font-medium transition-colors ${
-              currentPath === '/recipes' 
-                ? 'text-accent-600 border-b-2 border-accent-600' 
-                : 'text-neutral-600 hover:text-neutral-900'
+              currentPath === "/recipes"
+                ? "text-primary border-b-2 border-primary"
+                : "text-neutral-600 hover:text-neutral-900"
             }`}
           >
             Recetas
           </a>
-          <a 
-            href="/about" 
+          <a
+            href="/about"
             class={`px-3 py-2 text-sm font-medium transition-colors ${
-              currentPath === '/about' 
-                ? 'text-accent-600 border-b-2 border-accent-600' 
-                : 'text-neutral-600 hover:text-neutral-900'
+              currentPath === "/about"
+                ? "text-primary border-b-2 border-primary"
+                : "text-neutral-600 hover:text-neutral-900"
             }`}
           >
             Nosotros
           </a>
         </div>
       </nav>
-      
+
       <!-- CTA Button -->
       <div class="hidden md:block">
-        <a 
-          href="https://www.hardymarket.com.ar/" 
+        <a
+          href="https://www.hardymarket.com.ar/"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-accent-500/25"
+          class="bg-primary hover:bg-primary-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-red-500/25"
         >
           Comprar ahora
         </a>
       </div>
-      
+
       <!-- Mobile menu button -->
       <div class="md:hidden">
-        <button type="button" class="mobile-menu-button text-neutral-400 hover:text-white">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <button
+          type="button"
+          class="mobile-menu-button text-neutral-400 hover:text-white"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
     </div>
   </div>
-  
+
   <!-- Mobile Navigation -->
-  <div class="mobile-menu hidden md:hidden bg-white border-t border-neutral-200">
+  <div
+    class="mobile-menu hidden md:hidden bg-white border-t border-neutral-200"
+  >
     <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-      <a href="/" class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900">Inicio</a>
-      <a href="/products" class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900">Productos</a>
-      <a href="/recipes" class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900">Recetas</a>
-      <a href="/about" class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900">Nosotros</a>
+      <a
+        href="/products"
+        class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
+        >Productos</a
+      >
+      <a
+        href="/recipes"
+        class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
+        >Recetas</a
+      >
+      <a
+        href="/about"
+        class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
+        >Nosotros</a
+      >
     </div>
   </div>
 </header>
 
 <script>
-  const mobileMenuButton = document.querySelector('.mobile-menu-button');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  const mobileMenuButton = document.querySelector(".mobile-menu-button");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  mobileMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
   });
 </script>

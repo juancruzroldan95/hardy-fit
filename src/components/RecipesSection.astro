@@ -1,0 +1,27 @@
+---
+import Card from "./Card.astro";
+import { RECIPES } from "../consts/recipes";
+---
+
+<div class="text-center mb-16">
+  <h2
+    class="text-4xl md:text-5xl font-header uppercase font-extrabold text-accent mb-4"
+  >
+    Nuestras Recetas
+  </h2>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+  {
+    RECIPES.map((item) => (
+      <Card
+        item={item}
+        bgColor="bg-gradient-to-br from-accent-50 to-accent-100"
+        iconColor="text-accent"
+        titleColor="text-accent"
+        descriptionColor="text-accent-700"
+        className="border-2 border-accent-200 hover:border-accent-300"
+      />
+    ))
+  }
+</div>

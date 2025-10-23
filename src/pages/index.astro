@@ -1,36 +1,48 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SectionContainer from '../components/SectionContainer.astro';
-import HeroSection from '../components/HeroSection.astro';
-import ProductsSection from '../components/ProductsSection.astro';
-import WhyChooseUsSection from '../components/WhyChooseUsSection.astro';
-import CTASection from '../components/CTASection.astro';
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ProductsSection from "../components/ProductsSection.astro";
+import WhyChooseUsSection from "../components/WhyChooseUsSection.astro";
+import CTASection from "../components/CTASection.astro";
+import ValuesSection from "../components/ValuesSection.astro";
+import AboutHeroSection from "../components/AboutHeroSection.astro";
 ---
 
-<Layout
-  title="HARDY - Pasta de maní ultra premium para atletas"
-  description="Pasta de maní ultra premium para atletas exigentes. Ingredientes puros, calidad sin concesiones y rendimiento máximo."
->
+<Layout title="HARDY - Alimentá tu instinto">
   <main>
-    <!-- Hero Section -->
-    <SectionContainer id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" noContainer={true}>
+    <SectionContainer
+      id="hero"
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+      noContainer={true}
+    >
       <HeroSection />
     </SectionContainer>
 
-    <!-- Featured Products -->
-    <SectionContainer id="products" class="py-24 bg-white">
+    <SectionContainer id="products" class="py-24 bg-neutral-50">
       <ProductsSection />
     </SectionContainer>
 
-    <!-- Why Choose Us -->
-    <SectionContainer id="why-choose-us" class="py-24 bg-cream">
-      <WhyChooseUsSection />
+    <SectionContainer
+      id="why-choose-us"
+      class="py-24 bg-gradient-to-br from-accent to-accent/80 text-white relative overflow-hidden"
+    >
+      <AboutHeroSection
+        titleColor="text-secondary"
+        titleSize="text-4xl md:text-5xl"
+        descriptionColor="text-white"
+      />
+      <ValuesSection
+        titleColor="text-secondary"
+        bgColor="bg-transparent"
+        iconColor="text-secondary"
+        cardTitleColor="text-secondary"
+        cardDescriptionColor="text-white"
+      />
     </SectionContainer>
 
-    <!-- CTA Section -->
-    <SectionContainer id="cta" class="py-24 bg-gradient-to-r from-accent-900 via-accent-800 to-accent-900">
+    <!-- <SectionContainer id="cta" class="py-24 bg-gradient-to-r from-accent-900 via-accent-800 to-accent-900">
       <CTASection />
-    </SectionContainer>
+    </SectionContainer> -->
   </main>
-  
 </Layout>

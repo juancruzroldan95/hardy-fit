@@ -1,6 +1,6 @@
 ---
-import { VALUES } from "../consts/values";
 import Card from "./Card.astro";
+import { FEATURES } from "../consts/features";
 
 export interface Props {
   titleColor?: string;
@@ -16,9 +16,9 @@ const {
   titleColor = "text-black",
   descriptionColor = "text-black",
   bgColor = "bg-transparent",
-  iconColor = "text-secondary",
-  cardTitleColor = "text-secondary",
-  cardDescriptionColor = "text-white",
+  iconColor = "text-black",
+  cardTitleColor = "text-black",
+  cardDescriptionColor = "text-black",
 } = Astro.props;
 ---
 
@@ -26,13 +26,13 @@ const {
   <h2
     class={`text-4xl md:text-5xl font-header uppercase font-extrabold ${titleColor} mb-4`}
   >
-    Nuestros Valores
+    Nuestras Características
   </h2>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
   {
-    VALUES.map((item) => (
+    FEATURES.map((item) => (
       <Card
         item={item}
         bgColor={bgColor}

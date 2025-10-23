@@ -1,0 +1,72 @@
+---
+import Card from "./Card.astro";
+
+import Clock from "../icons/Clock.astro";
+import Reload from "../icons/Reload.astro";
+import ChartBar from "../icons/ChartBar.astro";
+
+export interface Props {
+  titleColor?: string;
+  descriptionColor?: string;
+  // Card color props
+  bgColor?: string;
+  iconColor?: string;
+  cardTitleColor?: string;
+  cardDescriptionColor?: string;
+}
+
+const {
+  titleColor = "text-black",
+  descriptionColor = "text-black",
+  bgColor = "bg-transparent",
+  iconColor = "text-black",
+  cardTitleColor = "text-black",
+  cardDescriptionColor = "text-black",
+} = Astro.props;
+
+const TIPS = [
+  {
+    icon: Clock,
+    title: "Timing Pre-Entreno",
+    description:
+      "Consumí 30-60 minutos antes del entrenamiento para energía y rendimiento óptimos.",
+  },
+  {
+    icon: Reload,
+    title: "Ventana de Recuperación",
+    description:
+      "La nutrición post-entreno dentro de los 30 minutos maximiza la síntesis de proteína muscular.",
+  },
+  {
+    icon: ChartBar,
+    title: "Control de Porciones",
+    description:
+      "Ajustá tu ingesta a la intensidad del entrenamiento y tu peso corporal para mejores resultados.",
+  },
+];
+---
+
+<div class="text-center mb-12">
+  <h2
+    class={`text-3xl md:text-4xl font-header font-extrabold uppercase ${titleColor} mb-4`}
+  >
+    Tips Pro para tu Nutrición
+  </h2>
+  <p class={`text-xl ${descriptionColor} max-w-3xl mx-auto`}>
+    Consejos de expertos para maximizar tu nutrición y rendimiento
+  </p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {
+    TIPS.map((item) => (
+      <Card
+        item={item}
+        bgColor={bgColor}
+        iconColor={iconColor}
+        titleColor={cardTitleColor}
+        descriptionColor={cardDescriptionColor}
+      />
+    ))
+  }
+</div>
