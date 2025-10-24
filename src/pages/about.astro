@@ -9,10 +9,7 @@ import StatsSection from "../components/StatsSection.astro";
 import AboutCTASection from "../components/AboutCTASection.astro";
 ---
 
-<Layout
-  title="Acerca de HARDY - Nuestra Historia"
-  description="Conocé la misión de HARDY de crear pasta de maní ultra premium para atletas de élite y fanáticos del fitness."
->
+<Layout title="HARDY - Nuestra Esencia">
   <main class="pt-16">
     <!-- Hero Section -->
     <SectionContainer
@@ -30,9 +27,9 @@ import AboutCTASection from "../components/AboutCTASection.astro";
     <!-- Story Section -->
     <SectionContainer
       id="story"
-      class="py-24 bg-gradient-to-r from-secondary-500 via-secondary-300 to-secondary-500"
+      class="py-24 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600"
     >
-      <StorySection />
+      <StorySection titleColor="text-secondary" descriptionColor="text-white" />
     </SectionContainer>
 
     <!-- Values Section -->

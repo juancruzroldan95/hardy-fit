@@ -1,32 +1,45 @@
 ---
-// Story section
+export interface Props {
+  titleColor?: string;
+  descriptionColor?: string;
+}
+
+const { titleColor = "text-black", descriptionColor = "text-black" } =
+  Astro.props;
 ---
 
 <div class="max-w-4xl mx-auto text-center">
   <h2
-    class="text-4xl md:text-5xl font-header font-extrabold uppercase text-black mb-8"
+    class={`text-4xl md:text-5xl font-header font-extrabold uppercase ${titleColor} mb-8`}
   >
-    Nuestra Historia
+    Go Hardy or Go Home.
   </h2>
   <div class="prose prose-lg mx-auto">
-    <p class="text-xl text-black leading-relaxed mb-8">
-      Empezó en un garaje pequeño en 2019. Dos atletas profesionales, frustrados
-      por la falta de opciones de nutrición realmente premium, decidieron crear
-      algo diferente. Algo que alimentara no solo sus cuerpos, sino sus
-      ambiciones.
+    <p class={`text-xl ${descriptionColor} leading-relaxed mb-8`}>
+      Admitámoslo. Todos sentimos alguna vez esa voz que nos desafía a
+      superarnos, a dar un poco más cuando ya no queda nada. Pero también
+      escuchamos esa otra que nos tienta con la indiferencia, con 5’ más en la
+      cama.
     </p>
-    <p class="text-lg text-neutral-700 leading-relaxed mb-8">
-      Después de incontables horas de investigación, pruebas y refinamiento,
-      nació HARDY. Seleccionamos solo el mejor maní, empleamos técnicas de
-      procesamiento de vanguardia y agregamos ingredientes que mejoran el
-      rendimiento y realmente marcan la diferencia. Cada frasco representa
-      nuestro compromiso con la excelencia.
+    <p class={`text-lg ${descriptionColor} leading-relaxed mb-8`}>
+      El secreto está en la actitud, en aceptar el sacrificio que implica
+      superarse y decidir alimentar el hambre de grandeza. En Hardy elegimos
+      hacer de la vida algo trascendente, por eso la saboreamos hasta la última
+      cucharada, la transpiramos hasta el último metro, y la exigimos hasta el
+      último segundo.
     </p>
-    <p class="text-lg text-neutral-700 leading-relaxed">
-      Hoy, HARDY es confiado por atletas olímpicos, equipos deportivos
-      profesionales y fanáticos del fitness que se niegan a conformarse con lo
-      común. No solo hacemos pasta de maní – estamos elaborando combustible para
-      campeones.
+    <p class={`text-lg ${descriptionColor} leading-relaxed mb-8`}>
+      Amamos estar en movimiento, ser enérgicos y hacer deporte. Por eso creamos
+      una crema de maní que te impulsa en tus desafíos más sublimes, pero
+      también en los más cotidianos. Porque al final del día no se trata de
+      cuántos metros avanzaste, sino de cómo lo lograste y cuánto pusiste en
+      juego.
+    </p>
+    <p class={`text-lg ${descriptionColor} leading-relaxed`}>
+      Necesitamos alimentos con carácter, porque si bien la energía no se crea,
+      sí se transforma y se transfiere. Somos el impulso que te potencia. La
+      energía natural que te ayuda a darlo todo y a escuchar la voz que te
+      alienta a más.
     </p>
   </div>
 </div>
