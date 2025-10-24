@@ -24,33 +24,35 @@ const {
 } = Astro.props;
 ---
 
-<div class="text-center mb-16">
-  <h2
-    class={`text-4xl md:text-5xl font-header uppercase font-extrabold ${titleColor} mb-4`}
-  >
-    Nuestros Valores
-  </h2>
-</div>
+<div class="scrolling-section values">
+  <div class="text-center mb-16">
+    <h2
+      class={`text-4xl md:text-5xl font-header uppercase font-extrabold ${titleColor} mb-4`}
+    >
+      Nuestros Valores
+    </h2>
+  </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-  {
-    VALUES.map((item) => (
-      <Card
-        item={item}
-        bgColor={bgColor}
-        borderColor={borderColor}
-        iconColor={iconColor}
-        titleColor={cardTitleColor}
-        descriptionColor={cardDescriptionColor}
-      />
-    ))
-  }
-</div>
+  <div class="card-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    {
+      VALUES.map((item) => (
+        <Card
+          item={item}
+          bgColor={bgColor}
+          borderColor={borderColor}
+          iconColor={iconColor}
+          titleColor={cardTitleColor}
+          descriptionColor={cardDescriptionColor}
+        />
+      ))
+    }
+  </div>
 
-<div class="text-center mt-20">
-  <h2
-    class={`text-3xl md:text-4xl font-header uppercase font-extrabold ${titleColor} mb-4`}
-  >
-    "Sin voluntad no hay camino"
-  </h2>
+  <div class="text-center mt-20">
+    <h2
+      class={`text-3xl md:text-4xl font-header uppercase font-extrabold ${titleColor} mb-4`}
+    >
+      "Sin voluntad no hay camino"
+    </h2>
+  </div>
 </div>

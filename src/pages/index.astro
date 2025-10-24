@@ -1,10 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+
 import HeroSection from "../components/HeroSection.astro";
 import ProductsSection from "../components/ProductsSection.astro";
 import WhyChooseUsSection from "../components/WhyChooseUsSection.astro";
 import CTASection from "../components/CTASection.astro";
+import AboutCTASection from "../components/AboutCTASection.astro";
 import ValuesSection from "../components/ValuesSection.astro";
 import AboutHeroSection from "../components/AboutHeroSection.astro";
 import ValuesHeroSection from "../components/ValuesHeroSection.astro";
@@ -43,8 +45,47 @@ import ValuesHeroSection from "../components/ValuesHeroSection.astro";
       />
     </SectionContainer>
 
-    <!-- <SectionContainer id="cta" class="py-24 bg-gradient-to-r from-accent-900 via-accent-800 to-accent-900">
-      <CTASection />
-    </SectionContainer> -->
+    <SectionContainer
+      id="cta"
+      class="py-24 bg-skyblue relative overflow-hidden"
+    >
+      <!-- Wavy pattern overlay -->
+      <div class="absolute inset-0 opacity-30">
+        <div
+          class="w-full h-full bg-repeat"
+          style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.4) 20px, rgba(255,255,255,0.4) 40px);"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10">
+        <AboutCTASection />
+      </div>
+    </SectionContainer>
   </main>
 </Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+
+      const cards = element.querySelectorAll(".card");
+      if (cards.length > 0) {
+        animate(
+          cards,
+          { opacity: [0, 1], y: [25, 0] },
+          { type: "spring", delay: stagger(0.25, { startDelay: 0.25 }) },
+        );
+      }
+    },
+    { amount: 0.25 },
+  );
+</script>

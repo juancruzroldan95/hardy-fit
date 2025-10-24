@@ -6,20 +6,22 @@ interface Props {
   noContainer?: boolean;
 }
 
-const { class: className = '', id, containerClass = '', noContainer = false } = Astro.props;
+const {
+  class: className = "",
+  id,
+  containerClass = "",
+  noContainer = false,
+} = Astro.props;
 ---
 
-<section
-  id={id}
-  data-section={id}
-  class={className}
->
-  {noContainer ? (
-    <slot />
-  ) : (
-    <div class={`max-w-7xl mx-auto px-6 lg:px-8 ${containerClass}`}>
+<section id={id} data-section={id} class={className}>
+  {
+    noContainer ? (
       <slot />
-    </div>
-  )}
+    ) : (
+      <div class={`max-w-7xl mx-auto px-6 lg:px-8 ${containerClass}`}>
+        <slot />
+      </div>
+    )
+  }
 </section>
-

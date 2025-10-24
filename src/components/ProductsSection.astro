@@ -1,20 +1,26 @@
 ---
-import ProductItem from './ProductItem.astro';
-import { PRODUCTS } from '../consts/products';
+import ProductItem from "./ProductItem.astro";
+import { PRODUCTS } from "../consts/products";
 ---
 
-<div class="text-center mb-16">
-  <h2 class="text-4xl md:text-5xl font-header font-extrabold text-primary uppercase mb-4">
-    Nuestros Productos
-  </h2>
-  <p class="text-xl text-black max-w-3xl mx-auto">
-    Energía natural en cada variedad. Elegí el que mejor se adapte a tu entrenamiento.
-  </p>
-</div>
+<div class="scrolling-section products">
+  <div class="text-center mb-16">
+    <h2
+      class="text-4xl md:text-5xl font-header font-extrabold text-primary uppercase mb-4"
+    >
+      Nuestros Productos
+    </h2>
+    <p class="text-xl text-black max-w-3xl mx-auto">
+      Energía natural en cada variedad. Elegí el que mejor se adapte a tu
+      entrenamiento.
+    </p>
+  </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-  {PRODUCTS.map((product) => (
-    <ProductItem product={product} variant="simple" />
-  ))}
+  <div class="card-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+    {
+      PRODUCTS.map((product) => (
+        <ProductItem product={product} variant="simple" />
+      ))
+    }
+  </div>
 </div>
-
