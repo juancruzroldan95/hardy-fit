@@ -11,7 +11,6 @@ import AboutCTASection from "../components/AboutCTASection.astro";
 
 <Layout title="HARDY - Nuestra Esencia">
   <main class="pt-16">
-    <!-- Hero Section -->
     <SectionContainer
       id="hero"
       class="relative overflow-hidden"
@@ -24,15 +23,10 @@ import AboutCTASection from "../components/AboutCTASection.astro";
       />
     </SectionContainer>
 
-    <!-- Story Section -->
-    <SectionContainer
-      id="story"
-      class="py-24 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600"
-    >
+    <SectionContainer id="story" class="py-24 bg-primary">
       <StorySection titleColor="text-secondary" descriptionColor="text-white" />
     </SectionContainer>
 
-    <!-- Values Section -->
     <SectionContainer id="values" class="py-24 bg-neutral-50">
       <ValuesSection
         titleColor="text-primary"
@@ -43,22 +37,22 @@ import AboutCTASection from "../components/AboutCTASection.astro";
       />
     </SectionContainer>
 
-    <!-- Team Section -->
-    <SectionContainer id="team" class="py-24 bg-white">
-      <TeamSection />
-    </SectionContainer>
-
-    <!-- Stats Section -->
     <SectionContainer
-      id="stats"
-      class="py-24 bg-gradient-to-r from-accent-500 via-accent-600 to-accent-500"
+      id="cta"
+      class="py-24 bg-skyblue relative overflow-hidden"
     >
-      <StatsSection />
-    </SectionContainer>
+      <!-- Wavy pattern overlay -->
+      <div class="absolute inset-0 opacity-30">
+        <div
+          class="w-full h-full bg-repeat"
+          style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.4) 20px, rgba(255,255,255,0.4) 40px);"
+        >
+        </div>
+      </div>
 
-    <!-- CTA Section -->
-    <SectionContainer id="cta" class="py-24 bg-cream">
-      <AboutCTASection />
+      <div class="relative z-10">
+        <AboutCTASection />
+      </div>
     </SectionContainer>
   </main>
 </Layout>
