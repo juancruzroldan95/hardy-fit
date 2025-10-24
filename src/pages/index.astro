@@ -4,12 +4,9 @@ import SectionContainer from "../components/SectionContainer.astro";
 
 import HeroSection from "../components/HeroSection.astro";
 import ProductsSection from "../components/ProductsSection.astro";
-import WhyChooseUsSection from "../components/WhyChooseUsSection.astro";
-import CTASection from "../components/CTASection.astro";
-import AboutCTASection from "../components/AboutCTASection.astro";
-import ValuesSection from "../components/ValuesSection.astro";
-import AboutHeroSection from "../components/AboutHeroSection.astro";
 import ValuesHeroSection from "../components/ValuesHeroSection.astro";
+import ValuesSection from "../components/ValuesSection.astro";
+import CTASection from "../components/CTASection.astro";
 ---
 
 <Layout title="HARDY - Alimentá tu instinto">
@@ -49,7 +46,7 @@ import ValuesHeroSection from "../components/ValuesHeroSection.astro";
       id="cta"
       class="py-24 bg-skyblue relative overflow-hidden"
     >
-      <!-- Wavy pattern overlay -->
+      <!-- Diagonal pattern overlay -->
       <div class="absolute inset-0 opacity-30">
         <div
           class="w-full h-full bg-repeat"
@@ -59,7 +56,11 @@ import ValuesHeroSection from "../components/ValuesHeroSection.astro";
       </div>
 
       <div class="relative z-10">
-        <AboutCTASection />
+        <CTASection
+          titleColor="text-primary"
+          buttonBgColor="bg-primary"
+          buttonTextColor="text-white"
+        />
       </div>
     </SectionContainer>
   </main>
@@ -86,6 +87,6 @@ import ValuesHeroSection from "../components/ValuesHeroSection.astro";
         );
       }
     },
-    { amount: 0.25 },
+    { amount: 0.2 },
   );
 </script>

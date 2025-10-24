@@ -1,21 +1,30 @@
 ---
-// CTA section
+export interface Props {
+  titleColor?: string;
+  buttonBgColor?: string;
+  buttonTextColor?: string;
+}
+
+const {
+  titleColor = "text-black",
+  buttonBgColor = "bg-black",
+  buttonTextColor = "text-white",
+} = Astro.props;
 ---
 
-<div class="max-w-4xl mx-auto text-center px-6 lg:px-8">
-  <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-    ¿Listo para elevar tu rendimiento?
+<div class="max-w-4xl mx-auto text-center scrolling-section opacity-0">
+  <h2
+    class={`text-5xl md:text-6xl font-header font-extrabold ${titleColor} uppercase mb-14`}
+  >
+    Rompé tu récord
   </h2>
-  <p class="text-xl text-accent-100 mb-8">
-    Sumate a miles de atletas que confían en HARDY para alcanzar sus metas.
-  </p>
-  <a 
-    href="https://www.hardymarket.com.ar/" 
+
+  <a
+    href="https://www.hardymarket.com.ar/"
     target="_blank"
     rel="noopener noreferrer"
-    class="inline-block bg-white hover:bg-neutral-100 text-accent-800 px-12 py-4 rounded-full font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl"
+    class={`${buttonBgColor} ${buttonTextColor} px-8 py-4 rounded-full uppercase font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 inline-block`}
   >
-    Comprar ahora
+    Ir a la tienda Hardy
   </a>
 </div>
-

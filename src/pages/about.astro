@@ -1,12 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+
 import AboutHeroSection from "../components/AboutHeroSection.astro";
 import StorySection from "../components/StorySection.astro";
 import ValuesSection from "../components/ValuesSection.astro";
-import TeamSection from "../components/TeamSection.astro";
-import StatsSection from "../components/StatsSection.astro";
-import AboutCTASection from "../components/AboutCTASection.astro";
+import CTASection from "../components/CTASection.astro";
 ---
 
 <Layout title="HARDY - Nuestra Esencia">
@@ -51,7 +50,11 @@ import AboutCTASection from "../components/AboutCTASection.astro";
       </div>
 
       <div class="relative z-10">
-        <AboutCTASection />
+        <CTASection
+          titleColor="text-primary"
+          buttonBgColor="bg-primary"
+          buttonTextColor="text-white"
+        />
       </div>
     </SectionContainer>
   </main>
