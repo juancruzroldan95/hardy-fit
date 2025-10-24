@@ -7,6 +7,7 @@ export interface Props {
   descriptionColor?: string;
   // Card color props
   bgColor?: string;
+  borderColor?: string;
   iconColor?: string;
   cardTitleColor?: string;
   cardDescriptionColor?: string;
@@ -16,6 +17,7 @@ const {
   titleColor = "text-black",
   descriptionColor = "text-black",
   bgColor = "bg-transparent",
+  borderColor = "ring-neutral-200 hover:ring-neutral-400",
   iconColor = "text-secondary",
   cardTitleColor = "text-secondary",
   cardDescriptionColor = "text-white",
@@ -36,10 +38,19 @@ const {
       <Card
         item={item}
         bgColor={bgColor}
+        borderColor={borderColor}
         iconColor={iconColor}
         titleColor={cardTitleColor}
         descriptionColor={cardDescriptionColor}
       />
     ))
   }
+</div>
+
+<div class="text-center mt-20">
+  <h2
+    class={`text-3xl md:text-4xl font-header uppercase font-extrabold ${titleColor} mb-4`}
+  >
+    "Sin voluntad no hay camino"
+  </h2>
 </div>

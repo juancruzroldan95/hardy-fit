@@ -10,6 +10,7 @@ export interface Props {
   descriptionColor?: string;
   // Card color props
   bgColor?: string;
+  borderColor?: string;
   iconColor?: string;
   cardTitleColor?: string;
   cardDescriptionColor?: string;
@@ -19,6 +20,7 @@ const {
   titleColor = "text-black",
   descriptionColor = "text-black",
   bgColor = "bg-transparent",
+  borderColor = "ring-neutral-200 hover:ring-neutral-400",
   iconColor = "text-black",
   cardTitleColor = "text-black",
   cardDescriptionColor = "text-black",
@@ -63,6 +65,7 @@ const TIPS = [
       <Card
         item={item}
         bgColor={bgColor}
+        borderColor={borderColor}
         iconColor={iconColor}
         titleColor={cardTitleColor}
         descriptionColor={cardDescriptionColor}

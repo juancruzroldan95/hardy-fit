@@ -1,10 +1,23 @@
 ---
-// Hero component
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/resources/08.webp";
 ---
 
 <!-- Background -->
 <div class="absolute inset-0 bg-primary"></div>
-<!-- <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-secondary/30 mix-blend-multiply"></div> -->
+<!-- Diagonal Pattern Overlay -->
+<div
+  class="absolute inset-0 opacity-30"
+  style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,.1) 20px, rgba(255,255,255,.1) 40px);"
+>
+</div>
+<!-- <div class="absolute inset-0 flex items-center justify-center">
+  <Image
+    src={heroImage}
+    alt="Hero background"
+    class="bg-auto object-cover opacity-50"
+  />
+</div> -->
 
 <!-- Content -->
 <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">

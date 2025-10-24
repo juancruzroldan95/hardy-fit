@@ -172,7 +172,7 @@ export const recipes = [
       class="relative py-16 overflow-hidden"
       noContainer={true}
     >
-      <div class="absolute inset-0 bg-cream"></div>
+      <div class="absolute inset-0 bg-neutral-50"></div>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"></div>
       <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
         <h1 class="text-5xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6">
@@ -185,7 +185,7 @@ export const recipes = [
     </SectionContainer>
 
     <!-- Recipe Categories -->
-    <SectionContainer id="categories" class="py-8 bg-white top-16 z-40 border-b border-neutral-200">
+    <SectionContainer id="categories" class="py-8 bg-neutral-50 top-16 z-40 border-b border-neutral-200">
       <div class="flex flex-wrap justify-center gap-4">
         <button class="bg-primary-500 text-white px-6 py-2 rounded-full font-medium">Todas las Recetas</button>
         <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Desayuno</button>
@@ -196,10 +196,10 @@ export const recipes = [
     </SectionContainer>
 
     <!-- Recipes Grid -->
-    <SectionContainer id="recipes" class="py-16 bg-white">
+    <SectionContainer id="recipes" class="py-16 bg-neutral-50">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {recipes.map(recipe => (
-          <article class="bg-cream rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-neutral-300 transition-all duration-300 transform hover:scale-[1.02] group">
+          <article class="bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-neutral-300 transition-all duration-300 transform hover:scale-[1.02] group">
             <!-- Recipe Image -->
             <div class="aspect-video bg-gradient-to-br from-white to-neutral-100 flex items-center justify-center">
               <div class="text-neutral-400">
@@ -269,7 +269,8 @@ export const recipes = [
       <TipsSection
         titleColor="text-secondary"
         descriptionColor="text-white"
-        bgColor="bg-transparent"
+        bgColor="bg-accent-500/40"
+        borderColor="ring-accent-400 hover:ring-accent-200"
         iconColor="text-secondary"
         cardTitleColor="text-secondary"
         cardDescriptionColor="text-white"

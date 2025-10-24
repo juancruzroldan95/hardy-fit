@@ -7,6 +7,7 @@ export interface Props {
   descriptionColor?: string;
   // Card color props
   bgColor?: string;
+  borderColor?: string;
   iconColor?: string;
   cardTitleColor?: string;
   cardDescriptionColor?: string;
@@ -16,6 +17,7 @@ const {
   titleColor = "text-black",
   descriptionColor = "text-black",
   bgColor = "bg-transparent",
+  borderColor = "ring-neutral-200 hover:ring-neutral-400",
   iconColor = "text-black",
   cardTitleColor = "text-black",
   cardDescriptionColor = "text-black",
@@ -24,7 +26,7 @@ const {
 
 <div class="text-center mb-16">
   <h2
-    class={`text-4xl md:text-5xl font-header uppercase font-extrabold ${titleColor} mb-4`}
+    class={`text-3xl md:text-5xl font-header uppercase font-extrabold ${titleColor} mb-4`}
   >
     Nuestras Características
   </h2>
@@ -36,6 +38,7 @@ const {
       <Card
         item={item}
         bgColor={bgColor}
+        borderColor={borderColor}
         iconColor={iconColor}
         titleColor={cardTitleColor}
         descriptionColor={cardDescriptionColor}
