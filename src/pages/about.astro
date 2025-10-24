@@ -40,7 +40,7 @@ import CTASection from "../components/CTASection.astro";
       id="cta"
       class="py-24 bg-skyblue relative overflow-hidden"
     >
-      <!-- Wavy pattern overlay -->
+      <!-- Diagonal pattern overlay -->
       <div class="absolute inset-0 opacity-30">
         <div
           class="w-full h-full bg-repeat"
@@ -59,3 +59,28 @@ import CTASection from "../components/CTASection.astro";
     </SectionContainer>
   </main>
 </Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+
+      const cards = element.querySelectorAll(".card");
+      if (cards.length > 0) {
+        animate(
+          cards,
+          { opacity: [0, 1], y: [25, 0] },
+          { type: "spring", delay: stagger(0.25, { startDelay: 0.25 }) },
+        );
+      }
+    },
+    { amount: 0.2 },
+  );
+</script>

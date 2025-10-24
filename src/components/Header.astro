@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
         <div class="flex items-baseline space-x-8">
           <a
             href="/products"
-            class={`px-3 py-2 text-sm font-medium transition-colors ${
+            class={`px-3 py-2 uppercase font-bold transition-colors ${
               currentPath === "/products"
                 ? "text-primary border-b-2 border-primary"
                 : "text-neutral-600 hover:text-neutral-900"
@@ -32,7 +32,7 @@ const currentPath = Astro.url.pathname;
           </a>
           <a
             href="/recipes"
-            class={`px-3 py-2 text-sm font-medium transition-colors ${
+            class={`px-3 py-2 uppercase font-bold transition-colors ${
               currentPath === "/recipes"
                 ? "text-primary border-b-2 border-primary"
                 : "text-neutral-600 hover:text-neutral-900"
@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
           </a>
           <a
             href="/about"
-            class={`px-3 py-2 text-sm font-medium transition-colors ${
+            class={`px-3 py-2 uppercase font-bold transition-colors ${
               currentPath === "/about"
                 ? "text-primary border-b-2 border-primary"
                 : "text-neutral-600 hover:text-neutral-900"
@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
       </nav>
 
       <!-- CTA Button -->
-      <div class="hidden md:block">
+      <!-- <div class="hidden md:block">
         <a
           href="https://www.hardymarket.com.ar/"
           target="_blank"
@@ -63,7 +63,7 @@ const currentPath = Astro.url.pathname;
         >
           Comprar ahora
         </a>
-      </div>
+      </div> -->
 
       <!-- Mobile menu button -->
       <div class="md:hidden">
