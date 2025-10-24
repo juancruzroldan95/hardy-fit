@@ -63,6 +63,10 @@ import CTASection from "../components/CTASection.astro";
 <script>
   import { animate, stagger, inView } from "motion";
 
+  // Detect mobile and use different thresholds
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.05 : 0.15; // 5% on mobile, 15% on desktop
+
   inView(
     ".scrolling-section",
     (element) => {
@@ -81,6 +85,6 @@ import CTASection from "../components/CTASection.astro";
         );
       }
     },
-    { amount: 0.2 },
+    { amount: threshold },
   );
 </script>
