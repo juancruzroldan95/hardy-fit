@@ -1,15 +1,17 @@
 ---
 import { Image } from "astro:assets";
-import heroImage from "../assets/images/resources/08.webp";
+import heroBgImage from "../assets/images/red-bg-image.webp";
 ---
 
-<!-- Background -->
-<div class="absolute inset-0 bg-primary"></div>
-<!-- Diagonal pattern overlay -->
-<div
-  class="absolute inset-0 opacity-30"
-  style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,.2) 20px, rgba(255,255,255,.2) 40px);"
->
+<!-- Background image -->
+<div class="absolute inset-0 bg-primary">
+  <Image
+    src={heroBgImage}
+    alt="Hardy hero background"
+    class="w-full h-full object-contain opacity-80"
+    loading="eager"
+    quality={90}
+  />
 </div>
 
 <!-- Content -->
@@ -19,17 +21,17 @@ import heroImage from "../assets/images/resources/08.webp";
   <div class="space-y-8">
     <div class="space-y-4">
       <p
-        class="text-xl md:text-2xl text-secondary uppercase tracking-widest font-header font-extrabold max-w-3xl mx-auto leading-relaxed"
+        class="hero-text text-xl md:text-2xl text-secondary uppercase tracking-widest font-header font-extrabold max-w-3xl mx-auto leading-relaxed opacity-0"
       >
         Alimentá tu instinto
       </p>
       <h1
-        class="text-5xl md:text-7xl font-header font-extrabold text-white uppercase leading-tight"
+        class="hero-text text-5xl md:text-7xl font-header font-extrabold text-white uppercase leading-tight opacity-0"
       >
         Go Hardy or Go Home
       </h1>
       <p
-        class="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
+        class="hero-text text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed opacity-0"
       >
         Hardy es impulso, empuje, movimiento hacia la conquista de nosotros
         mismos. Es ir siempre hacia adelante, reconociendo nuestros miedos y
@@ -37,7 +39,9 @@ import heroImage from "../assets/images/resources/08.webp";
       </p>
     </div>
 
-    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+    <div
+      class="hero-buttons flex flex-col sm:flex-row gap-6 justify-center items-center opacity-0"
+    >
       <a
         href="/products"
         class="bg-secondary px-8 py-4 rounded-full text-black font-semibold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 inline-block"

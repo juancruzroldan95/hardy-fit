@@ -1,12 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+import { Image } from "astro:assets";
 
 import HeroSection from "../components/HeroSection.astro";
 import ProductsSection from "../components/ProductsSection.astro";
 import ValuesHeroSection from "../components/ValuesHeroSection.astro";
 import ValuesSection from "../components/ValuesSection.astro";
 import CTASection from "../components/CTASection.astro";
+import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
 ---
 
 <Layout title="HARDY - Alimentá tu instinto">
@@ -42,17 +44,16 @@ import CTASection from "../components/CTASection.astro";
       />
     </SectionContainer>
 
-    <SectionContainer
-      id="cta"
-      class="py-24 bg-skyblue relative overflow-hidden"
-    >
-      <!-- Diagonal pattern overlay -->
-      <div class="absolute inset-0 opacity-30">
-        <div
-          class="w-full h-full bg-repeat"
-          style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.4) 20px, rgba(255,255,255,0.4) 40px);"
-        >
-        </div>
+    <SectionContainer id="cta" class="py-24 relative overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <Image
+          src={ctaBgImage}
+          alt="Hardy CTA background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
       </div>
 
       <div class="relative z-10">
@@ -88,6 +89,30 @@ import CTASection from "../components/CTASection.astro";
           cards,
           { opacity: [0, 1], y: [25, 0] },
           { type: "spring", delay: stagger(0.25, { startDelay: 0.25 }) },
+        );
+      }
+
+      // Staggered animation for hero text elements
+      const heroTexts = element.querySelectorAll(".hero-text");
+      if (heroTexts.length > 0) {
+        animate(
+          heroTexts,
+          { opacity: [0, 1], y: [30, 0] },
+          {
+            ease: [0.39, 0.24, 0.3, 1],
+            duration: 0.8,
+            delay: stagger(0.2, { startDelay: 0.3 }),
+          },
+        );
+      }
+
+      // Animate hero buttons after text
+      const heroButtons = element.querySelector(".hero-buttons");
+      if (heroButtons) {
+        animate(
+          heroButtons,
+          { opacity: [0, 1], y: [20, 0] },
+          { ease: [0.39, 0.24, 0.3, 1], duration: 0.8, delay: 0.9 },
         );
       }
     },
