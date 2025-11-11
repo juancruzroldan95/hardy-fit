@@ -12,6 +12,12 @@ import heroBgImage from "../assets/images/red-bg-image.webp";
     loading="eager"
     quality={90}
   />
+  <!-- Radial gradient overlay to blend edges -->
+  <div
+    class="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-primary"
+    style="background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(195, 33, 54, 0.3) 70%, rgba(195, 33, 54, 1) 100%);"
+  >
+  </div>
 </div>
 
 <!-- Content -->
@@ -31,11 +37,9 @@ import heroBgImage from "../assets/images/red-bg-image.webp";
         Go Hardy or Go Home
       </h1>
       <p
-        class="hero-text text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed opacity-0"
+        class="hero-text typewriter-text text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed opacity-0"
+        data-text="Hardy es impulso, empuje, movimiento hacia la conquista de nosotros mismos. Es ir siempre hacia adelante, reconociendo nuestros miedos y limitaciones para conquistarlos a ellos también."
       >
-        Hardy es impulso, empuje, movimiento hacia la conquista de nosotros
-        mismos. Es ir siempre hacia adelante, reconociendo nuestros miedos y
-        limitaciones para conquistarlos a ellos también.
       </p>
     </div>
 
@@ -77,3 +81,50 @@ import heroBgImage from "../assets/images/red-bg-image.webp";
       d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
   </svg>
 </div>
+
+<script>
+  class Typewriter {
+    private element: HTMLElement;
+    private text: string;
+    private speed: number;
+    private currentIndex: number = 0;
+
+    constructor(element: HTMLElement, speed: number = 30) {
+      this.element = element;
+      this.text = element.getAttribute("data-text") || "";
+      this.speed = speed;
+    }
+
+    async start() {
+      // Wait for the element to fade in first
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+
+      return new Promise<void>((resolve) => {
+        const type = () => {
+          if (this.currentIndex < this.text.length) {
+            this.element.textContent =
+              this.text.substring(0, this.currentIndex + 1) + "|";
+            this.currentIndex++;
+            setTimeout(type, this.speed);
+          } else {
+            // Remove cursor at the end
+            this.element.textContent = this.text;
+            resolve();
+          }
+        };
+        type();
+      });
+    }
+  }
+
+  // Initialize typewriter on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const typewriterElement = document.querySelector(
+      ".typewriter-text",
+    ) as HTMLElement;
+    if (typewriterElement) {
+      const typewriter = new Typewriter(typewriterElement, 30);
+      typewriter.start();
+    }
+  });
+</script>

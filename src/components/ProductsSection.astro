@@ -1,6 +1,9 @@
 ---
 import ProductItem from "./ProductItem.astro";
+import ProductCarousel from "./ProductCarousel.astro";
 import { PRODUCTS } from "../consts/products";
+
+const activeProducts = PRODUCTS.filter((product) => product.isActive);
 ---
 
 <div class="scrolling-section opacity-0">
@@ -16,9 +19,13 @@ import { PRODUCTS } from "../consts/products";
     </p>
   </div>
 
-  <div class="card-grid grid grid-cols-1 md:grid-cols-3 gap-8">
+  <!-- Mobile Carousel -->
+  <ProductCarousel />
+
+  <!-- Desktop Grid -->
+  <div class="hidden md:grid card-grid grid-cols-1 md:grid-cols-3 gap-8">
     {
-      PRODUCTS.map((product) => (
+      activeProducts.map((product) => (
         <ProductItem product={product} variant="simple" />
       ))
     }

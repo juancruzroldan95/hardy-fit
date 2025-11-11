@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+import { Image } from "astro:assets";
 
 import AboutHeroSection from "../components/AboutHeroSection.astro";
 import StorySection from "../components/StorySection.astro";
 import ValuesSection from "../components/ValuesSection.astro";
 import CTASection from "../components/CTASection.astro";
+import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
 ---
 
 <Layout title="HARDY - Nuestra Esencia">
@@ -36,17 +38,16 @@ import CTASection from "../components/CTASection.astro";
       />
     </SectionContainer>
 
-    <SectionContainer
-      id="cta"
-      class="py-24 bg-skyblue relative overflow-hidden"
-    >
-      <!-- Diagonal pattern overlay -->
-      <div class="absolute inset-0 opacity-30">
-        <div
-          class="w-full h-full bg-repeat"
-          style="background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.4) 20px, rgba(255,255,255,0.4) 40px);"
-        >
-        </div>
+    <SectionContainer id="cta" class="py-24 relative overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <Image
+          src={ctaBgImage}
+          alt="Hardy CTA background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
       </div>
 
       <div class="relative z-10">

@@ -4,6 +4,8 @@ import SectionContainer from "../components/SectionContainer.astro";
 import ProductItem from "../components/ProductItem.astro";
 import { PRODUCTS } from "../consts/products";
 import FeaturesSection from "../components/FeaturesSection.astro";
+
+const activeProducts = PRODUCTS.filter((product) => product.isActive);
 ---
 
 <Layout
@@ -39,7 +41,7 @@ import FeaturesSection from "../components/FeaturesSection.astro";
     <SectionContainer id="products" class="py-16 bg-white">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {
-          PRODUCTS.map((product) => (
+          activeProducts.map((product) => (
             <ProductItem product={product} variant="detailed" />
           ))
         }

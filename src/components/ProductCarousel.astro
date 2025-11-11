@@ -1,0 +1,180 @@
+---
+import ProductItem from "./ProductItem.astro";
+import { PRODUCTS } from "../consts/products";
+
+const activeProducts = PRODUCTS.filter((product) => product.isActive);
+---
+
+<div class="relative md:hidden">
+  <div class="carousel-container overflow-hidden">
+    <div class="carousel-track flex transition-transform duration-500 ease-out">
+      {
+        activeProducts.map((product) => (
+          <div class="carousel-item min-w-full px-4">
+            <ProductItem product={product} variant="simple" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="flex justify-center gap-2 mt-6">
+    {
+      activeProducts.map((_, index) => (
+        <button
+          class="carousel-dot w-3 h-3 rounded-full bg-neutral-300 transition-all duration-300"
+          data-index={index}
+          aria-label={`Go to slide ${index + 1}`}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Navigation arrows -->
+  <button
+    class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+    aria-label="Previous product"
+  >
+    <svg
+      class="w-6 h-6 text-primary"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+  <button
+    class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+    aria-label="Next product"
+  >
+    <svg
+      class="w-6 h-6 text-primary"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  class ProductCarousel {
+    private container: HTMLElement;
+    private track: HTMLElement;
+    private dots: NodeListOf<HTMLElement>;
+    private prevBtn: HTMLElement;
+    private nextBtn: HTMLElement;
+    private currentIndex: number = 0;
+    private totalItems: number;
+    private touchStartX: number = 0;
+    private touchEndX: number = 0;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.track = container.querySelector(".carousel-track")!;
+      this.dots = container.querySelectorAll(".carousel-dot");
+      this.prevBtn = container.querySelector(".carousel-prev")!;
+      this.nextBtn = container.querySelector(".carousel-next")!;
+      this.totalItems = this.dots.length;
+
+      this.init();
+    }
+
+    init() {
+      // Set initial state
+      this.updateCarousel();
+
+      // Button listeners
+      this.prevBtn.addEventListener("click", () => this.prev());
+      this.nextBtn.addEventListener("click", () => this.next());
+
+      // Dot listeners
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => this.goTo(index));
+      });
+
+      // Touch listeners
+      this.track.addEventListener("touchstart", (e) =>
+        this.handleTouchStart(e),
+      );
+      this.track.addEventListener("touchend", (e) => this.handleTouchEnd(e));
+
+      // Auto-advance every 5 seconds
+      setInterval(() => this.next(), 5000);
+    }
+
+    prev() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.totalItems) % this.totalItems;
+      this.updateCarousel();
+    }
+
+    next() {
+      this.currentIndex = (this.currentIndex + 1) % this.totalItems;
+      this.updateCarousel();
+    }
+
+    goTo(index: number) {
+      this.currentIndex = index;
+      this.updateCarousel();
+    }
+
+    updateCarousel() {
+      // Move track
+      const offset = -this.currentIndex * 100;
+      this.track.style.transform = `translateX(${offset}%)`;
+
+      // Update dots
+      this.dots.forEach((dot, index) => {
+        if (index === this.currentIndex) {
+          dot.classList.add("bg-primary", "scale-125");
+          dot.classList.remove("bg-neutral-300");
+        } else {
+          dot.classList.remove("bg-primary", "scale-125");
+          dot.classList.add("bg-neutral-300");
+        }
+      });
+    }
+
+    handleTouchStart(e: TouchEvent) {
+      this.touchStartX = e.changedTouches[0].screenX;
+    }
+
+    handleTouchEnd(e: TouchEvent) {
+      this.touchEndX = e.changedTouches[0].screenX;
+      this.handleSwipe();
+    }
+
+    handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = this.touchStartX - this.touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    }
+  }
+
+  // Initialize all carousels
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousels = document.querySelectorAll(".carousel-container");
+    carousels.forEach((container) => {
+      new ProductCarousel(container.parentElement as HTMLElement);
+    });
+  });
+</script>
