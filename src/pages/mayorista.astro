@@ -1,0 +1,262 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import PackCard from "../components/PackCard.astro";
+import PackCarousel from "../components/PackCarousel.astro";
+import WholesaleContact from "../components/WholesaleContact.astro";
+import { PACKS } from "../consts/packs";
+---
+
+<Layout
+  title="Packs Mayoristas - HARDY"
+  description="Packs diseñados para puntos de venta, gimnasios, tiendas naturales y distribuidores que buscan alta rotación y rentabilidad real."
+>
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <SectionContainer
+      id="hero"
+      class="relative py-16 overflow-hidden"
+      noContainer={true}
+    >
+      <div class="absolute inset-0 bg-cream"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"
+      >
+      </div>
+      <div
+        class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
+      >
+        <h1
+          class="text-5xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6"
+        >
+          Packs Mayorista
+        </h1>
+        <p class="text-xl text-neutral-700 max-w-4xl leading-relaxed mx-auto">
+          Packs diseñados para puntos de venta, gimnasios, tiendas naturales y
+          distribuidores que buscan <span class="font-bold text-primary"
+            >alta rotación</span
+          > y <span class="font-bold text-primary">rentabilidad real</span>.
+        </p>
+      </div>
+    </SectionContainer>
+
+    <!-- Packs Grid -->
+    <SectionContainer id="packs" class="py-16 bg-white">
+      <div class="scrolling-section opacity-0">
+        <!-- Mobile Carousel -->
+        <PackCarousel />
+
+        <!-- Desktop Grid -->
+        <div class="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {PACKS.map((pack) => <PackCard pack={pack} />)}
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- How it Works Section -->
+    <SectionContainer id="how-it-works" class="py-16 bg-neutral-50">
+      <div class="max-w-4xl mx-auto space-y-12 scrolling-section opacity-0">
+        <div class="text-center">
+          <h2
+            class="text-4xl md:text-5xl font-header font-extrabold text-primary uppercase mb-6"
+          >
+            ¿Cómo funciona?
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Step 1 -->
+          <div class="card text-center space-y-4">
+            <div
+              class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-bold text-primary uppercase">
+              Elegí tu pack
+            </h3>
+            <p class="text-neutral-700">
+              Seleccioná el pack que mejor se adapte a tu negocio y volumen de
+              venta.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="card text-center space-y-4">
+            <div
+              class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-bold text-primary uppercase">
+              Contactanos
+            </h3>
+            <p class="text-neutral-700">
+              Escribinos por WhatsApp o email para confirmar disponibilidad y
+              coordinar la entrega.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="card text-center space-y-4">
+            <div
+              class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-bold text-primary uppercase">
+              Empezá a vender
+            </h3>
+            <p class="text-neutral-700">
+              Recibí tu pack listo para exhibir y empezá a generar rentabilidad
+              desde el día uno.
+            </p>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- Benefits Section -->
+    <SectionContainer id="benefits" class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto scrolling-section opacity-0">
+        <div class="text-center mb-12">
+          <h2
+            class="text-4xl md:text-5xl font-header font-extrabold text-primary uppercase mb-6"
+          >
+            Beneficios Mayoristas
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Benefit 1 -->
+          <div class="card text-center space-y-4 p-6">
+            <div class="flex justify-center">
+              <svg
+                class="w-12 h-12 text-secondary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-primary uppercase">
+              Precios Competitivos
+            </h3>
+            <p class="text-neutral-700 text-sm">
+              Los mejores precios del mercado para maximizar tu margen.
+            </p>
+          </div>
+
+          <!-- Benefit 2 -->
+          <div class="card text-center space-y-4 p-6">
+            <div class="flex justify-center">
+              <svg
+                class="w-12 h-12 text-secondary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-primary uppercase">Alta Rotación</h3>
+            <p class="text-neutral-700 text-sm">
+              Productos con demanda comprobada y excelente salida.
+            </p>
+          </div>
+
+          <!-- Benefit 3 -->
+          <div class="card text-center space-y-4 p-6">
+            <div class="flex justify-center">
+              <svg
+                class="w-12 h-12 text-secondary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-primary uppercase">Soporte Comercial</h3>
+            <p class="text-neutral-700 text-sm">
+              Asesoramiento directo y material promocional exclusivo.
+            </p>
+          </div>
+
+          <!-- Benefit 4 -->
+          <div class="card text-center space-y-4 p-6">
+            <div class="flex justify-center">
+              <svg
+                class="w-12 h-12 text-secondary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-primary uppercase">Calidad Premium</h3>
+            <p class="text-neutral-700 text-sm">
+              Productos naturales sin aditivos que tus clientes van a amar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- Contact Section -->
+    <SectionContainer id="contact" class="py-24 bg-neutral-50">
+      <div class="scrolling-section opacity-0">
+        <WholesaleContact />
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  // Detect mobile and use different thresholds
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.1 : 0.2;
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+
+      const cards = element.querySelectorAll(".card");
+      if (cards.length > 0) {
+        animate(
+          cards,
+          { opacity: [0, 1], y: [25, 0] },
+          { type: "spring", delay: stagger(0.25, { startDelay: 0.25 }) },
+        );
+      }
+    },
+    { amount: threshold },
+  );
+</script>
