@@ -10,26 +10,24 @@ export interface Props {
 const { product, variant = "detailed" } = Astro.props;
 
 // Import all product images
-import naturalImage from "../assets/images/products/frasco-380-natural-fondo-blanco.webp";
+import naturalImage from "../assets/images/products/crema-de-mani-natural.webp";
 import chocolateImage from "../assets/images/products/frasco-380-chocolate-fondo-blanco.webp";
-import cookiesImage from "../assets/images/products/frasco-380-cookies-fondo-blanco.webp";
-import cocoImage from "../assets/images/products/frasco-380-coco.webp";
-import mielLiquidaImage from "../assets/images/products/frasco-380-miel-liquida-fondo-blanco.webp";
-import mielSolidaImage from "../assets/images/products/frasco-380-miel-solida-fondo-blanco.webp";
+import cookiesImage from "../assets/images/products/crema-de-mani-cookies.webp";
+import cocoImage from "../assets/images/products/crema-de-mani-coco.webp";
+import vainillaImage from "../assets/images/products/crema-de-mani-vainilla.webp";
+import mielLiquidaImage from "../assets/images/products/miel-liquida.webp";
+import mielSolidaImage from "../assets/images/products/miel-solida.webp";
 
 // Create a mapping object
 const imageMap = {
-  "/src/assets/images/products/frasco-380-natural-fondo-blanco.webp":
-    naturalImage,
+  "/src/assets/images/products/crema-de-mani-natural.webp": naturalImage,
   "/src/assets/images/products/frasco-380-chocolate-fondo-blanco.webp":
     chocolateImage,
-  "/src/assets/images/products/frasco-380-cookies-fondo-blanco.webp":
-    cookiesImage,
-  "/src/assets/images/products/frasco-380-coco.webp": cocoImage,
-  "/src/assets/images/products/frasco-380-miel-liquida-fondo-blanco.webp":
-    mielLiquidaImage,
-  "/src/assets/images/products/frasco-380-miel-solida-fondo-blanco.webp":
-    mielSolidaImage,
+  "/src/assets/images/products/crema-de-mani-cookies.webp": cookiesImage,
+  "/src/assets/images/products/crema-de-mani-coco.webp": cocoImage,
+  "/src/assets/images/products/crema-de-mani-vainilla.webp": vainillaImage,
+  "/src/assets/images/products/miel-liquida.webp": mielLiquidaImage,
+  "/src/assets/images/products/miel-solida.webp": mielSolidaImage,
 };
 
 const productImage = imageMap[

@@ -1,164 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SectionContainer from '../components/SectionContainer.astro';
-import TipsSection from '../components/TipsSection.astro';
-
-export const recipes = [
-  {
-    id: 1,
-    title: 'Bowl de Smoothie Proteico',
-    description: 'Empezá tu día con este bowl nutritivo cargado de proteína y antioxidantes.',
-    image: 'smoothie-bowl',
-    prepTime: 10,
-    servings: 1,
-    calories: 450,
-    protein: 25,
-    difficulty: 'Fácil',
-    ingredients: [
-      '2 cdas HARDY Pasta de Maní Chocolate',
-      '1 banana congelada',
-      '1/2 taza de frutos rojos congelados',
-      '1/2 taza de leche de almendras',
-      '1 cda de semillas de chía',
-      '1/4 taza de granola',
-      'Frutos rojos frescos para decorar'
-    ],
-    instructions: [
-      'Licuá la banana, frutos rojos, leche de almendras y HARDY hasta que esté cremoso',
-      'Serví en un bowl y decorá con semillas de chía y granola',
-      'Agregá frutos rojos frescos y disfrutá inmediatamente'
-    ]
-  },
-  {
-    id: 2,
-    title: 'Bolitas Energéticas Pre-Entreno',
-    description: 'Boost de energía rápido antes de entrenar con estas bolitas de proteína sin horno.',
-    image: 'energy-balls',
-    prepTime: 15,
-    servings: 12,
-    calories: 120,
-    protein: 6,
-    difficulty: 'Fácil',
-    ingredients: [
-      '1/2 taza HARDY Pasta de Maní Original',
-      '1/3 taza de avena arrollada',
-      '1/4 taza de proteína en polvo',
-      '2 cdas de miel',
-      '2 cdas de semillas de chía',
-      '1/4 taza de chips de chocolate amargo'
-    ],
-    instructions: [
-      'Mezclá todos los ingredientes en un bowl grande hasta que estén bien combinados',
-      'Formá 12 bolitas con las manos',
-      'Colocalas en papel manteca y refrigerá por 30 minutos',
-      'Guardá en la heladera hasta una semana'
-    ]
-  },
-  {
-    id: 3,
-    title: 'Licuado de Recuperación Post-Entreno',
-    description: 'Acelerá la recuperación con este licuado rico en proteína perfecto después del entrenamiento intenso.',
-    image: 'recovery-shake',
-    prepTime: 5,
-    servings: 1,
-    calories: 380,
-    protein: 35,
-    difficulty: 'Fácil',
-    ingredients: [
-      '2 cdas HARDY Pasta de Maní Coco',
-      '1 taza de leche de almendras con chocolate',
-      '1 scoop de proteína de vainilla',
-      '1/2 banana congelada',
-      '1 taza de hielo',
-      '1 cdta de extracto de vainilla'
-    ],
-    instructions: [
-      'Agregá todos los ingredientes a la licuadora',
-      'Licuá a alta velocidad por 60 segundos hasta que esté cremoso',
-      'Serví en un vaso y consumí dentro de los 30 minutos post-entreno'
-    ]
-  },
-  {
-    id: 4,
-    title: 'Avena Proteica Overnight',
-    description: 'Prepará esta avena cargada de proteína para las mañanas ocupadas.',
-    image: 'overnight-oats',
-    prepTime: 5,
-    servings: 1,
-    calories: 420,
-    protein: 20,
-    difficulty: 'Fácil',
-    ingredients: [
-      '1/2 taza de avena arrollada',
-      '2 cdas de HARDY a elección',
-      '1 taza de leche de almendras',
-      '1 cda de jarabe de arce',
-      '1 cda de semillas de chía',
-      '1/4 taza de almendras fileteadas',
-      'Canela a gusto'
-    ],
-    instructions: [
-      'Mezclá la avena, HARDY, leche de almendras y jarabe de arce en un frasco',
-      'Agregá las semillas de chía y revolvé bien',
-      'Tapá y refrigerá toda la noche',
-      'Decorá con almendras y canela antes de comer'
-    ]
-  },
-  {
-    id: 5,
-    title: 'Panqueques Altos en Proteína',
-    description: 'Panqueques esponjosos cargados de proteína para el desayuno perfecto del fin de semana.',
-    image: 'protein-pancakes',
-    prepTime: 20,
-    servings: 2,
-    calories: 350,
-    protein: 22,
-    difficulty: 'Medio',
-    ingredients: [
-      '3 cdas HARDY Pasta de Maní Chocolate',
-      '2 huevos',
-      '1/4 taza de harina de avena',
-      '1/4 taza de yogur griego',
-      '1 cdta de polvo de hornear',
-      '1 cda de miel',
-      '1/4 taza de leche de almendras',
-      'Una pizca de sal'
-    ],
-    instructions: [
-      'Batí los huevos en un bowl, luego agregá HARDY y yogur griego',
-      'Mezclá la harina de avena, polvo de hornear, miel y sal',
-      'Agregá la leche de almendras gradualmente hasta que esté suave',
-      'Cociná los panqueques a fuego medio por 2-3 minutos de cada lado',
-      'Serví con fruta fresca y un hilo de miel'
-    ]
-  },
-  {
-    id: 6,
-    title: 'Mix de Frutos Secos para Resistencia',
-    description: 'Mix perfecto para sesiones de entrenamiento largas y aventuras al aire libre.',
-    image: 'trail-mix',
-    prepTime: 10,
-    servings: 8,
-    calories: 280,
-    protein: 12,
-    difficulty: 'Fácil',
-    ingredients: [
-      '1/4 taza HARDY Miel Líquida',
-      '1 taza de frutos secos mixtos',
-      '1/2 taza de fruta deshidratada',
-      '1/4 taza de chips de chocolate amargo',
-      '1/4 taza de coco rallado',
-      '2 cdas de semillas de zapallo'
-    ],
-    instructions: [
-      'Calentá ligeramente la miel HARDY para facilitar la mezcla',
-      'Revolvé los frutos secos con la miel calentada hasta que estén cubiertos',
-      'Agregá fruta deshidratada, chips de chocolate, coco y semillas',
-      'Mezclá bien y guardá en un recipiente hermético',
-      'Dividí en bolsitas pequeñas para snackear en el camino'
-    ]
-  }
-];
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import TipsSection from "../components/TipsSection.astro";
+import { Image } from "astro:assets";
+import { RECIPES } from "../consts/recipes";
 ---
 
 <Layout
@@ -173,99 +18,164 @@ export const recipes = [
       noContainer={true}
     >
       <div class="absolute inset-0 bg-neutral-50"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"></div>
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-        <h1 class="text-5xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"
+      >
+      </div>
+      <div
+        class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
+      >
+        <h1
+          class="text-5xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6"
+        >
           Recetas Hardy
         </h1>
         <p class="text-xl text-neutral-700 max-w-3xl mx-auto">
-          Potenciá tu rendimiento con recetas diseñadas para atletas.
+          Potenciá tu rendimiento con recetas diseñadas para atletas. Energía
+          real, sabor auténtico.
         </p>
       </div>
     </SectionContainer>
 
     <!-- Recipe Categories -->
-    <SectionContainer id="categories" class="py-8 bg-neutral-50 top-16 z-40 border-b border-neutral-200">
+    <!-- <SectionContainer
+      id="categories"
+      class="py-8 bg-neutral-50 top-16 z-40 border-b border-neutral-200"
+    >
       <div class="flex flex-wrap justify-center gap-4">
-        <button class="bg-primary-500 text-white px-6 py-2 rounded-full font-medium">Todas las Recetas</button>
-        <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Desayuno</button>
-        <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Pre-Entreno</button>
-        <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Post-Entreno</button>
-        <button class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors">Snacks</button>
+        <button class="bg-primary text-white px-6 py-2 rounded-full font-medium"
+          >Todas las Recetas</button
+        >
+        <button
+          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
+          >Desayuno</button
+        >
+        <button
+          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
+          >Pre-Entreno</button
+        >
+        <button
+          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
+          >Post-Entreno</button
+        >
+        <button
+          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
+          >Snacks</button
+        >
       </div>
-    </SectionContainer>
+    </SectionContainer> -->
 
     <!-- Recipes Grid -->
     <SectionContainer id="recipes" class="py-16 bg-neutral-50">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {recipes.map(recipe => (
-          <article class="bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-neutral-300 transition-all duration-300 transform hover:scale-[1.02] group">
-            <!-- Recipe Image -->
-            <div class="aspect-video bg-gradient-to-br from-white to-neutral-100 flex items-center justify-center">
-              <div class="text-neutral-400">
-                <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-            </div>
-            
-            <div class="p-6 space-y-4">
-              <div>
-                <h3 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
-                  {recipe.title}
-                </h3>
-                <p class="text-neutral-700 text-sm leading-relaxed">{recipe.description}</p>
-              </div>
-              
-              <div class="flex items-center gap-4 text-xs text-neutral-600">
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                  </svg>
-                  <span>{recipe.prepTime} min</span>
+      <div class="scrolling-section opacity-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            RECIPES.map((recipe) => (
+              <a
+                href={`/recipe/${recipe.slug}`}
+                class="card bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-primary/50 transition-all duration-300 transform hover:scale-[1.02] group"
+              >
+                <!-- Recipe Image -->
+                <div class="aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={recipe.image}
+                    alt={recipe.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    quality={80}
+                    width={600}
+                    height={450}
+                  />
                 </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                  </svg>
-                  <span>{recipe.servings} porciones</span>
+
+                <div class="p-6 space-y-4">
+                  <div>
+                    <h3 class="text-xl font-bold text-neutral-900 mb-2 group-hover:text-primary transition-colors">
+                      {recipe.title}
+                    </h3>
+                    <p class="text-neutral-700 text-sm leading-relaxed line-clamp-2">
+                      {recipe.shortDescription}
+                    </p>
+                  </div>
+
+                  <div class="flex items-center gap-4 text-xs text-neutral-600">
+                    {recipe.prepTime && (
+                      <div class="flex items-center gap-1">
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>{recipe.prepTime} min</span>
+                      </div>
+                    )}
+                    {recipe.servings && (
+                      <div class="flex items-center gap-1">
+                        <svg
+                          class="w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                          />
+                        </svg>
+                        <span>{recipe.servings}</span>
+                      </div>
+                    )}
+                    {recipe.difficulty && (
+                      <span class="bg-secondary/20 text-primary px-2 py-1 rounded-full font-semibold">
+                        {recipe.difficulty}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="space-y-2">
+                    <h4 class="font-semibold text-neutral-900 text-sm">
+                      Productos Hardy:
+                    </h4>
+                    <div class="flex flex-wrap gap-2">
+                      {recipe.productsUsed.slice(0, 2).map((product) => (
+                        <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">
+                          {product.replace(" HARDY", "")}
+                        </span>
+                      ))}
+                      {recipe.productsUsed.length > 2 && (
+                        <span class="text-xs text-primary">
+                          +{recipe.productsUsed.length - 2}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <button class="w-full bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-semibold uppercase transition-colors group-hover:shadow-lg shadow-md text-sm">
+                    Ver Receta Completa
+                  </button>
                 </div>
-                <span class="bg-primary-500/10 text-primary-400 px-2 py-1 rounded-full">
-                  {recipe.difficulty}
-                </span>
-              </div>
-              
-              <div class="bg-neutral-100 rounded-lg p-4 space-y-2">
-                <h4 class="font-semibold text-neutral-900 text-sm">Nutrición por porción:</h4>
-                <div class="grid grid-cols-2 gap-2 text-xs">
-                  <div class="text-neutral-700">Calorías: <span class="text-neutral-900 font-medium">{recipe.calories}</span></div>
-                  <div class="text-neutral-700">Proteína: <span class="text-neutral-900 font-medium">{recipe.protein}g</span></div>
-                </div>
-              </div>
-              
-              <div class="space-y-2">
-                <h4 class="font-semibold text-neutral-900 text-sm">Ingredientes:</h4>
-                <div class="space-y-1">
-                  {recipe.ingredients.slice(0, 3).map(ingredient => (
-                    <div class="text-xs text-neutral-700">• {ingredient}</div>
-                  ))}
-                  {recipe.ingredients.length > 3 && (
-                    <div class="text-xs text-primary-400">+ {recipe.ingredients.length - 3} más...</div>
-                  )}
-                </div>
-              </div>
-              
-              <button class="w-full bg-primary-500 hover:bg-primary-600 text-white px-8 py-2 rounded-full font-medium transition-colors group-hover:shadow-lg shadow-md">
-                Ver Receta Completa
-              </button>
-            </div>
-          </article>
-        ))}
+              </a>
+            ))
+          }
+        </div>
       </div>
     </SectionContainer>
 
     <!-- Recipe Tips Section -->
-    <SectionContainer id="tips" class="py-24 bg-gradient-to-br from-accent to-accent/80 text-white relative overflow-hidden">
+    <SectionContainer
+      id="tips"
+      class="py-24 bg-gradient-to-br from-accent to-accent/80 text-white relative overflow-hidden"
+    >
       <TipsSection
         titleColor="text-secondary"
         descriptionColor="text-white"
@@ -277,5 +187,32 @@ export const recipes = [
       />
     </SectionContainer>
   </main>
-  
 </Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.05 : 0.1;
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+
+      const cards = element.querySelectorAll(".card");
+      if (cards.length > 0) {
+        animate(
+          cards,
+          { opacity: [0, 1], y: [25, 0] },
+          { type: "spring", delay: stagger(0.15, { startDelay: 0.25 }) },
+        );
+      }
+    },
+    { amount: threshold },
+  );
+</script>

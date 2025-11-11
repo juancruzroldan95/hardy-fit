@@ -1,0 +1,363 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionContainer from "../../components/SectionContainer.astro";
+import { Image } from "astro:assets";
+import { RECIPES } from "../../consts/recipes";
+
+export function getStaticPaths() {
+  return RECIPES.map((recipe) => ({
+    params: { slug: recipe.slug },
+    props: { recipe },
+  }));
+}
+
+const { recipe } = Astro.props;
+---
+
+<Layout
+  title={`${recipe.title} - Recetas HARDY`}
+  description={recipe.shortDescription}
+>
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <SectionContainer
+      id="hero"
+      class="relative py-16 overflow-hidden"
+      noContainer={true}
+    >
+      <div class="absolute inset-0 bg-cream"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"
+      >
+      </div>
+      <div
+        class="relative max-w-7xl mx-auto px-6 lg:px-8 scrolling-section opacity-0"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Text Content -->
+          <div class="space-y-6">
+            <a
+              href="/recipes"
+              class="inline-flex items-center gap-2 text-neutral-600 hover:text-primary transition-colors group"
+            >
+              <svg
+                class="w-5 h-5 transition-transform group-hover:-translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"></path>
+              </svg>
+              Volver a Recetas
+            </a>
+
+            <h1
+              class="text-4xl md:text-5xl lg:text-6xl font-header font-extrabold text-primary uppercase leading-tight"
+            >
+              {recipe.title}
+            </h1>
+
+            <p class="text-xl text-neutral-700 leading-relaxed">
+              {recipe.fullDescription}
+            </p>
+
+            <!-- Meta Info -->
+            <div class="flex flex-wrap gap-4 text-sm">
+              {
+                recipe.prepTime && (
+                  <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full ring-1 ring-neutral-200">
+                    <svg
+                      class="w-5 h-5 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="font-semibold">{recipe.prepTime} min</span>
+                  </div>
+                )
+              }
+              {
+                recipe.servings && (
+                  <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full ring-1 ring-neutral-200">
+                    <svg
+                      class="w-5 h-5 text-primary"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
+                    <span class="font-semibold">{recipe.servings}</span>
+                  </div>
+                )
+              }
+              {
+                recipe.difficulty && (
+                  <div class="flex items-center gap-2 bg-secondary px-4 py-2 rounded-full text-black font-semibold">
+                    {recipe.difficulty}
+                  </div>
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="relative">
+            <div
+              class="aspect-square rounded-2xl overflow-hidden ring-1 ring-neutral-200 shadow-2xl"
+            >
+              <Image
+                src={recipe.image}
+                alt={recipe.title}
+                class="w-full h-full object-cover"
+                loading="eager"
+                quality={90}
+                width={600}
+                height={600}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- Ingredients Section -->
+    <SectionContainer id="ingredients" class="py-16 bg-white">
+      <div
+        class="max-w-5xl mx-auto scrolling-section opacity-0 grid grid-cols-1 lg:grid-cols-2 gap-12"
+      >
+        <!-- Ingredients -->
+        <div class="space-y-6">
+          <h2
+            class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase"
+          >
+            Ingredientes
+          </h2>
+          <div class="bg-neutral-50 rounded-2xl p-6 ring-1 ring-neutral-200">
+            <ul class="space-y-3">
+              {
+                recipe.ingredients.map((ingredient) => (
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-6 h-6 text-secondary flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <div>
+                      <span class="font-semibold text-neutral-900">
+                        {ingredient.name}
+                      </span>
+                      <span class="text-neutral-600">
+                        {" "}
+                        — {ingredient.quantity}
+                      </span>
+                    </div>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hardy Products Used -->
+        <div class="space-y-6">
+          <h2
+            class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase"
+          >
+            Productos Hardy
+          </h2>
+          <div
+            class="bg-neutral-50 rounded-2xl p-6 ring-1 ring-neutral-200 space-y-6"
+          >
+            <ul class="space-y-3">
+              {
+                recipe.productsUsed.map((product) => (
+                  <li class="flex items-start gap-3">
+                    <svg
+                      class="w-6 h-6 text-secondary flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span class="font-semibold text-neutral-900">
+                      {product}
+                    </span>
+                  </li>
+                ))
+              }
+            </ul>
+            <a
+              href="/products"
+              class="block w-full bg-accent hover:bg-accent/90 text-white text-center px-6 py-4 rounded-full font-bold uppercase transition-all duration-300 hover:scale-105"
+            >
+              Ver Productos
+            </a>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- Instructions Section -->
+    <SectionContainer id="instructions" class="py-16 bg-neutral-50">
+      <div class="max-w-4xl mx-auto scrolling-section opacity-0">
+        <h2
+          class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase mb-8 text-center"
+        >
+          Preparación Paso a Paso
+        </h2>
+        <div class="space-y-4">
+          {
+            recipe.instructions.map((instruction, index) => (
+              <div class="card bg-white rounded-2xl p-6 ring-1 ring-neutral-200 flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold">
+                  {index + 1}
+                </div>
+                <p class="text-neutral-700 leading-relaxed flex-1 self-center">
+                  {instruction}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- Benefits & Tip Section -->
+    <SectionContainer id="benefits" class="py-16 bg-white">
+      <div
+        class="max-w-5xl mx-auto scrolling-section opacity-0 grid grid-cols-1 lg:grid-cols-2 gap-12"
+      >
+        <!-- Benefits -->
+        <div class="space-y-6">
+          <h2
+            class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase"
+          >
+            Beneficios
+          </h2>
+          <div class="space-y-3">
+            {
+              recipe.benefits.map((benefit) => (
+                <div class="flex items-start gap-3 bg-neutral-50 rounded-lg p-4">
+                  <svg
+                    class="w-6 h-6 text-secondary flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <p class="text-neutral-700">{benefit}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Tip Hardy -->
+        <div class="space-y-6">
+          <h2
+            class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase"
+          >
+            Tip Hardy
+          </h2>
+          <div
+            class="bg-gradient-to-br from-secondary to-secondary/80 rounded-2xl p-8 relative overflow-hidden"
+          >
+            <p
+              class="text-black font-semibold text-lg leading-relaxed relative z-10"
+            >
+              {recipe.tip}
+            </p>
+          </div>
+        </div>
+      </div>
+    </SectionContainer>
+
+    <!-- CTA Section -->
+    <SectionContainer
+      id="cta"
+      class="py-16 bg-gradient-to-br from-accent to-accent/80"
+    >
+      <div
+        class="max-w-4xl mx-auto text-center space-y-8 scrolling-section opacity-0"
+      >
+        <h2
+          class="text-3xl md:text-4xl font-header font-extrabold text-white uppercase"
+        >
+          ¿Listo para preparar esta receta?
+        </h2>
+        <p class="text-xl text-white/90">
+          Conseguí todos los productos Hardy que necesitás
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a
+            href="/products"
+            class="bg-secondary hover:bg-secondary/90 text-black px-8 py-4 rounded-full font-bold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            Ver Productos
+          </a>
+          <a
+            href="/recipes"
+            class="bg-white hover:bg-white/90 text-primary px-8 py-4 rounded-full font-bold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            Más Recetas
+          </a>
+        </div>
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.1 : 0.2;
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+
+      const cards = element.querySelectorAll(".card");
+      if (cards.length > 0) {
+        animate(
+          cards,
+          { opacity: [0, 1], y: [25, 0] },
+          { type: "spring", delay: stagger(0.15, { startDelay: 0.25 }) },
+        );
+      }
+    },
+    { amount: threshold },
+  );
+</script>

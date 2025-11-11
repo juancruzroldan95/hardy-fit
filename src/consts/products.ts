@@ -8,6 +8,7 @@ export interface Product {
   image: string;
   weight?: string;
   isActive: boolean;
+  purchaseLink?: string;
   nutrition: {
     servingSize: string;
     calories: number;
@@ -37,9 +38,10 @@ export const PRODUCTS: Product[] = [
       "100% maní seleccionado. Sin azúcar, sin conservantes, sin vueltas.",
     fullDescription:
       "La HARDY NATURAL es nuestro producto estrella — pura potencia nutricional y sabor auténtico. Ideal para quienes entrenan, se mueven y eligen una alimentación real, sin artificios.",
-    image: "/src/assets/images/products/frasco-380-natural-fondo-blanco.webp",
+    image: "/src/assets/images/products/crema-de-mani-natural.webp",
     weight: "380gr",
     isActive: true,
+    purchaseLink: "https://www.hardymarket.com.ar/productos/hardy-natural1/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 119,
@@ -119,9 +121,11 @@ export const PRODUCTS: Product[] = [
       "La combinación perfecta entre la proteína del maní y el sabor intenso de las cookies.",
     fullDescription:
       "HARDY COOKIES te da lo mejor de los dos mundos: nutrición natural y placer real. Sin conservantes, sin azúcar agregada, con la textura justa y trozos reales de galleta.",
-    image: "/src/assets/images/products/frasco-380-cookies-fondo-blanco.webp",
+    image: "/src/assets/images/products/crema-de-mani-cookies.webp",
     weight: "380gr",
     isActive: true,
+    purchaseLink:
+      "https://www.hardymarket.com.ar/productos/crema-de-mani-cookies/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 119,
@@ -161,9 +165,11 @@ export const PRODUCTS: Product[] = [
       "HARDY COCO combina la potencia proteica del maní con el sabor suave y tropical del coco.",
     fullDescription:
       "Una experiencia ligera, cremosa y naturalmente dulce, ideal para quienes buscan energía sin exceso.",
-    image: "/src/assets/images/products/frasco-380-coco.webp",
+    image: "/src/assets/images/products/crema-de-mani-coco.webp",
     weight: "380gr",
     isActive: true,
+    purchaseLink:
+      "https://www.hardymarket.com.ar/productos/crema-de-mani-coco/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 120,
@@ -205,9 +211,11 @@ export const PRODUCTS: Product[] = [
       "La clásica crema de maní HARDY, fusionada con el sabor sutil y natural de la vainilla.",
     fullDescription:
       "Perfecta para quienes buscan una experiencia más cremosa, equilibrada y deliciosa sin dejar de lado la nutrición real.",
-    image: "/src/assets/images/products/frasco-380-natural-fondo-blanco.webp",
+    image: "/src/assets/images/products/crema-de-mani-vainilla.webp",
     weight: "380gr",
     isActive: true,
+    purchaseLink:
+      "https://www.hardymarket.com.ar/productos/crema-de-mani-vainilla/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 119,
@@ -246,10 +254,10 @@ export const PRODUCTS: Product[] = [
     shortDescription: "Dulzura natural y energía pura.",
     description:
       "Miel pura y natural en su estado más fluido. Endulzante natural premium.",
-    image:
-      "/src/assets/images/products/frasco-380-miel-liquida-fondo-blanco.webp",
+    image: "/src/assets/images/products/miel-liquida.webp",
     weight: "380gr",
     isActive: true,
+    purchaseLink: "https://www.hardymarket.com.ar/productos/miel-liquida/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 85,
@@ -273,10 +281,10 @@ export const PRODUCTS: Product[] = [
     shortDescription: "Dulzura natural con textura única.",
     description:
       "Miel cristalizada naturalmente. Textura única y sabor intenso.",
-    image:
-      "/src/assets/images/products/frasco-380-miel-solida-fondo-blanco.webp",
+    image: "/src/assets/images/products/miel-solida.webp",
     weight: "380gr",
     isActive: true,
+    purchaseLink: "https://www.hardymarket.com.ar/productos/miel-solida/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 85,
