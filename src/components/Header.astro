@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import hardyLogo from "../assets/images/hardy-red.webp";
-
-const currentPath = Astro.url.pathname;
+import DesktopHeader from "./DesktopHeader.astro";
+import MobileHeader from "./MobileHeader.astro";
 ---
 
 <header
@@ -18,71 +18,17 @@ const currentPath = Astro.url.pathname;
       </div>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:block">
-        <div class="flex items-baseline space-x-8">
-          <a
-            href="/products"
-            class={`px-3 py-2 uppercase font-bold transition-colors ${
-              currentPath === "/products"
-                ? "text-primary border-b-2 border-primary"
-                : "text-neutral-600 hover:text-neutral-900"
-            }`}
-          >
-            Productos
-          </a>
-          <a
-            href="/recipes"
-            class={`px-3 py-2 uppercase font-bold transition-colors ${
-              currentPath === "/recipes"
-                ? "text-primary border-b-2 border-primary"
-                : "text-neutral-600 hover:text-neutral-900"
-            }`}
-          >
-            Recetas
-          </a>
-          <a
-            href="/mayorista"
-            class={`px-3 py-2 uppercase font-bold transition-colors ${
-              currentPath === "/mayorista"
-                ? "text-primary border-b-2 border-primary"
-                : "text-neutral-600 hover:text-neutral-900"
-            }`}
-          >
-            Mayorista
-          </a>
-          <a
-            href="/about"
-            class={`px-3 py-2 uppercase font-bold transition-colors ${
-              currentPath === "/about"
-                ? "text-primary border-b-2 border-primary"
-                : "text-neutral-600 hover:text-neutral-900"
-            }`}
-          >
-            Nosotros
-          </a>
-        </div>
-      </nav>
+      <DesktopHeader />
 
-      <!-- CTA Button -->
-      <!-- <div class="hidden md:block">
-        <a
-          href="https://www.hardymarket.com.ar/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-primary hover:bg-primary-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-red-500/25"
-        >
-          Comprar ahora
-        </a>
-      </div> -->
-
-      <!-- Mobile menu button -->
+      <!-- Mobile Menu Button -->
       <div class="md:hidden">
         <button
           type="button"
-          class="mobile-menu-button text-neutral-400 hover:text-white"
+          class="mobile-menu-button p-2 text-neutral-600 hover:text-neutral-900 focus:outline-none transition-colors"
+          aria-label="Toggle menu"
         >
           <svg
-            class="h-6 w-6"
+            class="w-6 h-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -97,66 +43,7 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
   </div>
-
-  <!-- Mobile Navigation -->
-  <div
-    class="mobile-menu hidden md:hidden bg-white border-t border-neutral-200"
-  >
-    <div
-      class="px-2 py-8 space-y-1 sm:px-3 flex flex-col items-center justify-center min-h-32"
-    >
-      <ul class="text-center">
-        <li>
-          <a
-            href="/products"
-            class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
-            >Productos</a
-          >
-        </li>
-        <li>
-          <a
-            href="/mayorista"
-            class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
-            >Mayorista</a
-          >
-        </li>
-        <li>
-          <a
-            href="/recipes"
-            class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
-            >Recetas</a
-          >
-        </li>
-        <li>
-          <a
-            href="/about"
-            class="block px-3 py-2 text-base font-medium text-neutral-700 hover:text-neutral-900"
-            >Nosotros</a
-          >
-        </li>
-      </ul>
-
-      <div class="border-t border-neutral-200 my-6 w-full"></div>
-
-      <div class="text-center">
-        <a
-          href="https://www.hardymarket.com.ar/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-primary hover:bg-primary-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-red-500/25"
-        >
-          Comprar ahora
-        </a>
-      </div>
-    </div>
-  </div>
 </header>
 
-<script>
-  const mobileMenuButton = document.querySelector(".mobile-menu-button");
-  const mobileMenu = document.querySelector(".mobile-menu");
-
-  mobileMenuButton?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
-  });
-</script>
+<!-- Mobile Navigation Dropdown (Outside header to avoid constraints) -->
+<MobileHeader />

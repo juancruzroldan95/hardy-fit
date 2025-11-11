@@ -1,0 +1,61 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Desktop Navigation -->
+<nav class="hidden md:block">
+  <div class="flex items-baseline space-x-8">
+    <a
+      href="/products"
+      class={`px-3 py-2 uppercase font-bold transition-colors ${
+        currentPath === "/products"
+          ? "text-primary border-b-2 border-primary"
+          : "text-neutral-600 hover:text-neutral-900"
+      }`}
+    >
+      Productos
+    </a>
+    <a
+      href="/recipes"
+      class={`px-3 py-2 uppercase font-bold transition-colors ${
+        currentPath === "/recipes"
+          ? "text-primary border-b-2 border-primary"
+          : "text-neutral-600 hover:text-neutral-900"
+      }`}
+    >
+      Recetas
+    </a>
+    <a
+      href="/mayorista"
+      class={`px-3 py-2 uppercase font-bold transition-colors ${
+        currentPath === "/mayorista"
+          ? "text-primary border-b-2 border-primary"
+          : "text-neutral-600 hover:text-neutral-900"
+      }`}
+    >
+      Mayoristas
+    </a>
+    <a
+      href="/about"
+      class={`px-3 py-2 uppercase font-bold transition-colors ${
+        currentPath === "/about"
+          ? "text-primary border-b-2 border-primary"
+          : "text-neutral-600 hover:text-neutral-900"
+      }`}
+    >
+      Nosotros
+    </a>
+  </div>
+</nav>
+
+<!-- CTA Button (commented out) -->
+<!-- <div class="hidden md:block">
+  <a
+    href="https://www.hardymarket.com.ar/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="bg-primary hover:bg-primary-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-lg hover:shadow-red-500/25"
+  >
+    Comprar ahora
+  </a>
+</div> -->

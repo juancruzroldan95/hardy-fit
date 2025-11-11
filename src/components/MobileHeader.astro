@@ -1,0 +1,231 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Backdrop Overlay -->
+<div
+  class="mobile-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm z-[60] opacity-0 invisible transition-all duration-300 md:hidden"
+>
+</div>
+
+<!-- Mobile Navigation Menu (Slide-in from right) -->
+<div
+  class="mobile-menu fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-white shadow-2xl z-[70] transition-transform duration-300 ease-in-out md:hidden overflow-y-auto"
+  style="transform: translateX(100%);"
+>
+  <!-- Close Button -->
+  <div
+    class="flex items-center justify-between p-6 border-b border-neutral-200"
+  >
+    <h2 class="text-xl font-bold text-primary uppercase">Menú</h2>
+    <button
+      type="button"
+      class="mobile-close-button p-2 rounded-full hover:bg-neutral-100 transition-colors"
+    >
+      <svg
+        class="w-6 h-6 text-neutral-600"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Menu Items -->
+  <nav class="flex flex-col p-6 space-y-2">
+    <a
+      href="/"
+      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+        currentPath === "/"
+          ? "bg-primary text-white"
+          : "text-neutral-700 hover:bg-neutral-100"
+      }`}
+    >
+      <svg
+        class="w-5 h-5 mr-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+        ></path>
+      </svg>
+      <span class="font-semibold">Inicio</span>
+    </a>
+
+    <a
+      href="/products"
+      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+        currentPath === "/products"
+          ? "bg-primary text-white"
+          : "text-neutral-700 hover:bg-neutral-100"
+      }`}
+    >
+      <svg
+        class="w-5 h-5 mr-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+        ></path>
+      </svg>
+      <span class="font-semibold">Productos</span>
+    </a>
+
+    <a
+      href="/recipes"
+      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+        currentPath === "/recipes"
+          ? "bg-primary text-white"
+          : "text-neutral-700 hover:bg-neutral-100"
+      }`}
+    >
+      <svg
+        class="w-5 h-5 mr-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+        ></path>
+      </svg>
+      <span class="font-semibold">Recetas</span>
+    </a>
+
+    <a
+      href="/mayorista"
+      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+        currentPath === "/mayorista"
+          ? "bg-primary text-white"
+          : "text-neutral-700 hover:bg-neutral-100"
+      }`}
+    >
+      <svg
+        class="w-5 h-5 mr-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+        ></path>
+      </svg>
+      <span class="font-semibold">Mayoristas</span>
+    </a>
+
+    <a
+      href="/about"
+      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+        currentPath === "/about"
+          ? "bg-primary text-white"
+          : "text-neutral-700 hover:bg-neutral-100"
+      }`}
+    >
+      <svg
+        class="w-5 h-5 mr-3"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span class="font-semibold">Nosotros</span>
+    </a>
+  </nav>
+
+  <!-- CTA Section -->
+  <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-neutral-200">
+    <a
+      href="https://www.hardymarket.com.ar/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block w-full bg-primary hover:bg-primary-600 text-white px-6 py-3 rounded-full font-semibold text-center transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+    >
+      Comprar Ahora
+    </a>
+  </div>
+</div>
+
+<style>
+  .mobile-menu {
+    transform: translateX(100%);
+  }
+
+  .mobile-menu.menu-open {
+    transform: translateX(0) !important;
+  }
+
+  .mobile-backdrop.backdrop-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.querySelector(".mobile-menu-button");
+    const mobileCloseButton = document.querySelector(".mobile-close-button");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const mobileBackdrop = document.querySelector(".mobile-backdrop");
+
+    function openMenu() {
+      mobileMenu?.classList.add("menu-open");
+      mobileBackdrop?.classList.add("backdrop-open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      mobileMenu?.classList.remove("menu-open");
+      mobileBackdrop?.classList.remove("backdrop-open");
+      document.body.style.overflow = "";
+    }
+
+    // Open menu
+    mobileMenuButton?.addEventListener("click", openMenu);
+
+    // Close menu with close button
+    mobileCloseButton?.addEventListener("click", closeMenu);
+
+    // Close menu when clicking backdrop
+    mobileBackdrop?.addEventListener("click", closeMenu);
+
+    // Close menu when clicking any link
+    const menuLinks = mobileMenu?.querySelectorAll("a");
+    menuLinks?.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Close menu on escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    });
+  });
+</script>
