@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import hardyLogo from "../assets/images/hardy-red.webp";
 import DesktopHeader from "./DesktopHeader.astro";
 import MobileHeader from "./MobileHeader.astro";
+import HamburgerMenu from "../icons/HamburgerMenu.astro";
 ---
 
 <header
@@ -27,18 +28,7 @@ import MobileHeader from "./MobileHeader.astro";
           class="mobile-menu-button p-2 text-neutral-600 hover:text-neutral-900 focus:outline-none transition-colors"
           aria-label="Toggle menu"
         >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+          <HamburgerMenu class="w-6 h-6" />
         </button>
       </div>
     </div>

@@ -38,7 +38,7 @@ export const PACKS: Pack[] = [
     totalBoxes: 5,
     composition: [
       {
-        productName: "Crema de Maní Natural",
+        productName: "Hardy Natural",
         presentation: "380 grs",
         boxes: 2,
         unitsPerBox: 15,
@@ -48,7 +48,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Crema de Maní Cookies",
+        productName: "Hardy Cookies",
         presentation: "380 grs",
         boxes: 1,
         unitsPerBox: 15,
@@ -58,7 +58,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Crema de Maní Vainilla",
+        productName: "Hardy Vainilla",
         presentation: "380 grs",
         boxes: 1,
         unitsPerBox: 15,
@@ -109,7 +109,7 @@ export const PACKS: Pack[] = [
     totalBoxes: 30,
     composition: [
       {
-        productName: "Crema de Maní Natural",
+        productName: "Hardy Natural",
         presentation: "380 grs",
         boxes: 12,
         unitsPerBox: 15,
@@ -119,7 +119,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Crema de Maní Cookies",
+        productName: "Hardy Cookies",
         presentation: "380 grs",
         boxes: 6,
         unitsPerBox: 15,
@@ -129,7 +129,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Crema de Maní Vainilla",
+        productName: "Hardy Vainilla",
         presentation: "380 grs",
         boxes: 6,
         unitsPerBox: 15,
@@ -139,7 +139,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Crema de Maní Coco",
+        productName: "Hardy Coco",
         presentation: "380 grs",
         boxes: 3,
         unitsPerBox: 15,
@@ -149,7 +149,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Miel Líquida Hardy",
+        productName: "Miel Líquida",
         presentation: "500 grs",
         boxes: 2,
         unitsPerBox: 15,
@@ -159,7 +159,7 @@ export const PACKS: Pack[] = [
         inStock: true,
       },
       {
-        productName: "Miel Sólida Hardy",
+        productName: "Miel Sólida",
         presentation: "500 grs",
         boxes: 1,
         unitsPerBox: 15,

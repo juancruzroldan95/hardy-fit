@@ -24,7 +24,9 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
         class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"
       >
       </div>
-      <div class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      <div
+        class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
+      >
         <h1
           class="text-5xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6"
         >
@@ -39,12 +41,14 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 
     <!-- Products Grid -->
     <SectionContainer id="products" class="py-16 bg-white">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {
-          activeProducts.map((product) => (
-            <ProductItem product={product} variant="detailed" />
-          ))
-        }
+      <div class="scrolling-section opacity-0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {
+            activeProducts.map((product) => (
+              <ProductItem product={product} variant="detailed" />
+            ))
+          }
+        </div>
       </div>
     </SectionContainer>
 
@@ -64,3 +68,31 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     </SectionContainer>
   </main>
 </Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.05 : 0.1;
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+
+      const cards = element.querySelectorAll(".card");
+      if (cards.length > 0) {
+        animate(
+          cards,
+          { opacity: [0, 1], y: [25, 0] },
+          { type: "spring", delay: stagger(0.15, { startDelay: 0.25 }) },
+        );
+      }
+    },
+    { amount: threshold },
+  );
+</script>

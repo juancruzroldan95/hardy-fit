@@ -1,6 +1,8 @@
 ---
 import ProductItem from "./ProductItem.astro";
 import { PRODUCTS } from "../consts/products";
+import ChevronLeft from "../icons/ChevronLeft.astro";
+import ChevronRight from "../icons/ChevronRight.astro";
 
 const activeProducts = PRODUCTS.filter((product) => product.isActive);
 ---
@@ -36,35 +38,13 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
     aria-label="Previous product"
   >
-    <svg
-      class="w-6 h-6 text-primary"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M15 19l-7-7 7-7"></path>
-    </svg>
+    <ChevronLeft class="w-6 h-6 text-primary" />
   </button>
   <button
     class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
     aria-label="Next product"
   >
-    <svg
-      class="w-6 h-6 text-primary"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 5l7 7-7 7"></path>
-    </svg>
+    <ChevronRight class="w-6 h-6 text-primary" />
   </button>
 </div>
 
