@@ -1,52 +1,64 @@
----
-const currentPath = Astro.url.pathname;
----
-
 <!-- Desktop Navigation -->
 <nav class="hidden md:block">
   <div class="flex items-baseline space-x-8">
     <a
       href="/productos"
-      class={`px-3 py-2 uppercase font-bold transition-colors ${
-        currentPath === "/productos"
-          ? "text-primary border-b-2 border-primary"
-          : "text-neutral-600 hover:text-neutral-900"
-      }`}
+      data-nav-link
+      class="px-3 py-2 uppercase font-bold transition-colors text-neutral-600 hover:text-neutral-900"
     >
       Productos
     </a>
     <a
       href="/recetas"
-      class={`px-3 py-2 uppercase font-bold transition-colors ${
-        currentPath === "/recetas"
-          ? "text-primary border-b-2 border-primary"
-          : "text-neutral-600 hover:text-neutral-900"
-      }`}
+      data-nav-link
+      class="px-3 py-2 uppercase font-bold transition-colors text-neutral-600 hover:text-neutral-900"
     >
       Recetas
     </a>
     <a
       href="/mayoristas"
-      class={`px-3 py-2 uppercase font-bold transition-colors ${
-        currentPath === "/mayoristas"
-          ? "text-primary border-b-2 border-primary"
-          : "text-neutral-600 hover:text-neutral-900"
-      }`}
+      data-nav-link
+      class="px-3 py-2 uppercase font-bold transition-colors text-neutral-600 hover:text-neutral-900"
     >
       Mayoristas
     </a>
     <a
       href="/nosotros"
-      class={`px-3 py-2 uppercase font-bold transition-colors ${
-        currentPath === "/nosotros"
-          ? "text-primary border-b-2 border-primary"
-          : "text-neutral-600 hover:text-neutral-900"
-      }`}
+      data-nav-link
+      class="px-3 py-2 uppercase font-bold transition-colors text-neutral-600 hover:text-neutral-900"
     >
       Nosotros
     </a>
   </div>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+
+    // Function to update active nav link based on current path
+    function updateActiveNavLink() {
+      const currentPath = window.location.pathname;
+
+      navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href === currentPath) {
+          link.classList.add("text-primary", "border-b-2", "border-primary");
+          link.classList.remove("text-neutral-600", "hover:text-neutral-900");
+        } else {
+          link.classList.remove("text-primary", "border-b-2", "border-primary");
+          link.classList.add("text-neutral-600", "hover:text-neutral-900");
+        }
+      });
+    }
+
+    // Update active link on page load
+    updateActiveNavLink();
+
+    // Update active link when navigating (for SPA-like behavior)
+    window.addEventListener("popstate", updateActiveNavLink);
+  });
+</script>
 
 <!-- CTA Button (commented out) -->
 <!-- <div class="hidden md:block">

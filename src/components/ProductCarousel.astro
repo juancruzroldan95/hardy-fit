@@ -9,7 +9,7 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 
 <div class="relative md:hidden">
   <div class="carousel-container overflow-hidden">
-    <div class="carousel-track flex transition-transform duration-500 ease-out">
+    <div class="carousel-track flex">
       {
         activeProducts.map((product) => (
           <div class="carousel-item min-w-full px-4">
@@ -57,8 +57,15 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     private nextBtn: HTMLElement;
     private currentIndex: number = 0;
     private totalItems: number;
-    private touchStartX: number = 0;
-    private touchEndX: number = 0;
+
+    // Touch/drag state
+    private isDragging: boolean = false;
+    private startX: number = 0;
+    private currentX: number = 0;
+    private offsetX: number = 0;
+    private startTime: number = 0;
+    private velocity: number = 0;
+    private autoAdvanceInterval: number | null = null;
 
     constructor(container: HTMLElement) {
       this.container = container;
@@ -85,35 +92,177 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
       });
 
       // Touch listeners
-      this.track.addEventListener("touchstart", (e) =>
-        this.handleTouchStart(e),
+      this.track.addEventListener(
+        "touchstart",
+        (e) => this.handleStart(e.touches[0].clientX),
+        { passive: false },
       );
-      this.track.addEventListener("touchend", (e) => this.handleTouchEnd(e));
+      this.track.addEventListener(
+        "touchmove",
+        (e) => {
+          e.preventDefault();
+          this.handleMove(e.touches[0].clientX);
+        },
+        { passive: false },
+      );
+      this.track.addEventListener("touchend", () => this.handleEnd());
+
+      // Mouse listeners for desktop testing
+      this.track.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        this.handleStart(e.clientX);
+      });
+      this.track.addEventListener("mousemove", (e) => {
+        if (this.isDragging) {
+          e.preventDefault();
+          this.handleMove(e.clientX);
+        }
+      });
+      this.track.addEventListener("mouseup", () => this.handleEnd());
+      this.track.addEventListener("mouseleave", () => {
+        if (this.isDragging) {
+          this.handleEnd();
+        }
+      });
+
+      // Prevent image drag
+      this.track.addEventListener("dragstart", (e) => e.preventDefault());
 
       // Auto-advance every 5 seconds
-      setInterval(() => this.next(), 5000);
+      this.startAutoAdvance();
+    }
+
+    startAutoAdvance() {
+      if (this.autoAdvanceInterval) {
+        clearInterval(this.autoAdvanceInterval);
+      }
+      this.autoAdvanceInterval = window.setInterval(() => {
+        if (!this.isDragging) {
+          this.next();
+        }
+      }, 5000);
+    }
+
+    handleStart(clientX: number) {
+      this.isDragging = true;
+      this.startX = clientX;
+      this.currentX = clientX;
+      this.startTime = Date.now();
+      this.offsetX = -this.currentIndex * 100;
+
+      // Disable transitions during drag
+      this.track.style.transition = "none";
+
+      // Stop auto-advance while dragging
+      if (this.autoAdvanceInterval) {
+        clearInterval(this.autoAdvanceInterval);
+      }
+    }
+
+    handleMove(clientX: number) {
+      if (!this.isDragging) return;
+
+      this.currentX = clientX;
+      const diff = this.currentX - this.startX;
+      const trackWidth = this.track.offsetWidth;
+      const dragPercentage = (diff / trackWidth) * 100;
+
+      // Calculate velocity for momentum
+      const timeDiff = Date.now() - this.startTime;
+      if (timeDiff > 0) {
+        this.velocity = (diff / timeDiff) * 16; // pixels per frame (assuming 60fps)
+      }
+
+      // Apply drag offset with boundaries
+      const minOffset = -((this.totalItems - 1) * 100);
+      const maxOffset = 0;
+      const newOffset = this.offsetX + dragPercentage;
+
+      // Apply resistance at boundaries
+      let finalOffset = newOffset;
+      if (newOffset > maxOffset) {
+        finalOffset = maxOffset + (newOffset - maxOffset) * 0.3;
+      } else if (newOffset < minOffset) {
+        finalOffset = minOffset + (newOffset - minOffset) * 0.3;
+      }
+
+      this.track.style.transform = `translateX(${finalOffset}%)`;
+    }
+
+    handleEnd() {
+      if (!this.isDragging) return;
+
+      this.isDragging = false;
+
+      // Re-enable transitions
+      this.track.style.transition = "transform 0.5s ease-out";
+
+      const diff = this.currentX - this.startX;
+      const trackWidth = this.track.offsetWidth;
+      const dragPercentage = (diff / trackWidth) * 100;
+      const swipeThreshold = 30; // Minimum swipe distance
+      const velocityThreshold = 0.5; // Minimum velocity for momentum
+
+      // Determine target index based on swipe distance and velocity
+      let targetIndex = this.currentIndex;
+
+      if (
+        Math.abs(this.velocity) > velocityThreshold ||
+        Math.abs(dragPercentage) > swipeThreshold
+      ) {
+        if (
+          dragPercentage > swipeThreshold ||
+          this.velocity > velocityThreshold
+        ) {
+          // Swipe right - go to previous
+          targetIndex = Math.max(0, this.currentIndex - 1);
+        } else if (
+          dragPercentage < -swipeThreshold ||
+          this.velocity < -velocityThreshold
+        ) {
+          // Swipe left - go to next
+          targetIndex = Math.min(this.totalItems - 1, this.currentIndex + 1);
+        } else {
+          // Not enough swipe, snap back to current
+          targetIndex = this.currentIndex;
+        }
+      } else {
+        // Snap to nearest slide
+        const currentOffset = this.offsetX + dragPercentage;
+        const slidePosition = -currentOffset / 100;
+        targetIndex = Math.round(slidePosition);
+        targetIndex = Math.max(0, Math.min(this.totalItems - 1, targetIndex));
+      }
+
+      this.currentIndex = targetIndex;
+      this.updateCarousel();
+      this.startAutoAdvance();
     }
 
     prev() {
       this.currentIndex =
         (this.currentIndex - 1 + this.totalItems) % this.totalItems;
       this.updateCarousel();
+      this.startAutoAdvance();
     }
 
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.totalItems;
       this.updateCarousel();
+      this.startAutoAdvance();
     }
 
     goTo(index: number) {
       this.currentIndex = index;
       this.updateCarousel();
+      this.startAutoAdvance();
     }
 
     updateCarousel() {
       // Move track
       const offset = -this.currentIndex * 100;
       this.track.style.transform = `translateX(${offset}%)`;
+      this.track.style.transition = "transform 0.5s ease-out";
 
       // Update dots
       this.dots.forEach((dot, index) => {
@@ -125,28 +274,6 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
           dot.classList.add("bg-neutral-300");
         }
       });
-    }
-
-    handleTouchStart(e: TouchEvent) {
-      this.touchStartX = e.changedTouches[0].screenX;
-    }
-
-    handleTouchEnd(e: TouchEvent) {
-      this.touchEndX = e.changedTouches[0].screenX;
-      this.handleSwipe();
-    }
-
-    handleSwipe() {
-      const swipeThreshold = 50;
-      const diff = this.touchStartX - this.touchEndX;
-
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-          this.next();
-        } else {
-          this.prev();
-        }
-      }
     }
   }
 

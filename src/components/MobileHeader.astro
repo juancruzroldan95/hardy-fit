@@ -5,8 +5,6 @@ import Book from "../icons/Book.astro";
 import Building from "../icons/Building.astro";
 import InfoCircle from "../icons/InfoCircle.astro";
 import IconX from "../icons/IconX.astro";
-
-const currentPath = Astro.url.pathname;
 ---
 
 <!-- Backdrop Overlay -->
@@ -37,11 +35,8 @@ const currentPath = Astro.url.pathname;
   <nav class="flex flex-col p-6 space-y-2">
     <a
       href="/"
-      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-        currentPath === "/"
-          ? "bg-primary text-white"
-          : "text-neutral-700 hover:bg-neutral-100"
-      }`}
+      data-nav-link
+      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
     >
       <Home class="w-5 h-5 mr-3" />
       <span class="font-semibold">Inicio</span>
@@ -49,11 +44,8 @@ const currentPath = Astro.url.pathname;
 
     <a
       href="/productos"
-      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-        currentPath === "/productos"
-          ? "bg-primary text-white"
-          : "text-neutral-700 hover:bg-neutral-100"
-      }`}
+      data-nav-link
+      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
     >
       <BuildingStore class="w-5 h-5 mr-3" />
       <span class="font-semibold">Productos</span>
@@ -61,11 +53,8 @@ const currentPath = Astro.url.pathname;
 
     <a
       href="/recetas"
-      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-        currentPath === "/recetas"
-          ? "bg-primary text-white"
-          : "text-neutral-700 hover:bg-neutral-100"
-      }`}
+      data-nav-link
+      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
     >
       <Book class="w-5 h-5 mr-3" />
       <span class="font-semibold">Recetas</span>
@@ -73,11 +62,8 @@ const currentPath = Astro.url.pathname;
 
     <a
       href="/mayoristas"
-      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-        currentPath === "/mayoristas"
-          ? "bg-primary text-white"
-          : "text-neutral-700 hover:bg-neutral-100"
-      }`}
+      data-nav-link
+      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
     >
       <Building class="w-5 h-5 mr-3" />
       <span class="font-semibold">Mayoristas</span>
@@ -85,11 +71,8 @@ const currentPath = Astro.url.pathname;
 
     <a
       href="/nosotros"
-      class={`group flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
-        currentPath === "/nosotros"
-          ? "bg-primary text-white"
-          : "text-neutral-700 hover:bg-neutral-100"
-      }`}
+      data-nav-link
+      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
     >
       <InfoCircle class="w-5 h-5 mr-3" />
       <span class="font-semibold">Nosotros</span>
@@ -130,11 +113,36 @@ const currentPath = Astro.url.pathname;
     const mobileCloseButton = document.querySelector(".mobile-close-button");
     const mobileMenu = document.querySelector(".mobile-menu");
     const mobileBackdrop = document.querySelector(".mobile-backdrop");
+    const navLinks = mobileMenu?.querySelectorAll("[data-nav-link]");
+
+    // Function to update active nav link based on current path
+    function updateActiveNavLink() {
+      const currentPath = window.location.pathname;
+
+      navLinks?.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href === currentPath) {
+          link.classList.add("bg-primary", "text-white");
+          link.classList.remove("text-neutral-700", "hover:bg-neutral-100");
+        } else {
+          link.classList.remove("bg-primary", "text-white");
+          link.classList.add("text-neutral-700", "hover:bg-neutral-100");
+        }
+      });
+    }
+
+    // Update active link on page load
+    updateActiveNavLink();
+
+    // Update active link when navigating (for SPA-like behavior)
+    window.addEventListener("popstate", updateActiveNavLink);
 
     function openMenu() {
       mobileMenu?.classList.add("menu-open");
       mobileBackdrop?.classList.add("backdrop-open");
       document.body.style.overflow = "hidden";
+      // Update active link when menu opens
+      updateActiveNavLink();
     }
 
     function closeMenu() {
@@ -153,8 +161,7 @@ const currentPath = Astro.url.pathname;
     mobileBackdrop?.addEventListener("click", closeMenu);
 
     // Close menu when clicking any link
-    const menuLinks = mobileMenu?.querySelectorAll("a");
-    menuLinks?.forEach((link) => {
+    navLinks?.forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
