@@ -1,3 +1,14 @@
+import type { ImageMetadata } from "astro";
+
+// Import all product images
+import naturalImage from "../assets/images/products/crema-de-mani-natural.webp";
+import chocolateImage from "../assets/images/products/frasco-380-chocolate-fondo-blanco.webp";
+import cookiesImage from "../assets/images/products/crema-de-mani-cookies.webp";
+import cocoImage from "../assets/images/products/crema-de-mani-coco.webp";
+import vainillaImage from "../assets/images/products/crema-de-mani-vainilla.webp";
+import mielLiquidaImage from "../assets/images/products/miel-liquida.webp";
+import mielSolidaImage from "../assets/images/products/miel-solida.webp";
+
 export interface Product {
   id: number;
   slug: string;
@@ -5,7 +16,7 @@ export interface Product {
   shortDescription: string;
   description: string;
   fullDescription?: string;
-  image: string;
+  image: ImageMetadata;
   weight?: string;
   isActive: boolean;
   purchaseLink?: string;
@@ -38,7 +49,7 @@ export const PRODUCTS: Product[] = [
       "100% maní seleccionado. Sin azúcar, sin conservantes, sin vueltas.",
     fullDescription:
       "La HARDY NATURAL es nuestro producto estrella — pura potencia nutricional y sabor auténtico. Ideal para quienes entrenan, se mueven y eligen una alimentación real, sin artificios.",
-    image: "/src/assets/images/products/crema-de-mani-natural.webp",
+    image: naturalImage,
     weight: "380gr",
     isActive: true,
     purchaseLink: "https://www.hardymarket.com.ar/productos/hardy-natural1/",
@@ -80,7 +91,7 @@ export const PRODUCTS: Product[] = [
       "Combinación perfecta de maní premium con cacao de alta calidad.",
     fullDescription:
       "La potencia del maní se encuentra con el cacao real. Para quienes buscan energía con un toque indulgente y nutritivo.",
-    image: "/src/assets/images/products/frasco-380-chocolate-fondo-blanco.webp",
+    image: chocolateImage,
     weight: "380gr",
     isActive: false,
     nutrition: {
@@ -121,7 +132,7 @@ export const PRODUCTS: Product[] = [
       "La combinación perfecta entre la proteína del maní y el sabor intenso de las cookies.",
     fullDescription:
       "HARDY COOKIES te da lo mejor de los dos mundos: nutrición natural y placer real. Sin conservantes, sin azúcar agregada, con la textura justa y trozos reales de galleta.",
-    image: "/src/assets/images/products/crema-de-mani-cookies.webp",
+    image: cookiesImage,
     weight: "380gr",
     isActive: true,
     purchaseLink:
@@ -165,7 +176,7 @@ export const PRODUCTS: Product[] = [
       "HARDY COCO combina la potencia proteica del maní con el sabor suave y tropical del coco.",
     fullDescription:
       "Una experiencia ligera, cremosa y naturalmente dulce, ideal para quienes buscan energía sin exceso.",
-    image: "/src/assets/images/products/crema-de-mani-coco.webp",
+    image: cocoImage,
     weight: "380gr",
     isActive: true,
     purchaseLink:
@@ -211,7 +222,7 @@ export const PRODUCTS: Product[] = [
       "La clásica crema de maní HARDY, fusionada con el sabor sutil y natural de la vainilla.",
     fullDescription:
       "Perfecta para quienes buscan una experiencia más cremosa, equilibrada y deliciosa sin dejar de lado la nutrición real.",
-    image: "/src/assets/images/products/crema-de-mani-vainilla.webp",
+    image: vainillaImage,
     weight: "380gr",
     isActive: true,
     purchaseLink:
@@ -254,7 +265,7 @@ export const PRODUCTS: Product[] = [
     shortDescription: "Dulzura natural y energía pura.",
     description:
       "Miel pura y natural en su estado más fluido. Endulzante natural premium.",
-    image: "/src/assets/images/products/miel-liquida.webp",
+    image: mielLiquidaImage,
     weight: "380gr",
     isActive: true,
     purchaseLink: "https://www.hardymarket.com.ar/productos/miel-liquida/",
@@ -281,7 +292,7 @@ export const PRODUCTS: Product[] = [
     shortDescription: "Dulzura natural con textura única.",
     description:
       "Miel cristalizada naturalmente. Textura única y sabor intenso.",
-    image: "/src/assets/images/products/miel-solida.webp",
+    image: mielSolidaImage,
     weight: "380gr",
     isActive: true,
     purchaseLink: "https://www.hardymarket.com.ar/productos/miel-solida/",

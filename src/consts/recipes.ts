@@ -1,3 +1,23 @@
+import type { ImageMetadata } from "astro";
+
+// Import all recipe images
+import cookiesHardyCrunchImage from "../assets/images/recipes/cookies-hardy-crunch.webp";
+import bananaBitesHardyImage from "../assets/images/recipes/banana-bites-hardy.webp";
+import miniPancakesProteicosImage from "../assets/images/recipes/mini-pancakes-proteicos-hardy.webp";
+import shotEnergiaNaturalImage from "../assets/images/recipes/shot-de-energia-natural-hardy.webp";
+import bocaditosHardyCocoImage from "../assets/images/recipes/bocaditos-hardy-coco.webp";
+import barritasEnergeticasImage from "../assets/images/recipes/barritas-energeticas-caseras-hardy.webp";
+import snackEnergeticoGoImage from "../assets/images/recipes/snack-energetico-go-hardy.webp";
+import toastProteicoVainillaImage from "../assets/images/recipes/toast-proteico-vainilla.webp";
+import granolaEnergeticaImage from "../assets/images/recipes/granola-energetica.webp";
+import smoothieCookiesRecoveryImage from "../assets/images/recipes/smoothie-cookies-recovery.webp";
+import panquequesAlimentaImage from "../assets/images/recipes/panqueques-alimenta-tu-instinto.webp";
+import overnightOatsImage from "../assets/images/recipes/overnight-oats-energia-real.webp";
+import porridgeProteicoImage from "../assets/images/recipes/porridge-proteico-con-hardy.webp";
+import tostadasCrunchyImage from "../assets/images/recipes/tostadas crunchy con frutas.webp";
+import wafflesFitImage from "../assets/images/recipes/waffles-fit-con-miel-hardy.webp";
+import yogurtBowlImage from "../assets/images/recipes/yogurt-bowl-hardy.webp";
+
 export interface RecipeIngredient {
   name: string;
   quantity: string;
@@ -9,7 +29,7 @@ export interface Recipe {
   title: string;
   shortDescription: string;
   fullDescription: string;
-  image: string;
+  image: ImageMetadata;
   prepTime?: number;
   servings?: number | string;
   difficulty?: string;
@@ -31,7 +51,7 @@ export const RECIPES: Recipe[] = [
     shortDescription: "En Hardy creemos que comer bien no tiene por qué ser aburrido.",
     fullDescription:
       "Estas cookies nacen de ese equilibrio entre placer y energía real: sin aditivos, sin excusas, con ingredientes naturales y el sabor inconfundible de nuestra crema de maní Cookies. Perfectas para después del entrenamiento, acompañar el café o disfrutar como snack saludable.",
-    image: "/src/assets/images/recipes/cookies-hardy-crunch.webp",
+    image: cookiesHardyCrunchImage,
     prepTime: 15,
     servings: "6-8 cookies",
     difficulty: "Fácil",
@@ -68,7 +88,7 @@ export const RECIPES: Recipe[] = [
       "Bocados helados de banana, crema de maní y chocolate amargo.",
     fullDescription:
       "Un snack saludable, delicioso y adictivo en el mejor sentido. Perfectos para cuando querés algo dulce sin salirte del plan.",
-    image: "/src/assets/images/recipes/banana-bites-hardy.webp",
+    image: bananaBitesHardyImage,
     prepTime: 70,
     servings: "8-10 bocados",
     difficulty: "Fácil",
@@ -105,7 +125,7 @@ export const RECIPES: Recipe[] = [
     shortDescription: "Pequeños, esponjosos y llenos de sabor HARDY.",
     fullDescription:
       "Ideales para tus desayunos fit, o para sorprender con un reel irresistible. Cada bocado aporta energía real, proteína natural y sabor auténtico.",
-    image: "/src/assets/images/recipes/mini-pancakes-proteicos-hardy.webp",
+    image: miniPancakesProteicosImage,
     prepTime: 15,
     servings: "6-8 mini pancakes",
     difficulty: "Fácil",
@@ -142,7 +162,7 @@ export const RECIPES: Recipe[] = [
       "Un clásico express de HARDY: energía pura en una cucharada.",
     fullDescription:
       "Ideal antes del gym, una reunión o cuando necesitás un impulso inmediato y natural. Cero ultraprocesados, cero excusas.",
-    image: "/src/assets/images/recipes/shot-de-energia-natural-hardy.webp",
+    image: shotEnergiaNaturalImage,
     prepTime: 1,
     servings: "1 porción",
     difficulty: "Fácil",
@@ -173,7 +193,7 @@ export const RECIPES: Recipe[] = [
       "Bolitas energéticas con un sabor tropical y natural. Pequeñas dosis de energía real, listas para acompañarte en cualquier momento del día.",
     fullDescription:
       "Perfectas para media mañana o antes de entrenar.",
-    image: "/src/assets/images/recipes/bocaditos-hardy-coco.webp",
+    image: bocaditosHardyCocoImage,
     prepTime: 35,
     servings: "10-12 bocaditos",
     difficulty: "Fácil",
@@ -208,7 +228,7 @@ export const RECIPES: Recipe[] = [
       "Ideal para antes del entrenamiento o como snack natural para recargar energía durante el día.",
     fullDescription:
       "Aporta energía real, sin aditivos ni ultraprocesados.",
-    image: "/src/assets/images/recipes/barritas-energeticas-caseras-hardy.webp",
+    image: barritasEnergeticasImage,
     prepTime: 45,
     servings: "8-10 barritas",
     difficulty: "Fácil",
@@ -252,7 +272,7 @@ export const RECIPES: Recipe[] = [
     shortDescription: "Energía real en cada bocado.",
     fullDescription:
       "Ideal antes del entrenamiento o como snack natural para el día a día. Hechas con crema de maní y miel Hardy: puro poder natural.",
-    image: "/src/assets/images/recipes/snack-energetico-go-hardy.webp",
+    image: snackEnergeticoGoImage,
     prepTime: 25,
     servings: "12-15 bolitas",
     difficulty: "Fácil",
@@ -284,7 +304,7 @@ export const RECIPES: Recipe[] = [
     shortDescription:
       "Desayuno nutritivo y natural con el sabor dulce de la crema de maní Vainilla Hardy.",
     fullDescription: "Ideal para arrancar el día con energía real.",
-    image: "/src/assets/images/recipes/toast-proteico-vainilla.webp",
+    image: toastProteicoVainillaImage,
     prepTime: 5,
     servings: "1 porción",
     difficulty: "Fácil",
@@ -315,7 +335,7 @@ export const RECIPES: Recipe[] = [
       "Crujiente, dulce y natural. Una granola artesanal que te da energía sostenida durante todo el día.",
     fullDescription:
       "Una granola artesanal hecha con miel sólida y crema de maní coco Hardy. Perfecta para yogur, frutas o sola como snack.",
-    image: "/src/assets/images/recipes/granola-energetica.webp",
+    image: granolaEnergeticaImage,
     prepTime: 25,
     servings: "1 frasco grande",
     difficulty: "Fácil",
@@ -354,7 +374,7 @@ export const RECIPES: Recipe[] = [
       "Recuperate naturalmente después de entrenar con este smoothie cremoso y nutritivo hecho con HARDY Cookies.",
     fullDescription:
       "Rico en proteínas y grasas saludables para una recuperación muscular efectiva. Perfecto para reponer energía real después del entrenamiento sin ultraprocesados.",
-    image: "/src/assets/images/recipes/smoothie-cookies-recovery.webp",
+    image: smoothieCookiesRecoveryImage,
     prepTime: 5,
     servings: "1 vaso grande",
     difficulty: "Fácil",
@@ -390,7 +410,7 @@ export const RECIPES: Recipe[] = [
       "Livianos, dulces y sin azúcar refinada. Panqueques naturales con toda la energía HARDY para tus mañanas.",
     fullDescription:
       "La combinación perfecta de proteínas, energía y sabor natural. Sumá frutas frescas o semillas arriba para más textura y color.",
-    image: "/src/assets/images/recipes/panqueques-alimenta-tu-instinto.webp",
+    image: panquequesAlimentaImage,
     prepTime: 15,
     servings: "1 porción",
     difficulty: "Fácil",
@@ -425,7 +445,7 @@ export const RECIPES: Recipe[] = [
       "Despertate con energía real. Este desayuno preparado la noche anterior combina carbohidratos de absorción lenta, proteínas y grasas saludables.",
     fullDescription:
       "La Crema de Maní HARDY Natural y la Miel HARDY líquida transforman una receta simple en una fuente auténtica de energía y sabor. Ideal para quienes buscan nutrición y rendimiento desde temprano.",
-    image: "/src/assets/images/recipes/overnight-oats-energia-real.webp",
+    image: overnightOatsImage,
     prepTime: 370,
     servings: "1 frasco individual",
     difficulty: "Fácil",
@@ -469,7 +489,7 @@ export const RECIPES: Recipe[] = [
       "Un desayuno completo, cremoso y saciante. La avena cocida se fusiona con la Crema de Maní HARDY sabor Vainilla.",
     fullDescription:
       "El toque dulce natural de la Miel HARDY líquida crea una combinación perfecta para quienes buscan rendimiento, nutrición y sabor real. Ideal para antes de entrenar o para recuperarte después.",
-    image: "/src/assets/images/recipes/porridge-proteico-con-hardy.webp",
+    image: porridgeProteicoImage,
     prepTime: 10,
     servings: "1 porción",
     difficulty: "Fácil",
@@ -512,7 +532,7 @@ export const RECIPES: Recipe[] = [
       "Un snack rápido, crujiente y natural. La combinación del pan integral con la Crema de Maní HARDY sabor Cookies.",
     fullDescription:
       "Los trozos de manzana con canela crean un equilibrio perfecto entre dulzura, textura y energía real. Ideal para media mañana o tarde, antes o después del entrenamiento.",
-    image: "/src/assets/images/recipes/tostadas crunchy con frutas.webp",
+    image: tostadasCrunchyImage,
     prepTime: 5,
     servings: "2 tostadas",
     difficulty: "Fácil",
@@ -554,7 +574,7 @@ export const RECIPES: Recipe[] = [
       "Rompé la rutina con estos waffles fit de textura perfecta y sabor tropical.",
     fullDescription:
       "Combiná el dulzor natural de la miel Hardy con la suavidad cremosa de la Crema de Maní Coco Hardy. Un clásico del desayuno que alimenta tu instinto, sin ultraprocesados ni harinas refinadas.",
-    image: "/src/assets/images/recipes/waffles-fit-con-miel-hardy.webp",
+    image: wafflesFitImage,
     prepTime: 20,
     servings: "2 porciones",
     difficulty: "Medio",
@@ -607,7 +627,7 @@ export const RECIPES: Recipe[] = [
       "Un desayuno o snack energético, natural y equilibrado. Este bowl combina proteínas, grasas saludables y carbohidratos reales.",
     fullDescription:
       "Con la cremosidad y sabor único de la Crema de Maní HARDY sabor Vainilla y el toque natural de miel pura HARDY. Ideal para después del entrenamiento o para arrancar el día con energía real.",
-    image: "/src/assets/images/recipes/yogurt-bowl-hardy.webp",
+    image: yogurtBowlImage,
     prepTime: 5,
     servings: "1 porción",
     difficulty: "Fácil",
