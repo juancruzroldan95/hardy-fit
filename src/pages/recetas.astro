@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import { RECIPES } from "../consts/recipes";
 import Clock from "../icons/Clock.astro";
 import UsersGroup from "../icons/UsersGroup.astro";
+import yellowBgImage from "../assets/images/yellow-bg-image.webp";
 ---
 
 <Layout
@@ -150,19 +151,29 @@ import UsersGroup from "../icons/UsersGroup.astro";
     </SectionContainer>
 
     <!-- Recipe Tips Section -->
-    <SectionContainer
-      id="tips"
-      class="py-24 bg-gradient-to-br from-accent to-accent/80 text-white relative overflow-hidden"
-    >
-      <TipsSection
-        titleColor="text-secondary"
-        descriptionColor="text-white"
-        bgColor="bg-accent-500/40"
-        borderColor="ring-accent-400 hover:ring-accent-200"
-        iconColor="text-secondary"
-        cardTitleColor="text-secondary"
-        cardDescriptionColor="text-white"
-      />
+    <SectionContainer id="tips" class="py-24 relative overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <Image
+          src={yellowBgImage}
+          alt="Hardy Tips background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
+      </div>
+
+      <div class="relative z-10">
+        <TipsSection
+          titleColor="text-primary"
+          descriptionColor="text-black"
+          bgColor="bg-secondary-500/80"
+          borderColor="ring-secondary-600 hover:ring-secondary-900"
+          iconColor="text-primary"
+          cardTitleColor="text-primary"
+          cardDescriptionColor="text-black"
+        />
+      </div>
     </SectionContainer>
   </main>
 </Layout>

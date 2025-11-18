@@ -27,38 +27,26 @@
   --color-secondary-800: #92400e;
   --color-secondary-900: #78350f;
 
-  /* HARDY Brand Colors - Accent (Purple) */
-  --color-accent: #4e377f;
-  --color-accent-50: #faf5ff;
-  --color-accent-100: #f3e8ff;
-  --color-accent-200: #e9d5ff;
-  --color-accent-300: #d8b4fe;
-  --color-accent-400: #c084fc;
-  --color-accent-500: #4e377f; /* Main accent color */
-  --color-accent-600: #7c3aed;
-  --color-accent-700: #6d28d9;
-  --color-accent-800: #5b21b6;
-  --color-accent-900: #4c1d95;
+  /* HARDY Brand Colors - Accent (Skyblue) */
+  --color-accent: #00b9ff;
+  --color-accent-50: #e6f5ff;
+  --color-accent-100: #cce6ff;
+  --color-accent-200: #99d1ff;
+  --color-accent-300: #66b8ff;
+  --color-accent-400: #339eff;
+  --color-accent-500: #00b9ff; /* Main accent color */
+  --color-accent-600: #0099cc;
+  --color-accent-700: #007a99;
+  --color-accent-800: #005a66;
+  --color-accent-900: #003a33;
 
   /* Complementary Colors */
-  --color-skyblue: #00b9ff;
+  --color-violet: #4e377f;
   --color-green: #11bf7e;
-  --color-pink: #ff0e2a;
 
   /* Neutral Colors */
   --color-black: #242424;
   --color-white: #ffffff;
-
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
 
   /* Fonts */
   --font-header: "Inter", system-ui, sans-serif;

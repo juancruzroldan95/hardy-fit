@@ -9,6 +9,7 @@ import ValuesHeroSection from "../components/ValuesHeroSection.astro";
 import ValuesSection from "../components/ValuesSection.astro";
 import CTASection from "../components/CTASection.astro";
 import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
+import yellowBgImage from "../assets/images/yellow-bg-image.webp";
 ---
 
 <Layout title="HARDY - Alimentá tu instinto">
@@ -25,23 +26,32 @@ import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
       <ProductsSection />
     </SectionContainer>
 
-    <SectionContainer
-      id="why-choose-us"
-      class="py-24 bg-gradient-to-br from-accent to-accent/80 text-white relative overflow-hidden"
-    >
-      <ValuesHeroSection
-        titleColor="text-secondary"
-        titleSize="text-4xl md:text-5xl"
-        descriptionColor="text-white"
-      />
-      <ValuesSection
-        titleColor="text-secondary"
-        bgColor="bg-accent/40"
-        borderColor="ring-accent-400 hover:ring-accent-200"
-        iconColor="text-secondary"
-        cardTitleColor="text-secondary"
-        cardDescriptionColor="text-white"
-      />
+    <SectionContainer id="why-choose-us" class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0">
+        <Image
+          src={yellowBgImage}
+          alt="Hardy Values background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
+      </div>
+
+      <div class="relative z-10">
+        <ValuesHeroSection
+          titleColor="text-primary"
+          titleSize="text-4xl md:text-5xl"
+          descriptionColor="text-black"
+        />
+        <ValuesSection
+          titleColor="text-primary"
+          bgColor="bg-secondary-500/80"
+          borderColor="ring-secondary-600 hover:ring-secondary-900"
+          iconColor="text-primary"
+          cardTitleColor="text-primary"
+          cardDescriptionColor="text-black"
+        />
+      </div>
     </SectionContainer>
 
     <SectionContainer id="cta" class="py-24 relative overflow-hidden">
@@ -88,7 +98,7 @@ import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
         animate(
           cards,
           { opacity: [0, 1], y: [25, 0] },
-          { type: "spring", delay: stagger(0.25, { startDelay: 0.25 }) },
+          { type: "spring", delay: stagger(0.25, { startDelay: 0 }) },
         );
       }
 

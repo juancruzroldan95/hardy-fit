@@ -4,6 +4,8 @@ import SectionContainer from "../components/SectionContainer.astro";
 import ProductItem from "../components/ProductItem.astro";
 import { PRODUCTS } from "../consts/products";
 import FeaturesSection from "../components/FeaturesSection.astro";
+import { Image } from "astro:assets";
+import yellowBgImage from "../assets/images/yellow-bg-image.webp";
 
 const activeProducts = PRODUCTS.filter((product) => product.isActive);
 ---
@@ -52,18 +54,28 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     </SectionContainer>
 
     <!-- Features Section -->
-    <SectionContainer
-      id="features"
-      class="py-24 bg-gradient-to-br from-accent to-accent/80 relative overflow-hidden"
-    >
-      <FeaturesSection
-        titleColor="text-secondary"
-        bgColor="bg-accent-500/40"
-        borderColor="ring-accent-400 hover:ring-accent-200"
-        iconColor="text-secondary"
-        cardTitleColor="text-secondary"
-        cardDescriptionColor="text-white"
-      />
+    <SectionContainer id="features" class="py-24 relative overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <Image
+          src={yellowBgImage}
+          alt="Hardy Features background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
+      </div>
+
+      <div class="relative z-10">
+        <FeaturesSection
+          titleColor="text-primary"
+          bgColor="bg-secondary-500/80"
+          borderColor="ring-secondary-600 hover:ring-secondary-900"
+          iconColor="text-primary"
+          cardTitleColor="text-primary"
+          cardDescriptionColor="text-black"
+        />
+      </div>
     </SectionContainer>
   </main>
 </Layout>
