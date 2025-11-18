@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
     description:
       "100% maní seleccionado. Sin azúcar, sin conservantes, sin vueltas.",
     fullDescription:
-      "La HARDY NATURAL es nuestro producto estrella — pura potencia nutricional y sabor auténtico. Ideal para quienes entrenan, se mueven y eligen una alimentación real, sin artificios.",
+      "La HARDY NATURAL es nuestro producto estrella — pura potencia nutricional y sabor auténtico. Ideal para quienes entrenan, se mueven y eligen una alimentación real.",
     image: naturalImage,
     weight: "380gr",
     isActive: true,
@@ -131,7 +131,7 @@ export const PRODUCTS: Product[] = [
     description:
       "La combinación perfecta entre la proteína del maní y el sabor intenso de las cookies.",
     fullDescription:
-      "HARDY COOKIES te da lo mejor de los dos mundos: nutrición natural y placer real. Sin conservantes, sin azúcar agregada, con la textura justa y trozos reales de galleta.",
+      "HARDY COOKIES te da lo mejor de los dos mundos: nutrición natural y placer real. Sin conservantes, sin azúcar agregada, con la textura justa.",
     image: cookiesImage,
     weight: "380gr",
     isActive: true,
@@ -173,7 +173,7 @@ export const PRODUCTS: Product[] = [
     name: "Crema de Maní Coco",
     shortDescription: "Energía real con frescura natural.",
     description:
-      "HARDY COCO combina la potencia proteica del maní con el sabor suave y tropical del coco.",
+      "HARDY COCO combina la potencia proteica del maní con el sabor suave.",
     fullDescription:
       "Una experiencia ligera, cremosa y naturalmente dulce, ideal para quienes buscan energía sin exceso.",
     image: cocoImage,
