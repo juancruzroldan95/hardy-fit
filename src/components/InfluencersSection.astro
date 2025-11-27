@@ -1,0 +1,27 @@
+---
+import InfluencerItem from "./InfluencerItem.astro";
+import { INFLUENCERS } from "../consts/influencers";
+---
+
+<div class="scrolling-section opacity-0">
+  <div class="text-center mb-16">
+    <h2
+      class="text-4xl md:text-5xl font-header font-extrabold text-primary uppercase mb-4"
+    >
+      Hardy en Acción
+    </h2>
+    <p class="text-xl text-black max-w-3xl mx-auto">
+      Descubrí cómo nuestra comunidad disfruta de la energía real.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto px-4">
+    {
+      INFLUENCERS.map((influencer) => (
+        <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm">
+          <InfluencerItem influencer={influencer} />
+        </div>
+      ))
+    }
+  </div>
+</div>

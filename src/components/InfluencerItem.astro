@@ -1,0 +1,53 @@
+---
+import type { Influencer } from "../consts/influencers";
+import { PRODUCTS } from "../consts/products";
+
+interface Props {
+  influencer: Influencer;
+}
+
+const { influencer } = Astro.props;
+const product = PRODUCTS.find((p) => p.slug === influencer.productSlug);
+const productName = product ? product.name : "Ver producto";
+---
+
+<div
+  class="bg-neutral-50 rounded-2xl p-4 ring-1 ring-neutral-200 hover:ring-neutral-400 transition-all duration-300 transform flex flex-col h-full"
+>
+  <!-- Video Container -->
+  <div
+    class="relative aspect-[9/16] bg-black rounded-xl overflow-hidden mb-4 shadow-inner"
+  >
+    <video
+      src={influencer.videoSrc}
+      class="w-full h-full object-cover"
+      controls
+      preload="metadata"
+      poster={influencer.thumbnail}
+    >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Info -->
+  <div class="mt-auto flex flex-col items-center text-center space-y-3">
+    <div class="space-y-1">
+      <a
+        href={`https://instagram.com/${influencer.instagram.replace("@", "")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block text-lg font-bold text-black hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] transition-all"
+      >
+        {influencer.instagram}
+      </a>
+      <h3 class="text-base text-neutral-600 font-medium">{influencer.name}</h3>
+    </div>
+
+    <a
+      href={`/producto/${influencer.productSlug}`}
+      class="block w-full bg-neutral-900 hover:bg-neutral-800 text-white text-sm py-3 px-6 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+    >
+      {productName}
+    </a>
+  </div>
+</div>
