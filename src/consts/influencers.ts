@@ -19,7 +19,7 @@ export const INFLUENCERS: Influencer[] = [
   //   id: 2,
   //   name: "Delfina Rivas", // La bailarina de tango
   //   instagram: "@delfinarivasok",
-  //   productSlug: "crema-mani-chocolate",
+  //   productSlug: "crema-mani-cookies",
   //   videoSrc:
   //     "/videos/delfi_rivas_01.mp4",
   // },

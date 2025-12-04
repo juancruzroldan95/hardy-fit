@@ -36,6 +36,7 @@ export interface Recipe {
   category?: string;
   calories?: number;
   protein?: number;
+  isActive?: boolean;
   ingredients: RecipeIngredient[];
   instructions: string[];
   benefits: string[];
@@ -48,7 +49,8 @@ export const RECIPES: Recipe[] = [
     id: 1,
     slug: "cookies-hardy-crunch",
     title: "Cookies HARDY Crunch",
-    shortDescription: "En Hardy creemos que comer bien no tiene por qué ser aburrido.",
+    shortDescription:
+      "En Hardy creemos que comer bien no tiene por qué ser aburrido.",
     fullDescription:
       "Estas cookies nacen de ese equilibrio entre placer y energía real: sin aditivos, sin excusas, con ingredientes naturales y el sabor inconfundible de nuestra crema de maní Cookies. Perfectas para después del entrenamiento, acompañar el café o disfrutar como snack saludable.",
     image: cookiesHardyCrunchImage,
@@ -79,6 +81,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Cookies HARDY", "Miel Líquida HARDY"],
     tip: "Si querés una textura más húmeda, agregá 1 cdita extra de Hardy Cookies a la mezcla.",
+    isActive: true,
   },
   {
     id: 2,
@@ -117,6 +120,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Natural HARDY", "Miel Líquida HARDY"],
     tip: "Snack helado sin culpa y lleno de energía real. Perfecto para después de entrenar o como postre fit.",
+    isActive: true,
   },
   {
     id: 3,
@@ -153,6 +157,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Cookies HARDY", "Miel Líquida HARDY"],
     tip: "Ideal para fotos, reels y desayunos ricos en energía real. Súper fácil de preparar, con sabor auténtico y textura irresistible.",
+    isActive: true,
   },
   {
     id: 4,
@@ -184,6 +189,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Natural HARDY", "Miel Líquida HARDY"],
     tip: "Perfecto pre-entreno o cuando necesitás energía inmediata sin ultraprocesados. Una dosis chiquita que marca la diferencia.",
+    isActive: true,
   },
   {
     id: 5,
@@ -191,8 +197,7 @@ export const RECIPES: Recipe[] = [
     title: "Bocaditos HARDY Coco",
     shortDescription:
       "Bolitas energéticas con un sabor tropical y natural. Pequeñas dosis de energía real, listas para acompañarte en cualquier momento del día.",
-    fullDescription:
-      "Perfectas para media mañana o antes de entrenar.",
+    fullDescription: "Perfectas para media mañana o antes de entrenar.",
     image: bocaditosHardyCocoImage,
     prepTime: 35,
     servings: "10-12 bocaditos",
@@ -219,6 +224,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Coco HARDY", "Miel Líquida HARDY"],
     tip: "Energía rápida, natural y deliciosa. Llevalos al trabajo, al gym o al aire libre — son el snack funcional que te sigue el ritmo.",
+    isActive: true,
   },
   {
     id: 6,
@@ -226,8 +232,7 @@ export const RECIPES: Recipe[] = [
     title: "Barritas Energéticas Caseras HARDY",
     shortDescription:
       "Ideal para antes del entrenamiento o como snack natural para recargar energía durante el día.",
-    fullDescription:
-      "Aporta energía real, sin aditivos ni ultraprocesados.",
+    fullDescription: "Aporta energía real, sin aditivos ni ultraprocesados.",
     image: barritasEnergeticasImage,
     prepTime: 45,
     servings: "8-10 barritas",
@@ -264,6 +269,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Natural HARDY", "Miel Sólida HARDY"],
     tip: "Perfectas para llevar al gym o como snack durante el día. Energía real sin ultraprocesados.",
+    isActive: true,
   },
   {
     id: 7,
@@ -296,6 +302,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Natural HARDY", "Miel Líquida HARDY"],
     tip: "Sin azúcar refinada ni conservantes. Solo energía real para tus entrenamientos.",
+    isActive: true,
   },
   {
     id: 8,
@@ -326,6 +333,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Vainilla HARDY"],
     tip: "Perfecto para pre-entreno o una merienda saludable y saciante.",
+    isActive: true,
   },
   {
     id: 9,
@@ -365,6 +373,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Miel Sólida HARDY", "Crema de Maní Coco HARDY"],
     tip: "Usala con yogur, frutas o simplemente sola como snack. Natural, crujiente y real. Energía hecha en casa.",
+    isActive: true,
   },
   {
     id: 10,
@@ -401,6 +410,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Cookies HARDY"],
     tip: "Rico en proteínas y grasas saludables para una recuperación muscular efectiva. Perfecto para reponer energía real después del entrenamiento sin ultraprocesados.",
+    isActive: true,
   },
   {
     id: 11,
@@ -436,6 +446,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Natural HARDY", "Miel Líquida HARDY"],
     tip: "La combinación perfecta de proteínas, energía y sabor natural. Sumá frutas frescas o semillas arriba para más textura y color.",
+    isActive: true,
   },
   {
     id: 12,
@@ -480,6 +491,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Natural HARDY", "Miel Líquida HARDY"],
     tip: "Prepará varios frascos para tener desayunos listos toda la semana. Ideal para pre-entreno o para quienes no desayunan en casa. Si querés un extra crunch, sumá granola al momento de comerlo.",
+    isActive: true,
   },
   {
     id: 13,
@@ -523,6 +535,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Vainilla HARDY", "Miel Líquida HARDY"],
     tip: "Si querés un efecto más cremoso, mezclá la crema de maní directamente dentro del porridge caliente. Para una textura más gourmet, serví con un toque de granola o coco rallado encima.",
+    isActive: true,
   },
   {
     id: 14,
@@ -565,6 +578,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Cookies HARDY", "Miel Líquida HARDY"],
     tip: "Probá alternar manzana con banana o frutillas según la estación. Si querés más proteína, acompañalas con un vaso de yogurt natural o kefir.",
+    isActive: false,
   },
   {
     id: 15,
@@ -618,6 +632,7 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Coco HARDY", "Miel Sólida HARDY"],
     tip: "Agregá rodajas de banana, coco rallado o frutas rojas para darle color y frescura. La miel sólida al enfriarse vuelve a solidificarse dándole ese brillo irresistible.",
+    isActive: true,
   },
   {
     id: 16,
@@ -670,5 +685,6 @@ export const RECIPES: Recipe[] = [
     ],
     productsUsed: ["Crema de Maní Vainilla HARDY", "Miel Líquida HARDY"],
     tip: "Para un extra de energía pre-entreno, agregá una segunda cucharada de crema de maní. Para un toque más proteico, mezclá el yogurt con proteína neutra antes de armar el bowl.",
+    isActive: true,
   },
 ];

@@ -51,7 +51,6 @@ export const PRODUCTS: Product[] = [
       "La HARDY NATURAL es nuestro producto estrella — pura potencia nutricional y sabor auténtico. Ideal para quienes entrenan, se mueven y eligen una alimentación real.",
     image: naturalImage,
     weight: "380gr",
-    isActive: true,
     purchaseLink: "https://www.hardymarket.com.ar/productos/hardy-natural1/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
@@ -81,6 +80,7 @@ export const PRODUCTS: Product[] = [
       "Normalmente, puede ocurrir la separación del aceite propio del maní",
       "Si esto sucede, tan sólo mezclá y disfrutá de tu Hardy!",
     ],
+    isActive: true,
   },
   {
     id: 2,
@@ -93,7 +93,6 @@ export const PRODUCTS: Product[] = [
       "La potencia del maní se encuentra con el cacao real. Para quienes buscan energía con un toque indulgente y nutritivo.",
     image: chocolateImage,
     weight: "380gr",
-    isActive: false,
     nutrition: {
       servingSize: "25g (1 cucharada)",
       calories: 125,
@@ -122,6 +121,7 @@ export const PRODUCTS: Product[] = [
     ],
     allergens: "Contiene derivados de maní",
     notes: ["Producto libre de gluten", "Conservar en lugar fresco y seco"],
+    isActive: false,
   },
   {
     id: 3,
@@ -134,7 +134,6 @@ export const PRODUCTS: Product[] = [
       "HARDY COOKIES te da lo mejor de los dos mundos: nutrición natural y placer real. Sin conservantes, sin azúcar agregada, con la textura justa.",
     image: cookiesImage,
     weight: "380gr",
-    isActive: true,
     purchaseLink:
       "https://www.hardymarket.com.ar/productos/crema-de-mani-cookies/",
     nutrition: {
@@ -166,6 +165,7 @@ export const PRODUCTS: Product[] = [
       "Cuando necesitás energía, pero también disfrutar. HARDY: alimentá tu instinto.",
       "Conservar en lugar fresco y seco",
     ],
+    isActive: true,
   },
   {
     id: 4,
@@ -178,7 +178,6 @@ export const PRODUCTS: Product[] = [
       "Una experiencia ligera, cremosa y naturalmente dulce, ideal para quienes buscan energía sin exceso.",
     image: cocoImage,
     weight: "380gr",
-    isActive: true,
     purchaseLink:
       "https://www.hardymarket.com.ar/productos/crema-de-mani-coco/",
     nutrition: {
@@ -212,6 +211,7 @@ export const PRODUCTS: Product[] = [
       "Producto libre de gluten",
       "Conservar en lugar fresco y seco",
     ],
+    isActive: true,
   },
   {
     id: 5,
@@ -224,7 +224,6 @@ export const PRODUCTS: Product[] = [
       "Perfecta para quienes buscan una experiencia más cremosa, equilibrada y deliciosa sin dejar de lado la nutrición real.",
     image: vainillaImage,
     weight: "380gr",
-    isActive: true,
     purchaseLink:
       "https://www.hardymarket.com.ar/productos/crema-de-mani-vainilla/",
     nutrition: {
@@ -257,6 +256,7 @@ export const PRODUCTS: Product[] = [
       "Producto libre de gluten",
       "Conservar en lugar fresco y seco",
     ],
+    isActive: true,
   },
   {
     id: 6,
@@ -267,7 +267,6 @@ export const PRODUCTS: Product[] = [
       "Miel pura y natural en su estado más fluido. Endulzante natural premium.",
     image: mielLiquidaImage,
     weight: "380gr",
-    isActive: true,
     purchaseLink: "https://www.hardymarket.com.ar/productos/miel-liquida/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
@@ -284,6 +283,7 @@ export const PRODUCTS: Product[] = [
     ingredients: ["Miel Pura 100%"],
     benefits: ["Endulzante Natural", "Antibacteriano", "Energía Rápida"],
     notes: ["Producto natural", "Conservar en lugar fresco y seco"],
+    isActive: true,
   },
   {
     id: 7,
@@ -294,7 +294,6 @@ export const PRODUCTS: Product[] = [
       "Miel cristalizada naturalmente. Textura única y sabor intenso.",
     image: mielSolidaImage,
     weight: "380gr",
-    isActive: true,
     purchaseLink: "https://www.hardymarket.com.ar/productos/miel-solida/",
     nutrition: {
       servingSize: "25g (1 cucharada)",
@@ -315,5 +314,6 @@ export const PRODUCTS: Product[] = [
       "La cristalización es un proceso natural",
       "Conservar en lugar fresco y seco",
     ],
+    isActive: true,
   },
 ];

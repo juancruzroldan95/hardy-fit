@@ -7,6 +7,8 @@ import { RECIPES } from "../consts/recipes";
 import Clock from "../icons/Clock.astro";
 import UsersGroup from "../icons/UsersGroup.astro";
 import yellowBgImage from "../assets/images/yellow-bg-image.webp";
+
+const activeRecipes = RECIPES.filter((recipe) => recipe.isActive !== false);
 ---
 
 <Layout
@@ -44,8 +46,8 @@ import yellowBgImage from "../assets/images/yellow-bg-image.webp";
     <SectionContainer id="recipes" class="py-16 bg-neutral-50">
       <div class="scrolling-section opacity-0">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {
-            RECIPES.map((recipe) => (
+        {
+            activeRecipes.map((recipe) => (
               <a
                 href={`/receta/${recipe.slug}`}
                 class="card bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-primary/50 transition-all duration-300 transform hover:scale-[1.02] group"
@@ -154,7 +156,7 @@ import yellowBgImage from "../assets/images/yellow-bg-image.webp";
   import { animate, stagger, inView } from "motion";
 
   const isMobile = window.innerWidth < 768;
-  const threshold = isMobile ? 0.02 : 0.1;
+  const threshold = isMobile ? 0.02 : 0.08;
 
   inView(
     ".scrolling-section",
