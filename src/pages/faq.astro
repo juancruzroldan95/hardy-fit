@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
+import { FAQS } from "../consts/faqs";
 ---
 
 <Layout
@@ -20,14 +21,14 @@ import SectionContainer from "../components/SectionContainer.astro";
       >
       </div>
       <div
-        class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
+        class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
       >
         <h1
-          class="text-4xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6"
+          class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase mb-4 text-center"
         >
           Preguntas frecuentes
         </h1>
-        <p class="text-xl text-neutral-700 max-w-3xl leading-relaxed mx-auto">
+        <p class="text-neutral-700 text-center mb-8">
           Acá vas a encontrar respuestas rápidas sobre productos, compras,
           envíos y más. Si todavía te queda alguna duda, podés escribirnos
           cuando quieras.
@@ -38,7 +39,7 @@ import SectionContainer from "../components/SectionContainer.astro";
     <!-- FAQ Section -->
     <SectionContainer id="faq" class="py-16 bg-white">
       <div class="max-w-4xl mx-auto scrolling-section opacity-0 space-y-6">
-        <h2
+        <!-- <h2
           class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase mb-4 text-center"
         >
           Todo lo que necesitás saber
@@ -46,231 +47,41 @@ import SectionContainer from "../components/SectionContainer.astro";
         <p class="text-neutral-700 text-center mb-8">
           Si tu pregunta no está acá, escribinos por WhatsApp o desde la sección
           de contacto y te ayudamos.
-        </p>
+        </p> -->
 
         <div class="space-y-4">
-          <!-- General -->
-          <div class="bg-neutral-50 rounded-2xl p-6">
-            <h3 class="text-xl font-header font-bold text-primary mb-4">
-              Sobre los productos
-            </h3>
-            <div class="space-y-2">
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="productos-1"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿Las cremas de maní Hardy tienen azúcar agregada?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="productos-1"
-              >
-                <p class="pt-2 text-neutral-700">
-                  No. Nuestras cremas de maní están elaboradas sin azúcar
-                  agregada. Algunas variedades pueden incluir endulzantes
-                  naturales o ingredientes extra (como vainilla o sabores), pero
-                  siempre lo vas a ver claramente detallado en la etiqueta.
-                </p>
+          {
+            FAQS.map((section) => (
+              <div class="bg-neutral-50 rounded-2xl p-6">
+                <h3 class="text-xl font-header font-bold text-primary mb-4">
+                  {section.title}
+                </h3>
+                <div class="space-y-2">
+                  {section.items.map((item) => (
+                    <>
+                      <button
+                        class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                        data-faq-id={item.id}
+                      >
+                        <span class="font-semibold text-neutral-900">
+                          {item.question}
+                        </span>
+                        <span class="faq-icon text-primary text-2xl leading-none select-none">
+                          +
+                        </span>
+                      </button>
+                      <div
+                        class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                        data-faq-panel={item.id}
+                      >
+                        <p class="pt-2 text-neutral-700">{item.answer}</p>
+                      </div>
+                    </>
+                  ))}
+                </div>
               </div>
-
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="productos-2"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿Son aptas para personas celíacas?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="productos-2"
-              >
-                <p class="pt-2 text-neutral-700">
-                  Muchos de nuestros productos son libres de gluten, pero
-                  siempre te recomendamos revisar la información del envase para
-                  ver el logo “Sin TACC” o la aclaración correspondiente. Ante
-                  cualquier duda puntual, escribinos y te asesoramos.
-                </p>
-              </div>
-
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="productos-3"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿Cómo debo conservar la crema de maní?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="productos-3"
-              >
-                <p class="pt-2 text-neutral-700">
-                  Te recomendamos guardar el frasco en un lugar fresco, seco y
-                  lejos de la luz directa del sol. No es necesario refrigerar,
-                  pero podés hacerlo si preferís una textura más firme. Si se
-                  separa el aceite, es normal: solo mezclá bien y listo.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Compras y envíos -->
-          <div class="bg-neutral-50 rounded-2xl p-6">
-            <h3 class="text-xl font-header font-bold text-primary mb-4">
-              Compras y envíos
-            </h3>
-            <div class="space-y-2">
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="envios-1"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿A qué zonas realizan envíos?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="envios-1"
-              >
-                <p class="pt-2 text-neutral-700">
-                  Realizamos envíos a todo el país a través de correos y
-                  operadores logísticos. Durante el proceso de compra vas a ver
-                  las opciones disponibles y el costo según tu ubicación.
-                </p>
-              </div>
-
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="envios-2"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿Cuánto tarda en llegar mi pedido?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="envios-2"
-              >
-                <p class="pt-2 text-neutral-700">
-                  Los tiempos pueden variar según la ciudad y el medio de envío,
-                  pero en general los pedidos se entregan entre 3 y 7 días
-                  hábiles luego de acreditado el pago. Apenas despachamos tu
-                  compra, te enviamos el número de seguimiento.
-                </p>
-              </div>
-
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="envios-3"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿Qué medios de pago aceptan?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="envios-3"
-              >
-                <p class="pt-2 text-neutral-700">
-                  Podés pagar con tarjeta de crédito, débito, billeteras
-                  virtuales y otros medios habilitados en nuestra tienda online.
-                  Todas las transacciones se procesan a través de plataformas
-                  seguras.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mayoristas -->
-          <div class="bg-neutral-50 rounded-2xl p-6">
-            <h3 class="text-xl font-header font-bold text-primary mb-4">
-              Mayoristas y comercios
-            </h3>
-            <div class="space-y-2">
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="mayoristas-1"
-              >
-                <span class="font-semibold text-neutral-900">
-                  Tengo un local o gimnasio, ¿puedo vender Hardy?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="mayoristas-1"
-              >
-                <p class="pt-2 text-neutral-700">
-                  ¡Obvio! Trabajamos con gimnasios, dietéticas y distintos
-                  puntos de venta en todo el país. Podés ver más información en
-                  la sección de mayoristas o escribirnos para armar un plan a tu
-                  medida.
-                </p>
-              </div>
-
-              <button
-                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
-                data-faq-id="mayoristas-2"
-              >
-                <span class="font-semibold text-neutral-900">
-                  ¿Tienen packs especiales para compra mayorista?
-                </span>
-                <span
-                  class="faq-icon text-primary text-2xl leading-none select-none"
-                >
-                  +
-                </span>
-              </button>
-              <div
-                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
-                data-faq-panel="mayoristas-2"
-              >
-                <p class="pt-2 text-neutral-700">
-                  Sí, contamos con packs pensados para reventa y para consumo en
-                  clubes, boxes y gimnasios. Podés ver nuestras propuestas en la
-                  sección “Mayoristas” o contactarnos para recibir una propuesta
-                  personalizada.
-                </p>
-              </div>
-            </div>
-          </div>
+            ))
+          }
         </div>
 
         <div class="mt-10 text-center">
