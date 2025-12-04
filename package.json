@@ -12,6 +12,7 @@
     "@fontsource-variable/nunito-sans": "^5.2.7",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.9",
+    "mapbox-gl": "^3.16.0",
     "motion": "^12.23.24",
     "tailwindcss": "^4.1.13"
   },
