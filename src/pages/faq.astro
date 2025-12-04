@@ -1,0 +1,348 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+---
+
+<Layout
+  title="Preguntas Frecuentes - HARDY"
+  description="Respondemos las dudas más comunes sobre nuestros productos, compras y envíos."
+>
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <SectionContainer
+      id="hero"
+      class="relative py-16 overflow-hidden"
+      noContainer={true}
+    >
+      <div class="absolute inset-0 bg-cream"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.08),transparent_55%)]"
+      >
+      </div>
+      <div
+        class="relative max-w-7xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
+      >
+        <h1
+          class="text-4xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6"
+        >
+          Preguntas frecuentes
+        </h1>
+        <p class="text-xl text-neutral-700 max-w-3xl leading-relaxed mx-auto">
+          Acá vas a encontrar respuestas rápidas sobre productos, compras,
+          envíos y más. Si todavía te queda alguna duda, podés escribirnos
+          cuando quieras.
+        </p>
+      </div>
+    </SectionContainer>
+
+    <!-- FAQ Section -->
+    <SectionContainer id="faq" class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto scrolling-section opacity-0 space-y-6">
+        <h2
+          class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase mb-4 text-center"
+        >
+          Todo lo que necesitás saber
+        </h2>
+        <p class="text-neutral-700 text-center mb-8">
+          Si tu pregunta no está acá, escribinos por WhatsApp o desde la sección
+          de contacto y te ayudamos.
+        </p>
+
+        <div class="space-y-4">
+          <!-- General -->
+          <div class="bg-neutral-50 rounded-2xl p-6">
+            <h3 class="text-xl font-header font-bold text-primary mb-4">
+              Sobre los productos
+            </h3>
+            <div class="space-y-2">
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="productos-1"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿Las pastas de maní Hardy tienen azúcar agregada?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="productos-1"
+              >
+                <p class="pt-2 text-neutral-700">
+                  No. Nuestras pastas de maní están elaboradas sin azúcar
+                  agregada. Algunas variedades pueden incluir endulzantes
+                  naturales o ingredientes extra (como chocolate o sabores),
+                  pero siempre lo vas a ver claramente detallado en la etiqueta.
+                </p>
+              </div>
+
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="productos-2"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿Son aptas para personas celíacas?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="productos-2"
+              >
+                <p class="pt-2 text-neutral-700">
+                  Muchos de nuestros productos son libres de gluten, pero
+                  siempre te recomendamos revisar la información del envase para
+                  ver el logo “Sin TACC” o la aclaración correspondiente. Ante
+                  cualquier duda puntual, escribinos y te asesoramos.
+                </p>
+              </div>
+
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="productos-3"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿Cómo debo conservar la pasta de maní?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="productos-3"
+              >
+                <p class="pt-2 text-neutral-700">
+                  Te recomendamos guardar el frasco en un lugar fresco, seco y
+                  lejos de la luz directa del sol. No es necesario refrigerar,
+                  pero podés hacerlo si preferís una textura más firme. Si se
+                  separa el aceite, es normal: solo mezclá bien y listo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compras y envíos -->
+          <div class="bg-neutral-50 rounded-2xl p-6">
+            <h3 class="text-xl font-header font-bold text-primary mb-4">
+              Compras y envíos
+            </h3>
+            <div class="space-y-2">
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="envios-1"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿A qué zonas realizan envíos?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="envios-1"
+              >
+                <p class="pt-2 text-neutral-700">
+                  Realizamos envíos a todo el país a través de correos y
+                  operadores logísticos. Durante el proceso de compra vas a ver
+                  las opciones disponibles y el costo según tu ubicación.
+                </p>
+              </div>
+
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="envios-2"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿Cuánto tarda en llegar mi pedido?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="envios-2"
+              >
+                <p class="pt-2 text-neutral-700">
+                  Los tiempos pueden variar según la ciudad y el medio de envío,
+                  pero en general los pedidos se entregan entre 3 y 7 días
+                  hábiles luego de acreditado el pago. Apenas despachamos tu
+                  compra, te enviamos el número de seguimiento.
+                </p>
+              </div>
+
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="envios-3"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿Qué medios de pago aceptan?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="envios-3"
+              >
+                <p class="pt-2 text-neutral-700">
+                  Podés pagar con tarjeta de crédito, débito, billeteras
+                  virtuales y otros medios habilitados en nuestra tienda online.
+                  Todas las transacciones se procesan a través de plataformas
+                  seguras.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mayoristas -->
+          <div class="bg-neutral-50 rounded-2xl p-6">
+            <h3 class="text-xl font-header font-bold text-primary mb-4">
+              Mayoristas y comercios
+            </h3>
+            <div class="space-y-2">
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="mayoristas-1"
+              >
+                <span class="font-semibold text-neutral-900">
+                  Tengo un local o gimnasio, ¿puedo vender Hardy?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="mayoristas-1"
+              >
+                <p class="pt-2 text-neutral-700">
+                  ¡Obvio! Trabajamos con gimnasios, dietéticas y distintos
+                  puntos de venta en todo el país. Podés ver más información en
+                  la sección de mayoristas o escribirnos para armar un plan a tu
+                  medida.
+                </p>
+              </div>
+
+              <button
+                class="faq-item w-full text-left py-3 flex items-center justify-between gap-4 border-b border-neutral-200 last:border-b-0"
+                data-faq-id="mayoristas-2"
+              >
+                <span class="font-semibold text-neutral-900">
+                  ¿Tienen packs especiales para compra mayorista?
+                </span>
+                <span
+                  class="faq-icon text-primary text-2xl leading-none select-none"
+                >
+                  +
+                </span>
+              </button>
+              <div
+                class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
+                data-faq-panel="mayoristas-2"
+              >
+                <p class="pt-2 text-neutral-700">
+                  Sí, contamos con packs pensados para reventa y para consumo en
+                  clubes, boxes y gimnasios. Podés ver nuestras propuestas en la
+                  sección “Mayoristas” o contactarnos para recibir una propuesta
+                  personalizada.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <p class="text-neutral-700 mb-4">¿No encontraste lo que buscabas?</p>
+          <a
+            href="/contactanos"
+            class="inline-block bg-primary text-white px-8 py-3 rounded-full font-bold uppercase text-sm md:text-base transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          >
+            Ir a Contacto
+          </a>
+        </div>
+      </div>
+    </SectionContainer>
+  </main>
+</Layout>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  const isMobile = window.innerWidth < 768;
+  const threshold = isMobile ? 0.1 : 0.2;
+
+  inView(
+    ".scrolling-section",
+    (element) => {
+      animate(
+        element,
+        { opacity: [0, 1], y: [50, 0] },
+        { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+      );
+    },
+    { amount: threshold },
+  );
+
+  // Simple accordion with smooth height transition
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll<HTMLButtonElement>(".faq-item");
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const id = item.getAttribute("data-faq-id");
+        if (!id) return;
+
+        const panel = document.querySelector<HTMLDivElement>(
+          `[data-faq-panel="${id}"]`,
+        );
+        const icon = item.querySelector<HTMLElement>(".faq-icon");
+
+        if (!panel) return;
+
+        const isOpen = panel.classList.contains("open");
+
+        // Close all panels
+        document
+          .querySelectorAll<HTMLDivElement>(".faq-panel.open")
+          .forEach((openPanel) => {
+            openPanel.style.maxHeight = "0px";
+            openPanel.classList.remove("open");
+          });
+        document
+          .querySelectorAll<HTMLElement>(".faq-icon")
+          .forEach((iconEl) => {
+            iconEl.textContent = "+";
+          });
+
+        // Toggle current
+        if (!isOpen) {
+          panel.classList.add("open");
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          if (icon) icon.textContent = "−";
+        }
+      });
+    });
+  });
+</script>

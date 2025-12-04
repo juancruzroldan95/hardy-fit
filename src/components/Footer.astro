@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import hardyLogo from "../assets/images/hardy-red.webp";
 import Instagram from "../icons/Instagram.astro";
 import Twitter from "../icons/Twitter.astro";
+import TikTok from "../icons/TikTok.astro";
 ---
 
 <footer class="bg-white border-t border-neutral-200">
@@ -76,12 +77,12 @@ import Twitter from "../icons/Twitter.astro";
           </li>
           <li>
             <a
-              href="#"
+              href="/faq"
               class="text-neutral-700 hover:text-primary-600 transition-colors"
               >Preguntas frecuentes</a
             >
           </li>
-          <li>
+          <!-- <li>
             <a
               href="#"
               class="text-neutral-700 hover:text-primary-600 transition-colors"
@@ -94,7 +95,7 @@ import Twitter from "../icons/Twitter.astro";
               class="text-neutral-700 hover:text-primary-600 transition-colors"
               >Devoluciones</a
             >
-          </li>
+          </li> -->
         </ul>
       </div>
 
@@ -116,6 +117,14 @@ import Twitter from "../icons/Twitter.astro";
           >
             <Instagram class="h-6 w-6" />
           </a>
+          <a
+            href="https://www.tiktok.com/@hardy.arg"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-neutral-600 hover:text-primary-600 transition-colors"
+          >
+            <TikTok class="h-6 w-6" />
+          </a>
         </div>
       </div>
     </div>
@@ -126,7 +135,7 @@ import Twitter from "../icons/Twitter.astro";
       <p class="text-neutral-700 text-sm">
         © 2025 HARDY. Todos los derechos reservados.
       </p>
-      <div class="flex space-x-6 mt-4 md:mt-0">
+      <!-- <div class="flex space-x-6 mt-4 md:mt-0">
         <a
           href="#"
           class="text-neutral-700 hover:text-neutral-900 text-sm transition-colors"
@@ -137,7 +146,7 @@ import Twitter from "../icons/Twitter.astro";
           class="text-neutral-700 hover:text-neutral-900 text-sm transition-colors"
           >Términos y Condiciones</a
         >
-      </div>
+      </div> -->
     </div>
   </div>
 </footer>
