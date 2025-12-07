@@ -1,18 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SectionContainer from "../components/SectionContainer.astro";
-import ProductItem from "../components/ProductItem.astro";
-import { PRODUCTS } from "../consts/products";
-import FeaturesSection from "../components/FeaturesSection.astro";
 import { Image } from "astro:assets";
+
+import SectionContainer from "../components/SectionContainer.astro";
+
+import ProductItem from "../components/ProductItem.astro";
+import FeaturesSection from "../components/FeaturesSection.astro";
+import CTASection from "../components/CTASection.astro";
+
+import { PRODUCTS } from "../consts/products";
+
 import yellowBgImage from "../assets/images/yellow-bg-image.webp";
+import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
 
 const activeProducts = PRODUCTS.filter((product) => product.isActive);
 ---
 
 <Layout
   title="Productos Premium - HARDY"
-  description="Descubrí nuestra colección de pastas de maní ultra premium elaboradas para atletas y fanáticos del fitness."
+  description="Descubrí nuestra colección de cremas de maní ultra premium elaboradas para atletas y fanáticos del fitness."
 >
   <main class="pt-16">
     <!-- Hero Section -->
@@ -74,6 +80,27 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
           iconColor="text-primary"
           cardTitleColor="text-primary"
           cardDescriptionColor="text-black"
+        />
+      </div>
+    </SectionContainer>
+
+    <SectionContainer id="cta" class="py-24 relative overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <Image
+          src={ctaBgImage}
+          alt="Hardy CTA background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
+      </div>
+
+      <div class="relative z-10">
+        <CTASection
+          titleColor="text-primary"
+          buttonBgColor="bg-primary"
+          buttonTextColor="text-white"
         />
       </div>
     </SectionContainer>

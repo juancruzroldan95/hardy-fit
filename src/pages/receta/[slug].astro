@@ -8,6 +8,7 @@ import Clock from "../../icons/Clock.astro";
 import UsersGroup from "../../icons/UsersGroup.astro";
 import CircleCheckFilled from "../../icons/CircleCheckFilled.astro";
 import StarFilled from "../../icons/StarFilled.astro";
+import ctaBgImage from "../../assets/images/skyblue-bg-image.webp";
 
 export function getStaticPaths() {
   return RECIPES.map((recipe) => ({
@@ -167,7 +168,7 @@ const { recipe } = Astro.props;
             </ul>
             <a
               href="/products"
-              class="block w-full bg-accent hover:bg-accent/90 text-white text-center px-6 py-4 rounded-full font-bold uppercase transition-all duration-300 hover:scale-105"
+              class="block w-full bg-primary text-white text-center px-6 py-4 rounded-full font-bold uppercase transition-all duration-300 hover:scale-105"
             >
               Ver Productos
             </a>
@@ -246,34 +247,41 @@ const { recipe } = Astro.props;
     </SectionContainer>
 
     <!-- CTA Section -->
-    <SectionContainer
-      id="cta"
-      class="py-16 bg-gradient-to-br from-accent to-accent/80"
-    >
-      <div
-        class="max-w-4xl mx-auto text-center space-y-8 scrolling-section opacity-0"
-      >
-        <h2
-          class="text-3xl md:text-4xl font-header font-extrabold text-white uppercase"
+    <SectionContainer id="cta" class="py-16 relative overflow-hidden">
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <Image
+          src={ctaBgImage}
+          alt="Hardy CTA background"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          quality={85}
+        />
+      </div>
+
+      <div class="relative z-10">
+        <div
+          class="max-w-4xl mx-auto text-center space-y-8 scrolling-section opacity-0"
         >
-          ¿Listo para preparar esta receta?
-        </h2>
-        <p class="text-xl text-white/90">
-          Conseguí todos los productos Hardy que necesitás
-        </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <a
-            href="/products"
-            class="bg-secondary hover:bg-secondary/90 text-black px-8 py-4 rounded-full font-bold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          <h2
+            class="text-3xl md:text-4xl font-header font-extrabold text-primary uppercase"
           >
-            Ver Productos
-          </a>
-          <a
-            href="/recipes"
-            class="bg-white hover:bg-white/90 text-primary px-8 py-4 rounded-full font-bold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          >
-            Más Recetas
-          </a>
+            ¿Listo para preparar esta receta?
+          </h2>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center">
+            <a
+              href="/productos"
+              class="bg-primary text-white px-8 py-4 rounded-full font-bold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              Ver Productos
+            </a>
+            <a
+              href="/recetas"
+              class="bg-secondary text-primary px-8 py-4 rounded-full font-bold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            >
+              Más Recetas
+            </a>
+          </div>
         </div>
       </div>
     </SectionContainer>

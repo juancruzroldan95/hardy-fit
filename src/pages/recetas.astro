@@ -7,6 +7,8 @@ import { RECIPES } from "../consts/recipes";
 import Clock from "../icons/Clock.astro";
 import UsersGroup from "../icons/UsersGroup.astro";
 import yellowBgImage from "../assets/images/yellow-bg-image.webp";
+
+const activeRecipes = RECIPES.filter((recipe) => recipe.isActive !== false);
 ---
 
 <Layout
@@ -40,40 +42,12 @@ import yellowBgImage from "../assets/images/yellow-bg-image.webp";
       </div>
     </SectionContainer>
 
-    <!-- Recipe Categories -->
-    <!-- <SectionContainer
-      id="categories"
-      class="py-8 bg-neutral-50 top-16 z-40 border-b border-neutral-200"
-    >
-      <div class="flex flex-wrap justify-center gap-4">
-        <button class="bg-primary text-white px-6 py-2 rounded-full font-medium"
-          >Todas las Recetas</button
-        >
-        <button
-          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
-          >Desayuno</button
-        >
-        <button
-          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
-          >Pre-Entreno</button
-        >
-        <button
-          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
-          >Post-Entreno</button
-        >
-        <button
-          class="bg-neutral-100 hover:bg-neutral-200 text-neutral-700 hover:text-neutral-900 px-6 py-2 rounded-full font-medium transition-colors"
-          >Snacks</button
-        >
-      </div>
-    </SectionContainer> -->
-
     <!-- Recipes Grid -->
     <SectionContainer id="recipes" class="py-16 bg-neutral-50">
       <div class="scrolling-section opacity-0">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {
-            RECIPES.map((recipe) => (
+        {
+            activeRecipes.map((recipe) => (
               <a
                 href={`/receta/${recipe.slug}`}
                 class="card bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-primary/50 transition-all duration-300 transform hover:scale-[1.02] group"
@@ -182,7 +156,7 @@ import yellowBgImage from "../assets/images/yellow-bg-image.webp";
   import { animate, stagger, inView } from "motion";
 
   const isMobile = window.innerWidth < 768;
-  const threshold = isMobile ? 0.04 : 0.1;
+  const threshold = isMobile ? 0.02 : 0.08;
 
   inView(
     ".scrolling-section",

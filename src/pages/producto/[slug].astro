@@ -4,6 +4,8 @@ import { Image } from "astro:assets";
 import { PRODUCTS } from "../../consts/products";
 import type { Product } from "../../consts/products";
 import CircleCheckFilled from "../../icons/CircleCheckFilled.astro";
+import ChevronLeft from "../../icons/ChevronLeft.astro";
+import ChevronRight from "../../icons/ChevronRight.astro";
 
 export async function getStaticPaths() {
   return PRODUCTS.map((product) => ({
@@ -300,7 +302,69 @@ const otherProducts = PRODUCTS.filter(
             <h2 class="text-4xl font-header font-extrabold text-primary uppercase mb-12 text-center">
               También te puede gustar
             </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Mobile carousel -->
+            <div class="relative md:hidden">
+              <div class="related-carousel-container overflow-hidden">
+                <div class="related-carousel-track flex">
+                  {otherProducts.map((relatedProduct) => (
+                    <div class="related-carousel-item min-w-full px-2">
+                      <a
+                        href={`/producto/${relatedProduct.slug}`}
+                        class="bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-primary transition-all duration-300 hover:scale-105 group block"
+                      >
+                        <div class="aspect-video bg-white flex items-center justify-center">
+                          <Image
+                            src={relatedProduct.image}
+                            alt={relatedProduct.name}
+                            width={400}
+                            height={400}
+                            class="w-full h-full object-contain p-6"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div class="p-6">
+                          <h3 class="text-xl font-header font-bold text-primary uppercase mb-2 group-hover:text-accent transition-colors">
+                            {relatedProduct.name}
+                          </h3>
+                          <p class="text-neutral-700 text-sm">
+                            {relatedProduct.description}
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Navigation dots -->
+              <div class="flex justify-center gap-2 mt-6">
+                {otherProducts.map((_, index) => (
+                  <button
+                    class="related-carousel-dot w-3 h-3 rounded-full bg-neutral-300 transition-all duration-300"
+                    data-index={index}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <!-- Navigation arrows -->
+              <button
+                class="related-carousel-prev absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                aria-label="Previous related product"
+              >
+                <ChevronLeft class="w-6 h-6 text-primary" />
+              </button>
+              <button
+                class="related-carousel-next absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                aria-label="Next related product"
+              >
+                <ChevronRight class="w-6 h-6 text-primary" />
+              </button>
+            </div>
+
+            <!-- Desktop grid -->
+            <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
               {otherProducts.map((relatedProduct) => (
                 <a
                   href={`/producto/${relatedProduct.slug}`}
@@ -352,4 +416,242 @@ const otherProducts = PRODUCTS.filter(
     },
     { amount: threshold },
   );
+
+  class RelatedProductCarousel {
+    private container: HTMLElement;
+    private track: HTMLElement;
+    private dots: NodeListOf<HTMLElement>;
+    private prevBtn: HTMLElement;
+    private nextBtn: HTMLElement;
+    private currentIndex: number = 0;
+    private totalItems: number;
+
+    // Touch/drag state
+    private isDragging: boolean = false;
+    private startX: number = 0;
+    private currentX: number = 0;
+    private offsetX: number = 0;
+    private startTime: number = 0;
+    private velocity: number = 0;
+    private autoAdvanceInterval: number | null = null;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+      this.track = container.querySelector(".related-carousel-track")!;
+      this.dots = container.querySelectorAll(".related-carousel-dot");
+      this.prevBtn = container.querySelector(".related-carousel-prev")!;
+      this.nextBtn = container.querySelector(".related-carousel-next")!;
+      this.totalItems = this.dots.length;
+
+      if (this.totalItems <= 1) return;
+
+      this.init();
+    }
+
+    init() {
+      // Set initial state
+      this.updateCarousel();
+
+      // Button listeners
+      this.prevBtn.addEventListener("click", () => this.prev());
+      this.nextBtn.addEventListener("click", () => this.next());
+
+      // Dot listeners
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => this.goTo(index));
+      });
+
+      // Touch listeners
+      this.track.addEventListener(
+        "touchstart",
+        (e) => this.handleStart(e.touches[0].clientX),
+        { passive: false },
+      );
+      this.track.addEventListener(
+        "touchmove",
+        (e) => {
+          e.preventDefault();
+          this.handleMove(e.touches[0].clientX);
+        },
+        { passive: false },
+      );
+      this.track.addEventListener("touchend", () => this.handleEnd());
+
+      // Mouse listeners for desktop testing
+      this.track.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        this.handleStart(e.clientX);
+      });
+      this.track.addEventListener("mousemove", (e) => {
+        if (this.isDragging) {
+          e.preventDefault();
+          this.handleMove(e.clientX);
+        }
+      });
+      this.track.addEventListener("mouseup", () => this.handleEnd());
+      this.track.addEventListener("mouseleave", () => {
+        if (this.isDragging) {
+          this.handleEnd();
+        }
+      });
+
+      // Prevent image drag
+      this.track.addEventListener("dragstart", (e) => e.preventDefault());
+
+      // Auto-advance every 5 seconds
+      this.startAutoAdvance();
+    }
+
+    startAutoAdvance() {
+      if (this.autoAdvanceInterval) {
+        clearInterval(this.autoAdvanceInterval);
+      }
+      this.autoAdvanceInterval = window.setInterval(() => {
+        if (!this.isDragging) {
+          this.next();
+        }
+      }, 5000);
+    }
+
+    handleStart(clientX: number) {
+      this.isDragging = true;
+      this.startX = clientX;
+      this.currentX = clientX;
+      this.startTime = Date.now();
+      this.offsetX = -this.currentIndex * 100;
+
+      // Disable transitions during drag
+      this.track.style.transition = "none";
+
+      // Stop auto-advance while dragging
+      if (this.autoAdvanceInterval) {
+        clearInterval(this.autoAdvanceInterval);
+      }
+    }
+
+    handleMove(clientX: number) {
+      if (!this.isDragging) return;
+
+      this.currentX = clientX;
+      const diff = this.currentX - this.startX;
+      const trackWidth = this.track.offsetWidth;
+      const dragPercentage = (diff / trackWidth) * 100;
+
+      // Calculate velocity for momentum
+      const timeDiff = Date.now() - this.startTime;
+      if (timeDiff > 0) {
+        this.velocity = (diff / timeDiff) * 16; // pixels per frame (assuming 60fps)
+      }
+
+      // Apply drag offset with boundaries
+      const minOffset = -((this.totalItems - 1) * 100);
+      const maxOffset = 0;
+      const newOffset = this.offsetX + dragPercentage;
+
+      // Apply resistance at boundaries
+      let finalOffset = newOffset;
+      if (newOffset > maxOffset) {
+        finalOffset = maxOffset + (newOffset - maxOffset) * 0.3;
+      } else if (newOffset < minOffset) {
+        finalOffset = minOffset + (newOffset - minOffset) * 0.3;
+      }
+
+      this.track.style.transform = `translateX(${finalOffset}%)`;
+    }
+
+    handleEnd() {
+      if (!this.isDragging) return;
+
+      this.isDragging = false;
+
+      // Re-enable transitions
+      this.track.style.transition = "transform 0.5s ease-out";
+
+      const diff = this.currentX - this.startX;
+      const trackWidth = this.track.offsetWidth;
+      const dragPercentage = (diff / trackWidth) * 100;
+      const swipeThreshold = 30; // Minimum swipe distance
+      const velocityThreshold = 0.5; // Minimum velocity for momentum
+
+      // Determine target index based on swipe distance and velocity
+      let targetIndex = this.currentIndex;
+
+      if (
+        Math.abs(this.velocity) > velocityThreshold ||
+        Math.abs(dragPercentage) > swipeThreshold
+      ) {
+        if (
+          dragPercentage > swipeThreshold ||
+          this.velocity > velocityThreshold
+        ) {
+          // Swipe right - go to previous
+          targetIndex = Math.max(0, this.currentIndex - 1);
+        } else if (
+          dragPercentage < -swipeThreshold ||
+          this.velocity < -velocityThreshold
+        ) {
+          // Swipe left - go to next
+          targetIndex = Math.min(this.totalItems - 1, this.currentIndex + 1);
+        } else {
+          // Not enough swipe, snap back to current
+          targetIndex = this.currentIndex;
+        }
+      } else {
+        // Snap to nearest slide
+        const currentOffset = this.offsetX + dragPercentage;
+        const slidePosition = -currentOffset / 100;
+        targetIndex = Math.round(slidePosition);
+        targetIndex = Math.max(0, Math.min(this.totalItems - 1, targetIndex));
+      }
+
+      this.currentIndex = targetIndex;
+      this.updateCarousel();
+      this.startAutoAdvance();
+    }
+
+    prev() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.totalItems) % this.totalItems;
+      this.updateCarousel();
+      this.startAutoAdvance();
+    }
+
+    next() {
+      this.currentIndex = (this.currentIndex + 1) % this.totalItems;
+      this.updateCarousel();
+      this.startAutoAdvance();
+    }
+
+    goTo(index: number) {
+      this.currentIndex = index;
+      this.updateCarousel();
+      this.startAutoAdvance();
+    }
+
+    updateCarousel() {
+      // Move track
+      const offset = -this.currentIndex * 100;
+      this.track.style.transform = `translateX(${offset}%)`;
+      this.track.style.transition = "transform 0.5s ease-out";
+
+      // Update dots
+      this.dots.forEach((dot, index) => {
+        if (index === this.currentIndex) {
+          dot.classList.add("bg-primary", "scale-125");
+          dot.classList.remove("bg-neutral-300");
+        } else {
+          dot.classList.remove("bg-primary", "scale-125");
+          dot.classList.add("bg-neutral-300");
+        }
+      });
+    }
+  }
+
+  // Initialize related product carousels on mobile
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousels = document.querySelectorAll(".related-carousel-container");
+    carousels.forEach((container) => {
+      new RelatedProductCarousel(container.parentElement as HTMLElement);
+    });
+  });
 </script>
