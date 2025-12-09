@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import "mapbox-gl/dist/mapbox-gl.css";
+import mapScript from "../scripts/distribuidores-map.ts?url";
+import LocationCard from "../components/LocationCard.astro";
+import { LOCATIONS } from "../consts/locations";
+
+const MAPBOX_TOKEN = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+const MAPBOX_STYLE_URL =
+  "mapbox://styles/juancruzroldan95/cmiw684wz004t01s76bc4hbfo";
+const MAP_CENTER = [-71.06707, 42.35072];
+const MAP_ZOOM = 9;
+---
+
+<Layout
+  title="Puntos de venta - HARDY"
+  description="Encontrá los puntos de venta donde podés conseguir nuestros productos. Usá el listado o navega en el mapa."
+>
+  <main class="pt-16">
+    <!-- Hero -->
+    <SectionContainer
+      id="hero"
+      class="relative py-16 overflow-hidden"
+      noContainer={true}
+    >
+      <div class="absolute inset-0 bg-cream"></div>
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,33,54,0.12),transparent_55%)]"
+      >
+      </div>
+      <div
+        class="relative max-w-5xl mx-auto px-6 lg:px-8 text-center scrolling-section opacity-0"
+      >
+        <h1
+          class="text-4xl md:text-6xl font-header font-extrabold text-primary uppercase mb-4"
+        >
+          Puntos de venta HARDY
+        </h1>
+        <p
+          class="text-lg md:text-xl text-neutral-700 leading-relaxed max-w-3xl mx-auto"
+        >
+          Localizá los puntos de venta donde podés conseguir nuestros productos.
+          Usá el listado o navega en el mapa para encontrar la tienda más
+          cercana.
+        </p>
+      </div>
+    </SectionContainer>
+
+    <!-- Locations + Map -->
+    <SectionContainer id="locations" class="py-12 bg-white">
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-6 lg:gap-8">
+        <div
+          class="locations-list bg-white rounded-2xl shadow-lg ring-1 ring-neutral-200 p-4 md:p-6 flex flex-col gap-4 max-h-[70vh] lg:max-h-[calc(100vh-12rem)] overflow-y-auto scrolling-section opacity-0"
+          data-locations-json={JSON.stringify(LOCATIONS)}
+        >
+          <div class="locations-header space-y-1">
+            <h2
+              class="text-2xl font-header font-extrabold text-primary uppercase"
+            >
+              Puntos de venta
+            </h2>
+            <p class="text-sm text-neutral-600">
+              Hacé clic en un punto de venta para centrarlo en el mapa.
+            </p>
+          </div>
+          <div class="locations-grid grid grid-cols-1 gap-3">
+            {
+              LOCATIONS.map((loc, idx) => (
+                <LocationCard
+                  id={`loc-${idx}`}
+                  storeName={loc.storeName}
+                  address={loc.address}
+                  city={loc.city}
+                  state={loc.state}
+                  postalCode={loc.postalCode}
+                  country={loc.country}
+                  phoneFormatted={loc.phoneFormatted}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div
+          id="map"
+          class="map-container w-full h-[60vh] lg:h-[calc(100vh-12rem)] rounded-2xl overflow-hidden shadow-xl ring-1 ring-neutral-200 scrolling-section opacity-0"
+          data-token={MAPBOX_TOKEN ?? ""}
+          data-style={MAPBOX_STYLE_URL}
+          data-center={JSON.stringify(MAP_CENTER)}
+          data-zoom={MAP_ZOOM}
+        >
+        </div>
+      </div>
+    </SectionContainer>
+  </main>
+
+  <script type="module" src={mapScript}></script>
+  <script>
+    import { animate, stagger, inView } from "motion";
+
+    const isMobile = window.innerWidth < 768;
+    const threshold = isMobile ? 0.1 : 0.2;
+
+    inView(
+      ".scrolling-section",
+      (element) => {
+        animate(
+          element,
+          { opacity: [0, 1], y: [50, 0] },
+          { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
+        );
+
+        const cards = element.querySelectorAll(".card, .location-card");
+        if (cards.length > 0) {
+          animate(
+            cards,
+            { opacity: [0, 1], y: [25, 0] },
+            { type: "spring", delay: stagger(0.2, { startDelay: 0.25 }) },
+          );
+        }
+      },
+      { amount: threshold },
+    );
+  </script>
+</Layout>

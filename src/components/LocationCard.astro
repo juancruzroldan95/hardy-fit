@@ -1,0 +1,39 @@
+---
+export interface Props {
+  id: string;
+  storeName: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phoneFormatted: string;
+}
+
+const { id, storeName, address, city, state, postalCode, country, phoneFormatted } =
+  Astro.props;
+---
+
+<article
+  class="location-card card bg-white rounded-2xl shadow-sm ring-1 ring-neutral-200 p-4 md:p-5 space-y-2 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+  data-location-id={id}
+>
+  <header class="space-y-1">
+    <h3 class="text-lg font-bold text-primary uppercase">{storeName}</h3>
+    <p class="text-sm text-neutral-600">
+      {address}, {city}, {state} {postalCode}
+    </p>
+    <p class="text-xs text-neutral-500">{country}</p>
+  </header>
+
+  <div class="text-sm text-neutral-700">
+    <p class="font-semibold">Tel: {phoneFormatted}</p>
+  </div>
+</article>
+
+<style>
+  .location-card {
+    cursor: pointer;
+  }
+</style>
+
