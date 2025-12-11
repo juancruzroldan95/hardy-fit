@@ -7,10 +7,9 @@ export interface Props {
   state: string;
   postalCode: string;
   country: string;
-  phoneFormatted: string;
 }
 
-const { id, storeName, address, city, state, postalCode, country, phoneFormatted } =
+const { id, storeName, address, city, state, postalCode, country } =
   Astro.props;
 ---
 
@@ -21,14 +20,15 @@ const { id, storeName, address, city, state, postalCode, country, phoneFormatted
   <header class="space-y-1">
     <h3 class="text-lg font-bold text-primary uppercase">{storeName}</h3>
     <p class="text-sm text-neutral-600">
-      {address}, {city}, {state} {postalCode}
+      {address}, {city}, {state}
+      {postalCode}
     </p>
     <p class="text-xs text-neutral-500">{country}</p>
   </header>
 
-  <div class="text-sm text-neutral-700">
+  <!-- <div class="text-sm text-neutral-700">
     <p class="font-semibold">Tel: {phoneFormatted}</p>
-  </div>
+  </div> -->
 </article>
 
 <style>
@@ -36,4 +36,3 @@ const { id, storeName, address, city, state, postalCode, country, phoneFormatted
     cursor: pointer;
   }
 </style>
-

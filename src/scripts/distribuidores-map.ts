@@ -26,6 +26,7 @@ if (!mapElement) {
   const MAP_ZOOM = mapElement.dataset.zoom
     ? Number(mapElement.dataset.zoom)
     : 9;
+  mapElement.setAttribute("tabindex", "-1");
   const LOCATIONS =
     locationsContainer?.dataset.locationsJson &&
     locationsContainer.dataset.locationsJson !== ""
@@ -47,14 +48,6 @@ if (!mapElement) {
       return;
     }
 
-    console.info("[Distribuidores] Initializing map", {
-      tokenPresent: !!MAPBOX_TOKEN,
-      style: MAPBOX_STYLE_URL,
-      center: MAP_CENTER,
-      zoom: MAP_ZOOM,
-      locationsCount: LOCATIONS.length,
-    });
-
     mapboxgl.accessToken = MAPBOX_TOKEN;
 
     const map = new mapboxgl.Map({
@@ -69,7 +62,6 @@ if (!mapElement) {
     });
 
     map.on("load", () => {
-      console.info("[Distribuidores] Map load event");
       const layers = ["dog-spas-markers", "dog-spas-circles"];
 
       layers.forEach((layer, index) => {
@@ -93,13 +85,13 @@ if (!mapElement) {
               return;
             }
 
-            console.info("[Distribuidores] Click on layer", layer, e.feature);
-            const popup = new mapboxgl.Popup({ offset: [0, -15] })
+            new mapboxgl.Popup({ offset: [0, -15], focusAfterOpen: false })
               .setLngLat(coords)
               .setHTML(
-                `<h3>${e.feature.properties.storeName}</h3>
-                <p>${e.feature.properties.address}</p>
-                <p>${e.feature.properties.phoneFormatted}</p>`,
+                `
+                  <h3 style="margin: 0 0 6px 0; font-size: 15px; font-weight: 600; color: #ED3237; text-transform: uppercase; text-align: center;">${e.feature.properties.storeName}</h3>
+                  <p style="margin: 0; font-size: 14px; color: #374151; text-align: center;">${e.feature.properties.address}, ${e.feature.properties.city}, ${e.feature.properties.state}</p>
+                `,
               )
               .addTo(map);
           },
@@ -136,26 +128,27 @@ if (!mapElement) {
         if (!location) return;
 
         card.addEventListener("click", () => {
-          console.info("[Distribuidores] Card click -> flyTo", {
-            idx,
-            storeName: location.storeName,
-            coordinates: location.coordinates,
-          });
           map.flyTo({
             center: location.coordinates,
             zoom: 14,
             speed: 1.4,
           });
 
-          // optional popup on flyTo to mirror click interaction
-          new mapboxgl.Popup({ offset: [0, -10] })
+          new mapboxgl.Popup({ offset: [0, -10], focusAfterOpen: false })
             .setLngLat(location.coordinates)
             .setHTML(
-              `<h3>${location.storeName}</h3>
-              <p>${location.address}</p>
-              <p>${location.phoneFormatted}</p>`,
+              `
+                <h3 style="margin: 0 0 6px 0; font-size: 15px; font-weight: 600; color: #ED3237; text-transform: uppercase; text-align: center;">${location.storeName}</h3>
+                <p style="margin: 0; font-size: 14px; color: #374151; text-align: center;">${location.address}, ${location.city}, ${location.state}</p>
+              `,
             )
             .addTo(map);
+
+          // On mobile, bring map into view
+          if (window.innerWidth < 768 && mapElement) {
+            mapElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            mapElement.focus({ preventScroll: true });
+          }
         });
       });
     });

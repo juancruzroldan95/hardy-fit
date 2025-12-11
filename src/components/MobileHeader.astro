@@ -5,6 +5,7 @@ import Book from "../icons/Book.astro";
 import Building from "../icons/Building.astro";
 import InfoCircle from "../icons/InfoCircle.astro";
 import IconX from "../icons/IconX.astro";
+import MapPin from "../icons/MapPin.astro";
 ---
 
 <!-- Backdrop Overlay -->
@@ -43,21 +44,21 @@ import IconX from "../icons/IconX.astro";
     </a>
 
     <a
-      href="/distribuidores"
-      data-nav-link
-      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
-    >
-      <BuildingStore class="w-5 h-5 mr-3" />
-      <span class="font-semibold">Puntos de venta</span>
-    </a>
-
-    <a
       href="/productos"
       data-nav-link
       class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
     >
       <BuildingStore class="w-5 h-5 mr-3" />
       <span class="font-semibold">Productos</span>
+    </a>
+
+    <a
+      href="/puntos-de-venta"
+      data-nav-link
+      class="group flex items-center px-4 py-3 rounded-lg transition-all duration-200 text-neutral-700 hover:bg-neutral-100"
+    >
+      <MapPin class="w-5 h-5 mr-3" />
+      <span class="font-semibold">Puntos de venta</span>
     </a>
 
     <a
