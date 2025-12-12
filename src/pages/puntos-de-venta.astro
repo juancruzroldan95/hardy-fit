@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
-import "mapbox-gl/dist/mapbox-gl.css";
-import mapScript from "../scripts/distribuidores-map.ts?url";
 import LocationCard from "../components/LocationCard.astro";
 import { LOCATIONS } from "../consts/locations";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-const MAPBOX_TOKEN = import.meta.env.PUBLIC_MAPBOX_TOKEN;
+const MAPBOX_TOKEN =
+  "pk.eyJ1IjoianVhbmNydXpyb2xkYW45NSIsImEiOiJjbWl3N2U0Y2QxaWx5M2dxMHFpbThsYW96In0.M2DLrjIYdH0h8xIXmaLHdg";
 const MAPBOX_STYLE_URL =
   "mapbox://styles/juancruzroldan95/cmj0qyq7y001201s2h3iydsul";
 const MAP_CENTER = [-58.3816, -34.6037];
@@ -94,7 +94,7 @@ const MAP_ZOOM = 9;
     </SectionContainer>
   </main>
 
-  <script type="module" src={mapScript}></script>
+  <script src="../scripts/distribuidores-map.js"></script>
 
   <script>
     import { animate, stagger, inView } from "motion";

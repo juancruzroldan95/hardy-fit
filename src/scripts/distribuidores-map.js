@@ -1,19 +1,7 @@
 import mapboxgl from "mapbox-gl";
 
-type DatasetMapElement = HTMLElement & {
-  dataset: {
-    token?: string;
-    style?: string;
-    center?: string;
-    zoom?: string;
-    locationsJson?: string;
-  };
-};
-
-const mapElement = document.getElementById("map") as DatasetMapElement | null;
-const locationsContainer = document.querySelector(
-  ".locations-list",
-) as HTMLElement | null;
+const mapElement = document.getElementById("map");
+const locationsContainer = document.querySelector(".locations-list");
 
 if (!mapElement) {
   console.error("[Distribuidores] Map element not found");
@@ -30,16 +18,7 @@ if (!mapElement) {
   const LOCATIONS =
     locationsContainer?.dataset.locationsJson &&
     locationsContainer.dataset.locationsJson !== ""
-      ? (JSON.parse(locationsContainer.dataset.locationsJson) as {
-          storeName: string;
-          address: string;
-          city: string;
-          state: string;
-          postalCode: string;
-          country: string;
-          phoneFormatted: string;
-          coordinates: [number, number];
-        }[])
+      ? JSON.parse(locationsContainer.dataset.locationsJson)
       : [];
 
   const initMap = async () => {
@@ -76,9 +55,7 @@ if (!mapElement) {
             }
 
             const coords =
-              "geometry" in e.feature &&
-              (e.feature.geometry as { coordinates?: [number, number] })
-                ?.coordinates;
+              "geometry" in e.feature && e.feature.geometry?.coordinates;
 
             if (!coords) {
               console.warn("[Distribuidores] Feature without coordinates", e);
@@ -117,8 +94,7 @@ if (!mapElement) {
       });
 
       // Card -> map linkage
-      const cards =
-        document.querySelectorAll<HTMLElement>("[data-location-id]");
+      const cards = document.querySelectorAll("[data-location-id]");
       if (cards.length === 0) {
         console.warn("[Distribuidores] No location cards found for linking");
       }
