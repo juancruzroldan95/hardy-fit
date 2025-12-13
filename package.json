@@ -9,11 +9,22 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
     "@fontsource-variable/nunito-sans": "^5.2.7",
+    "@sanity/astro": "^3.2.10",
+    "@sanity/client": "^7.13.2",
+    "@sanity/image-url": "^2.0.2",
     "@tailwindcss/vite": "^4.1.13",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "astro": "^5.13.9",
     "mapbox-gl": "^3.16.0",
     "motion": "^12.23.24",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-is": "^19.2.3",
+    "sanity": "^4.21.1",
+    "styled-components": "^6.1.19",
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {

@@ -18,7 +18,6 @@ export interface Product {
   fullDescription?: string;
   image: ImageMetadata;
   weight?: string;
-  isActive: boolean;
   purchaseLink?: string;
   nutrition: {
     servingSize: string;
@@ -37,6 +36,7 @@ export interface Product {
   features?: string[];
   allergens?: string;
   notes?: string[];
+  isActive: boolean;
 }
 
 export const PRODUCTS: Product[] = [

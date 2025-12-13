@@ -7,18 +7,44 @@ import CircleCheckFilled from "../../icons/CircleCheckFilled.astro";
 import ChevronLeft from "../../icons/ChevronLeft.astro";
 import ChevronRight from "../../icons/ChevronRight.astro";
 
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../../sanity/lib/load-query";
+import { urlForImage } from "../../sanity/lib/url-for-image";
+
+// export async function getStaticPaths() {
+//   return PRODUCTS.map((product) => ({
+//     params: { slug: product.slug },
+//     props: { product },
+//   }));
+// }
+
 export async function getStaticPaths() {
-  return PRODUCTS.map((product) => ({
-    params: { slug: product.slug },
-    props: { product },
-  }));
+  const { data: products } = await loadQuery<SanityDocument[]>({
+    query: `*[_type == "product"]`,
+  });
+  return products.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
 }
 
-interface Props {
-  product: Product;
-}
+// interface Props {
+//   product: Product;
+// }
 
-const { product } = Astro.props;
+// const { product } = Astro.props;
+
+const { params } = Astro;
+
+const { data: product } = await loadQuery<Product>({
+  query: `*[_type == "product" && slug.current == $slug][0]`,
+  params,
+});
+
+console.log(product);
 
 // Get other products for recommendations (exclude current product)
 const otherProducts = PRODUCTS.filter(
@@ -37,14 +63,13 @@ const otherProducts = PRODUCTS.filter(
             <div
               class="aspect-square bg-white rounded-2xl shadow-xl overflow-hidden ring-1 ring-neutral-200"
             >
-              <Image
-                src={product.image}
+              <img
+                src={urlForImage(product.image).url()}
                 alt={product.name}
                 width={600}
                 height={600}
                 class="w-full h-full object-cover"
                 loading="eager"
-                quality={90}
               />
             </div>
           </div>
