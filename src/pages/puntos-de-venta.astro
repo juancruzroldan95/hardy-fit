@@ -11,6 +11,9 @@ const MAPBOX_STYLE_URL =
   "mapbox://styles/juancruzroldan95/cmj0qyq7y001201s2h3iydsul";
 const MAP_CENTER = [-58.3816, -34.6037];
 const MAP_ZOOM = 9;
+
+// Extract unique states
+const STATES = [...new Set(LOCATIONS.map((loc) => loc.state))].sort();
 ---
 
 <Layout
@@ -64,6 +67,24 @@ const MAP_ZOOM = 9;
               Hacé clic en un punto de venta para centrarlo en el mapa.
             </p>
           </div>
+
+          <!-- State Filter Buttons -->
+          <div
+            class="state-filters flex flex-wrap gap-2 pb-2 border-b border-neutral-200"
+          >
+            {
+              STATES.map((state) => (
+                <button
+                  type="button"
+                  class="state-filter-btn px-3 py-1.5 text-sm font-medium rounded-lg transition-colors bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                  data-state={state}
+                >
+                  {state}
+                </button>
+              ))
+            }
+          </div>
+
           <div class="locations-grid grid grid-cols-1 gap-3">
             {
               LOCATIONS.map((loc, idx) => (
@@ -95,6 +116,55 @@ const MAP_ZOOM = 9;
   </main>
 
   <script src="../scripts/mapbox-scriipt.js"></script>
+
+  <script is:inline>
+    // State filter functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      let activeState = null;
+      const filterButtons = document.querySelectorAll(".state-filter-btn");
+      const locationCards = document.querySelectorAll(".location-card");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const state = button.dataset.state;
+
+          if (!state) return;
+
+          // If clicking the same button, remove filter
+          if (activeState === state) {
+            activeState = null;
+            button.classList.remove("bg-primary", "text-white");
+            button.classList.add("bg-neutral-100", "text-neutral-700");
+
+            // Show all cards
+            locationCards.forEach((card) => {
+              card.style.display = "";
+            });
+          } else {
+            // Remove active state from all buttons
+            filterButtons.forEach((btn) => {
+              btn.classList.remove("bg-primary", "text-white");
+              btn.classList.add("bg-neutral-100", "text-neutral-700");
+            });
+
+            // Set new active state
+            activeState = state;
+            button.classList.remove("bg-neutral-100", "text-neutral-700");
+            button.classList.add("bg-primary", "text-white");
+
+            // Filter cards
+            locationCards.forEach((card) => {
+              if (card.dataset.state === state) {
+                card.style.display = "";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
 
   <script>
     import { animate, stagger, inView } from "motion";

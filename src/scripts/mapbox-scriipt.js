@@ -42,6 +42,7 @@ if (!mapElement) {
 
     map.on("load", () => {
       const layers = ["dog-spas-markers", "dog-spas-circles"];
+      let currentPopup = null;
 
       layers.forEach((layer, index) => {
         // Add Click interaction
@@ -62,7 +63,12 @@ if (!mapElement) {
               return;
             }
 
-            new mapboxgl.Popup({ offset: [0, -15], focusAfterOpen: false })
+            // Close previous popup if exists
+            if (currentPopup) {
+              currentPopup.remove();
+            }
+
+            currentPopup = new mapboxgl.Popup({ offset: [0, -15], focusAfterOpen: false })
               .setLngLat(coords)
               .setHTML(
                 `
@@ -104,13 +110,18 @@ if (!mapElement) {
         if (!location) return;
 
         card.addEventListener("click", () => {
+          // Close previous popup if exists
+          if (currentPopup) {
+            currentPopup.remove();
+          }
+
           map.flyTo({
             center: location.coordinates,
             zoom: 14,
             speed: 1.4,
           });
 
-          new mapboxgl.Popup({ offset: [0, -10], focusAfterOpen: false })
+          currentPopup = new mapboxgl.Popup({ offset: [0, -10], focusAfterOpen: false })
             .setLngLat(location.coordinates)
             .setHTML(
               `
