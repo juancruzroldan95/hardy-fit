@@ -1,3 +1,5 @@
+export type LocationType = "pdv" | "distribuidor";
+
 export interface Location {
   id: number;
   storeName: string;
@@ -10,6 +12,7 @@ export interface Location {
   state: string;
   coordinates: [number, number]; // [lng, lat]
   isActive: boolean;
+  type: LocationType;
 }
 
 export const LOCATIONS: Location[] = [
@@ -25,6 +28,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.391738700250386, -34.69839349422039],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 2,
@@ -38,6 +42,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.38106813199038, -34.71414671381679],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 3,
@@ -51,6 +56,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.40188371664905, -34.756118394486194],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 4,
@@ -64,6 +70,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.58731386082895, -34.62045746164782],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 5,
@@ -77,6 +84,7 @@ export const LOCATIONS: Location[] = [
     state: "CABA",
     coordinates: [-58.45029538289507, -34.58596048283157],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 6,
@@ -90,6 +98,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.545478503020895, -37.96948278129296],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 7,
@@ -103,6 +112,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.549111348620734, -37.99114795689005],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 8,
@@ -116,6 +126,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.584486577458975, -37.97881636415939],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 9,
@@ -129,6 +140,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.557056431853276, -38.03203880508307],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 10,
@@ -142,6 +154,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.547151403017324, -38.05556165954316],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 11,
@@ -155,6 +168,7 @@ export const LOCATIONS: Location[] = [
     state: "Tierra del Fuego",
     coordinates: [-67.70961591574643, -53.783224513639304],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 12,
@@ -168,6 +182,7 @@ export const LOCATIONS: Location[] = [
     state: "CABA",
     coordinates: [-58.486, -34.573],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 13,
@@ -181,6 +196,7 @@ export const LOCATIONS: Location[] = [
     state: "CABA",
     coordinates: [-58.41498914951322, -34.593670136251944],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 14,
@@ -194,6 +210,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.21965876082359, -34.75909668620015],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 15,
@@ -207,6 +224,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.48688457116513, -34.532520173240094],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 16,
@@ -220,6 +238,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.524860807869096, -34.51823528250093],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 17,
@@ -233,6 +252,7 @@ export const LOCATIONS: Location[] = [
     state: "Tierra del Fuego",
     coordinates: [-68.31637270219555, -54.805600916143156],
     isActive: true,
+    type: "distribuidor",
   },
   {
     id: 18,
@@ -246,6 +266,7 @@ export const LOCATIONS: Location[] = [
     state: "Río Negro",
     coordinates: [-62.98971147666267, -40.81323937661706],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 19,
@@ -259,6 +280,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-62.267306018328476, -38.71525271767503],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 20,
@@ -272,6 +294,7 @@ export const LOCATIONS: Location[] = [
     state: "Formosa",
     coordinates: [-58.19749356490735, -26.18208297378021],
     isActive: true,
+    type: "distribuidor",
   },
   {
     id: 21,
@@ -285,6 +308,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-58.55504444549338, -34.52123184028134],
     isActive: true,
+    type: "distribuidor",
   },
   {
     id: 22,
@@ -298,6 +322,7 @@ export const LOCATIONS: Location[] = [
     state: "CABA",
     coordinates: [-58.42402333199524, -34.59319343276718],
     isActive: true,
+    type: "distribuidor",
   },
   {
     id: 23,
@@ -311,6 +336,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.53684152162002, -38.02706442466484],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 24,
@@ -324,6 +350,7 @@ export const LOCATIONS: Location[] = [
     state: "Provincia de Buenos Aires",
     coordinates: [-57.545596547194094, -38.00129724061952],
     isActive: true,
+    type: "distribuidor",
   },
   {
     id: 25,
@@ -337,6 +364,7 @@ export const LOCATIONS: Location[] = [
     state: "Chaco",
     coordinates: [-58.981563632256304, -27.44941611532482],
     isActive: true,
+    type: "pdv",
   },
   {
     id: 26,
@@ -350,5 +378,6 @@ export const LOCATIONS: Location[] = [
     state: "Chaco",
     coordinates: [-58.963734103422, -27.43189880453704],
     isActive: true,
+    type: "pdv",
   },
 ];
