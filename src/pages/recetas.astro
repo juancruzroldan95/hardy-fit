@@ -12,8 +12,7 @@ const activeRecipes = RECIPES.filter((recipe) => recipe.isActive !== false);
 ---
 
 <Layout
-  title="Recetas de Alto Rendimiento - HARDY"
-  description="Descubrí recetas deliciosas y altas en proteína usando HARDY para potenciar tu fitness y mejorar tu rendimiento."
+  title="Recetas HARDY"
 >
   <main class="pt-16">
     <!-- Hero Section -->
@@ -36,8 +35,8 @@ const activeRecipes = RECIPES.filter((recipe) => recipe.isActive !== false);
           Recetas Hardy
         </h1>
         <p class="text-xl text-neutral-700 max-w-3xl mx-auto">
-          Potenciá tu rendimiento con recetas diseñadas para atletas. Energía
-          real, sabor auténtico.
+          Descubrí recetas deliciosas y altas en proteína usando HARDY para
+          potenciar tu fitness y mejorar tu rendimiento.
         </p>
       </div>
     </SectionContainer>
@@ -53,15 +52,15 @@ const activeRecipes = RECIPES.filter((recipe) => recipe.isActive !== false);
                 class="card bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-primary/50 transition-all duration-300 transform hover:scale-[1.02] group"
               >
                 <!-- Recipe Image -->
-                <div class="aspect-[4/3] overflow-hidden">
+                <div class="aspect-[3/4] overflow-hidden">
                   <Image
                     src={recipe.image}
                     alt={recipe.title}
                     class="w-full h-full object-cover"
                     loading="lazy"
                     quality={80}
-                    width={600}
-                    height={450}
+                    width={450}
+                    height={600}
                   />
                 </div>
 

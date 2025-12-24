@@ -33,7 +33,7 @@ export interface Recipe {
   prepTime?: number;
   servings?: number | string;
   difficulty?: string;
-  category?: string;
+  category?: RecipeCategory;
   calories?: number;
   protein?: number;
   isActive?: boolean;
@@ -44,20 +44,22 @@ export interface Recipe {
   tip: string;
 }
 
+export type RecipeCategory = "Desayunos y Meriendas" | "Pre/Post Entrenamiento";
+
 export const RECIPES: Recipe[] = [
   {
     id: 1,
-    slug: "cookies-hardy-crunch",
-    title: "Cookies HARDY Crunch",
+    slug: "hardy-cookies",
+    title: "Hardy Cookies",
     shortDescription:
-      "En Hardy creemos que comer bien no tiene por qué ser aburrido.",
+      "Sabor intenso, ingredientes reales y energía para todo el día.",
     fullDescription:
-      "Estas cookies nacen de ese equilibrio entre placer y energía real: sin aditivos, sin excusas, con ingredientes naturales y el sabor inconfundible de nuestra crema de maní Cookies. Perfectas para después del entrenamiento, acompañar el café o disfrutar como snack saludable.",
+      "Avena, chips de chocolate y nuestra crema de maní HARDY Cookies, finalizadas con un toque de miel natural. Un snack simple, potente y listo para acompañar tu entrenamiento o tu café.",
     image: cookiesHardyCrunchImage,
     prepTime: 15,
     servings: "6-8 cookies",
     difficulty: "Fácil",
-    category: "Snacks",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Huevo", quantity: "1" },
       { name: "Avena", quantity: "3 cdas" },
@@ -85,17 +87,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 2,
-    slug: "banana-bites-hardy",
-    title: "Banana Bites Hardy",
-    shortDescription:
-      "Bocados helados de banana, crema de maní y chocolate amargo.",
+    slug: "bites-de-banana",
+    title: "Bites de Banana",
+    shortDescription: "Un snack simple, potente y lleno de energía real.",
     fullDescription:
-      "Un snack saludable, delicioso y adictivo en el mejor sentido. Perfectos para cuando querés algo dulce sin salirte del plan.",
+      "Banana fresca, crema de maní HARDY Natural y un baño de chocolate amargo. Equilibrio perfecto entre nutrición, sabor y rendimiento.",
     image: bananaBitesHardyImage,
-    prepTime: 70,
+    prepTime: 20,
     servings: "8-10 bocados",
     difficulty: "Fácil",
-    category: "Snacks",
+    category: "Pre/Post Entrenamiento",
     ingredients: [
       { name: "Banana", quantity: "1" },
       { name: "Crema de Maní Natural HARDY", quantity: "2 cdas" },
@@ -124,16 +125,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 3,
-    slug: "mini-pancakes-proteicos",
-    title: "Mini Pancakes Proteicos HARDY",
-    shortDescription: "Pequeños, esponjosos y llenos de sabor HARDY.",
+    slug: "pancakes-con-hardy-cookies",
+    title: "Pancakes con Hardy Cookies",
+    shortDescription: "Suaves, nutritivos y con un sabor que eleva tu rutina.",
     fullDescription:
-      "Ideales para tus desayunos fit, o para sorprender con un reel irresistible. Cada bocado aporta energía real, proteína natural y sabor auténtico.",
+      "Avena, banana y nuestra crema de maní HARDY Cookies, coronados con miel natural para un final intenso y equilibrado. Un ritual simple para después de entrenar o para empezar el día con potencia.",
     image: miniPancakesProteicosImage,
     prepTime: 15,
     servings: "6-8 mini pancakes",
     difficulty: "Fácil",
-    category: "Desayuno",
+    category: "Pre/Post Entrenamiento",
     ingredients: [
       { name: "Banana madura", quantity: "1" },
       { name: "Huevo", quantity: "1" },
@@ -162,16 +163,15 @@ export const RECIPES: Recipe[] = [
   {
     id: 4,
     slug: "shot-energia-natural",
-    title: "Shot de Energía Natural HARDY",
-    shortDescription:
-      "Un clásico express de HARDY: energía pura en una cucharada.",
+    title: "Shot de Energía Natural Hardy",
+    shortDescription: "Una combinación simple, pura y llena de energía real.",
     fullDescription:
-      "Ideal antes del gym, una reunión o cuando necesitás un impulso inmediato y natural. Cero ultraprocesados, cero excusas.",
+      "Textura suave, miel dorada y un equilibrio perfecto entre nutrición y sabor. Ideal para sumar potencia a tus snacks, desayunos o rituales de entrenamiento.",
     image: shotEnergiaNaturalImage,
     prepTime: 1,
     servings: "1 porción",
     difficulty: "Fácil",
-    category: "Pre-Entreno",
+    category: "Pre/Post Entrenamiento",
     ingredients: [
       { name: "Crema de Maní Natural HARDY", quantity: "1 cda" },
       { name: "Miel Líquida HARDY", quantity: "½ cdita" },
@@ -193,16 +193,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 5,
-    slug: "bocaditos-hardy-coco",
-    title: "Bocaditos HARDY Coco",
-    shortDescription:
-      "Bolitas energéticas con un sabor tropical y natural. Pequeñas dosis de energía real, listas para acompañarte en cualquier momento del día.",
-    fullDescription: "Perfectas para media mañana o antes de entrenar.",
+    slug: "coco-energy-bites",
+    title: "Coco Energy Bites Hardy",
+    shortDescription: "Bocados suaves, frescos y llenos de energía real.",
+    fullDescription:
+      "Nuestra crema de maní HARDY Coco, coco rallado y un toque de miel natural para un sabor equilibrado y nutritivo. Un snack ideal para antes del entrenamiento, después o como parte de tu rutina diaria.",
     image: bocaditosHardyCocoImage,
     prepTime: 35,
     servings: "10-12 bocaditos",
     difficulty: "Fácil",
-    category: "Snacks",
+    category: "Pre/Post Entrenamiento",
     ingredients: [
       { name: "Avena tradicional", quantity: "1 taza" },
       { name: "Coco rallado sin azúcar", quantity: "½ taza" },
@@ -228,16 +228,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 6,
-    slug: "barritas-energeticas-caseras",
-    title: "Barritas Energéticas Caseras HARDY",
-    shortDescription:
-      "Ideal para antes del entrenamiento o como snack natural para recargar energía durante el día.",
-    fullDescription: "Aporta energía real, sin aditivos ni ultraprocesados.",
+    slug: "barritas-energeticas-hardy",
+    title: "Barritas Energéticas Hardy",
+    shortDescription: "Crocantes, nutritivas y cargadas de energía real.",
+    fullDescription:
+      "Avena, frutos secos, chips de chocolate y nuestra crema de maní HARDY, unidas con miel para un sabor intenso y equilibrado. Un snack ideal para entrenar, recuperar o acompañar tu día con potencia.",
     image: barritasEnergeticasImage,
     prepTime: 45,
     servings: "8-10 barritas",
     difficulty: "Fácil",
-    category: "Pre-Entreno",
+    category: "Pre/Post Entrenamiento",
     ingredients: [
       { name: "Avena tradicional", quantity: "1 taza" },
       {
@@ -273,16 +273,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 7,
-    slug: "snack-energetico-go-hardy",
-    title: "Snack Energético GO HARDY",
-    shortDescription: "Energía real en cada bocado.",
+    slug: "crispy-energy-bites-hardy",
+    title: "Crispy Energy Bites Hardy",
+    shortDescription: "Bocados nutritivos, simples y llenos de energía real.",
     fullDescription:
-      "Ideal antes del entrenamiento o como snack natural para el día a día. Hechas con crema de maní y miel Hardy: puro poder natural.",
+      "Semillas, crema de maní HARDY y un toque de miel para un equilibrio perfecto entre potencia y sabor. Ideales para antes de entrenar, después o como snack diario de alto rendimiento.",
     image: snackEnergeticoGoImage,
     prepTime: 25,
     servings: "12-15 bolitas",
     difficulty: "Fácil",
-    category: "Pre-Entreno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Crema de Maní Natural HARDY", quantity: "2 cdas" },
       { name: "Miel Líquida HARDY", quantity: "1 cda" },
@@ -306,16 +306,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 8,
-    slug: "toast-proteico-vainilla",
-    title: "Toast Proteico Vainilla",
-    shortDescription:
-      "Desayuno nutritivo y natural con el sabor dulce de la crema de maní Vainilla Hardy.",
-    fullDescription: "Ideal para arrancar el día con energía real.",
+    slug: "toasts-hardy-vainilla",
+    title: "Toasts Hardy Vainilla",
+    shortDescription: "Simples, frescos y cargados de energía real.",
+    fullDescription:
+      "Pan integral, nuestra crema de maní HARDY Vainilla y frutas naturales para un desayuno o snack equilibrado, nutritivo y lleno de sabor.",
     image: toastProteicoVainillaImage,
     prepTime: 5,
     servings: "1 porción",
     difficulty: "Fácil",
-    category: "Desayuno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Tostadas integrales", quantity: "2" },
       { name: "Crema de Maní Vainilla HARDY", quantity: "2 cdas" },
@@ -337,8 +337,8 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 9,
-    slug: "granola-energetica",
-    title: "Granola Energética",
+    slug: "granola-hardy",
+    title: "Granola Hardy",
     shortDescription:
       "Crujiente, dulce y natural. Una granola artesanal que te da energía sostenida durante todo el día.",
     fullDescription:
@@ -347,7 +347,7 @@ export const RECIPES: Recipe[] = [
     prepTime: 25,
     servings: "1 frasco grande",
     difficulty: "Fácil",
-    category: "Snacks",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Avena tradicional", quantity: "1 taza" },
       { name: "Miel Sólida HARDY", quantity: "¼ taza" },
@@ -377,17 +377,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 10,
-    slug: "smoothie-cookies-recovery",
-    title: 'Smoothie "Cookies Recovery"',
-    shortDescription:
-      "Recuperate naturalmente después de entrenar con este smoothie cremoso y nutritivo hecho con HARDY Cookies.",
+    slug: "smoothie-hardy-cookies",
+    title: "Smoothie Hardy Cookies",
+    shortDescription: "Cremoso, nutritivo y lleno de energía real.",
     fullDescription:
-      "Rico en proteínas y grasas saludables para una recuperación muscular efectiva. Perfecto para reponer energía real después del entrenamiento sin ultraprocesados.",
+      "Banana, cacao y nuestra crema de maní HARDY Cookies para un blend intenso, equilibrado y perfecto para antes o después del entrenamiento.",
     image: smoothieCookiesRecoveryImage,
     prepTime: 5,
     servings: "1 vaso grande",
     difficulty: "Fácil",
-    category: "Post-Entreno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Banana congelada", quantity: "1" },
       { name: "Crema de Maní HARDY Cookies", quantity: "1 cda" },
@@ -414,53 +413,16 @@ export const RECIPES: Recipe[] = [
   },
   {
     id: 11,
-    slug: "panqueques-alimenta-tu-instinto",
-    title: 'Panqueques "Alimentá tu Instinto"',
-    shortDescription:
-      "Livianos, dulces y sin azúcar refinada. Panqueques naturales con toda la energía HARDY para tus mañanas.",
+    slug: "parfait-hardy",
+    title: "Parfait Hardy",
+    shortDescription: "Fresco, nutritivo y lleno de energía real.",
     fullDescription:
-      "La combinación perfecta de proteínas, energía y sabor natural. Sumá frutas frescas o semillas arriba para más textura y color.",
-    image: panquequesAlimentaImage,
-    prepTime: 15,
-    servings: "1 porción",
-    difficulty: "Fácil",
-    category: "Desayuno",
-    ingredients: [
-      { name: "Huevos", quantity: "2" },
-      { name: "Banana madura", quantity: "1" },
-      { name: "Crema de Maní Natural HARDY", quantity: "1 cda" },
-      { name: "Avena", quantity: "1 cda" },
-    ],
-    instructions: [
-      "Colocá todos los ingredientes en una licuadora o procesadora.",
-      "Mezclá hasta obtener una masa cremosa y uniforme.",
-      "Calentá una sartén antiadherente a fuego medio y verté pequeñas porciones de mezcla.",
-      "Cociná 1–2 minutos por lado hasta que estén dorados.",
-      "Serví los panqueques apilados y terminá con un hilo de Miel HARDY líquida o sólida derretida.",
-    ],
-    benefits: [
-      "Sin azúcar refinada",
-      "Alta en proteínas",
-      "Energía natural sostenida",
-      "Ingredientes reales y simples",
-    ],
-    productsUsed: ["Crema de Maní Natural HARDY", "Miel Líquida HARDY"],
-    tip: "La combinación perfecta de proteínas, energía y sabor natural. Sumá frutas frescas o semillas arriba para más textura y color.",
-    isActive: true,
-  },
-  {
-    id: 12,
-    slug: "overnight-oats-energia-real",
-    title: 'Overnight Oats "Energía Real"',
-    shortDescription:
-      "Despertate con energía real. Este desayuno preparado la noche anterior combina carbohidratos de absorción lenta, proteínas y grasas saludables.",
-    fullDescription:
-      "La Crema de Maní HARDY Natural y la Miel HARDY líquida transforman una receta simple en una fuente auténtica de energía y sabor. Ideal para quienes buscan nutrición y rendimiento desde temprano.",
+      "Chía, avena, banana, crema de maní HARDY y un toque de miel natural para un equilibrio perfecto entre textura, sabor y rendimiento.",
     image: overnightOatsImage,
     prepTime: 370,
     servings: "1 frasco individual",
     difficulty: "Fácil",
-    category: "Desayuno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Avena", quantity: "½ taza" },
       {
@@ -494,18 +456,17 @@ export const RECIPES: Recipe[] = [
     isActive: true,
   },
   {
-    id: 13,
-    slug: "porridge-proteico-con-hardy",
-    title: "Porridge Proteico con Hardy",
-    shortDescription:
-      "Un desayuno completo, cremoso y saciante. La avena cocida se fusiona con la Crema de Maní HARDY sabor Vainilla.",
+    id: 12,
+    slug: "porridge-hardy-vainilla",
+    title: "Porridge Hardy Vainilla",
+    shortDescription: "Cremoso, nutritivo y lleno de energía real.",
     fullDescription:
-      "El toque dulce natural de la Miel HARDY líquida crea una combinación perfecta para quienes buscan rendimiento, nutrición y sabor real. Ideal para antes de entrenar o para recuperarte después.",
+      "Avena caliente, fruta fresca, chía y nuestra crema de maní HARDY Vainilla, coronada con miel natural para un final intenso y equilibrado.",
     image: porridgeProteicoImage,
     prepTime: 10,
     servings: "1 porción",
     difficulty: "Fácil",
-    category: "Desayuno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       { name: "Avena tradicional", quantity: "½ taza" },
       {
@@ -538,61 +499,17 @@ export const RECIPES: Recipe[] = [
     isActive: true,
   },
   {
-    id: 14,
-    slug: "tostadas-crunchy-con-frutas",
-    title: "Tostadas Crunchy con Frutas",
-    shortDescription:
-      "Un snack rápido, crujiente y natural. La combinación del pan integral con la Crema de Maní HARDY sabor Cookies.",
+    id: 13,
+    slug: "waffles-hardy",
+    title: "Waffles Hardy",
+    shortDescription: "Livianos, nutritivos y llenos de energía real.",
     fullDescription:
-      "Los trozos de manzana con canela crean un equilibrio perfecto entre dulzura, textura y energía real. Ideal para media mañana o tarde, antes o después del entrenamiento.",
-    image: tostadasCrunchyImage,
-    prepTime: 5,
-    servings: "2 tostadas",
-    difficulty: "Fácil",
-    category: "Snacks",
-    ingredients: [
-      { name: "Rebanadas de pan integral (tostado)", quantity: "2" },
-      { name: "Crema de Maní HARDY Cookies", quantity: "2 cdas" },
-      {
-        name: "Manzana verde o roja, cortada en láminas finas",
-        quantity: "½",
-      },
-      { name: "Canela en polvo", quantity: "1 pizca" },
-      {
-        name: "Miel HARDY líquida (opcional)",
-        quantity: "Un hilo",
-      },
-    ],
-    instructions: [
-      "Llevá las rebanadas a la tostadora o sartén hasta que estén bien doradas y crujientes.",
-      "Extendé una capa abundante de Crema de Maní HARDY Cookies sobre cada tostada.",
-      "Colocá los trozos de manzana de forma ordenada o en abanico encima de la crema.",
-      "Espolvoreá con canela y, si querés, agregá un hilo fino de Miel HARDY líquida.",
-      "Disfrutalas tibias o frías, con una textura crunchy irresistible.",
-    ],
-    benefits: [
-      "Snack rápido y nutritivo",
-      "Balance perfecto de sabores",
-      "Energía natural",
-      "Ideal pre o post entreno",
-    ],
-    productsUsed: ["Crema de Maní Cookies HARDY", "Miel Líquida HARDY"],
-    tip: "Probá alternar manzana con banana o frutillas según la estación. Si querés más proteína, acompañalas con un vaso de yogurt natural o kefir.",
-    isActive: false,
-  },
-  {
-    id: 15,
-    slug: "waffles-fit-con-miel-hardy",
-    title: "Waffles Fit con Miel Hardy",
-    shortDescription:
-      "Rompé la rutina con estos waffles fit de textura perfecta y sabor tropical.",
-    fullDescription:
-      "Combiná el dulzor natural de la miel Hardy con la suavidad cremosa de la Crema de Maní Coco Hardy. Un clásico del desayuno que alimenta tu instinto, sin ultraprocesados ni harinas refinadas.",
+      "Waffles dorados, fruta fresca y nuestra crema de maní HARDY Vainilla, coronados con miel natural para un final intenso y equilibrado.",
     image: wafflesFitImage,
     prepTime: 20,
     servings: "2 porciones",
     difficulty: "Medio",
-    category: "Desayuno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       {
         name: "Avena (puede ser tradicional o instantánea)",
@@ -635,18 +552,17 @@ export const RECIPES: Recipe[] = [
     isActive: true,
   },
   {
-    id: 16,
+    id: 14,
     slug: "yogurt-bowl-hardy",
     title: "Yogurt Bowl Hardy",
-    shortDescription:
-      "Un desayuno o snack energético, natural y equilibrado. Este bowl combina proteínas, grasas saludables y carbohidratos reales.",
+    shortDescription: "Fresco, equilibrado y lleno de energía real.",
     fullDescription:
-      "Con la cremosidad y sabor único de la Crema de Maní HARDY sabor Vainilla y el toque natural de miel pura HARDY. Ideal para después del entrenamiento o para arrancar el día con energía real.",
+      "Yogurt cremoso, fruta fresca, granola y nuestra crema de maní HARDY Vainilla, coronados con miel natural para un sabor intenso y nutritivo.",
     image: yogurtBowlImage,
     prepTime: 5,
     servings: "1 porción",
     difficulty: "Fácil",
-    category: "Desayuno",
+    category: "Desayunos y Meriendas",
     ingredients: [
       {
         name: "Yogurt natural (puede ser griego o vegetal sin azúcar)",
