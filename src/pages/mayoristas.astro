@@ -1,19 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SectionContainer from "../components/SectionContainer.astro";
-import PackCard from "../components/PackCard.astro";
-import PackCarousel from "../components/PackCarousel.astro";
+import ScaleCard from "../components/ScaleCard.astro";
 import WholesaleContact from "../components/WholesaleContact.astro";
-import { PACKS } from "../consts/packs";
+import { COMMERCIAL_SCALES } from "../consts/scales";
 import Coin from "../icons/Coin.astro";
 import TrendingUp from "../icons/TrendingUp.astro";
 import UserPlus from "../icons/UserPlus.astro";
 import CircleCheck from "../icons/CircleCheck.astro";
+
+const activeScales = COMMERCIAL_SCALES.filter(
+  (scale) => scale.isActive !== false,
+);
 ---
 
 <Layout
-  title="Packs Mayoristas - HARDY"
-  description="Packs diseñados para puntos de venta, gimnasios, tiendas naturales y distribuidores que buscan alta rotación y rentabilidad real."
+  title="Escalas Comerciales - HARDY"
+  description="Escalas diseñadas para dietéticas, gimnasios, tiendas naturales y distribuidores que buscan alta rotación y rentabilidad real."
 >
   <main class="pt-16">
     <!-- Hero Section -->
@@ -33,26 +36,26 @@ import CircleCheck from "../icons/CircleCheck.astro";
         <h1
           class="text-5xl md:text-6xl font-header font-extrabold text-primary uppercase mb-6"
         >
-          Packs Mayorista
+          Mayoristas
         </h1>
         <p class="text-xl text-neutral-700 max-w-4xl leading-relaxed mx-auto">
-          Packs diseñados para puntos de venta, gimnasios, tiendas naturales y
+          Escalas diseñadas para dietéticas, gimnasios, tiendas naturales y
           distribuidores que buscan <span class="font-bold text-primary"
             >alta rotación</span
           > y <span class="font-bold text-primary">rentabilidad real</span>.
         </p>
+        <p class="text-base text-neutral-600 max-w-3xl mx-auto mt-4">
+          Armá tu pedido como quieras según tu escala. Cada nivel tiene sus
+          propios precios y beneficios.
+        </p>
       </div>
     </SectionContainer>
 
-    <!-- Packs Grid -->
-    <SectionContainer id="packs" class="py-16 bg-white">
+    <!-- Scales Grid -->
+    <SectionContainer id="scales" class="py-16 bg-white">
       <div class="scrolling-section opacity-0">
-        <!-- Mobile Carousel -->
-        <PackCarousel />
-
-        <!-- Desktop Grid -->
-        <div class="hidden md:grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {PACKS.map((pack) => <PackCard pack={pack} />)}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {activeScales.map((scale) => <ScaleCard scale={scale} />)}
         </div>
       </div>
     </SectionContainer>
@@ -77,11 +80,11 @@ import CircleCheck from "../icons/CircleCheck.astro";
               1
             </div>
             <h3 class="text-xl font-bold text-primary uppercase">
-              Elegí tu pack
+              Elegí tu escala
             </h3>
             <p class="text-neutral-700">
-              Seleccioná el pack que mejor se adapte a tu negocio y volumen de
-              venta.
+              Seleccioná la escala que mejor se adapte a tu negocio y armá tu
+              pedido con los productos que prefieras.
             </p>
           </div>
 
@@ -112,8 +115,8 @@ import CircleCheck from "../icons/CircleCheck.astro";
               Empezá a vender
             </h3>
             <p class="text-neutral-700">
-              Recibí tu pack listo para exhibir y empezá a generar rentabilidad
-              desde el día uno.
+              Recibí tu pedido listo para exhibir y empezá a generar
+              rentabilidad desde el día uno.
             </p>
           </div>
         </div>

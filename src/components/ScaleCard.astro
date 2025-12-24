@@ -1,0 +1,100 @@
+---
+import type { CommercialScale } from "../consts/scales";
+import Package from "../icons/Package.astro";
+import Users from "../icons/Users.astro";
+import Target from "../icons/Target.astro";
+
+export interface Props {
+  scale: CommercialScale;
+}
+
+const { scale } = Astro.props;
+---
+
+<article
+  class="scale-card bg-white rounded-2xl shadow-lg ring-1 ring-neutral-200 hover:ring-primary/50 transition-all duration-300 transform hover:scale-[1.02] overflow-hidden flex flex-col h-full"
+>
+  <!-- Header -->
+  <div class="bg-gradient-to-br from-primary to-primary/90 p-6 text-white">
+    <div class="flex items-start justify-between mb-4">
+      <div class="flex-1">
+        <h3 class="text-2xl font-header font-extrabold uppercase mb-2">
+          {scale.name}
+        </h3>
+      </div>
+      <div
+        class="bg-white/20 backdrop-blur-sm rounded-full p-3 flex-shrink-0 ml-4"
+      >
+        <Package class="w-8 h-8" />
+      </div>
+    </div>
+    <div class="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 inline-block">
+      <span class="text-secondary-200 font-semibold text-sm font-bold">
+        Desde {scale.minUnits} unidades
+      </span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 flex-1 flex flex-col space-y-6">
+    <!-- Target Audience -->
+    <div class="space-y-3">
+      <div class="flex items-center gap-2">
+        <Users class="w-5 h-5 text-primary flex-shrink-0" />
+        <h4 class="font-bold text-primary uppercase text-sm">
+          ¿Para quién es?
+        </h4>
+      </div>
+      <p class="text-neutral-700 text-sm leading-relaxed">
+        {scale.targetAudience}
+      </p>
+    </div>
+
+    <!-- Client Profile -->
+    <div class="space-y-3">
+      <h4 class="font-bold text-primary uppercase text-sm">
+        Perfil del cliente
+      </h4>
+      <ul class="space-y-2">
+        {
+          scale.clientProfile.map((profile) => (
+            <li class="flex items-start gap-2 text-sm text-neutral-700">
+              <span class="text-secondary mt-0.5 flex-shrink-0">•</span>
+              <span>{profile}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Objectives -->
+    <div class="space-y-3 mt-auto">
+      <div class="flex items-center gap-2">
+        <Target class="w-5 h-5 text-primary flex-shrink-0" />
+        <h4 class="font-bold text-primary uppercase text-sm">
+          Objetivo de esta escala
+        </h4>
+      </div>
+      <ul class="space-y-2">
+        {
+          scale.objectives.map((objective) => (
+            <li class="flex items-start gap-2 text-sm text-neutral-700">
+              <span class="text-secondary mt-0.5 flex-shrink-0">✓</span>
+              <span>{objective}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer CTA -->
+  <div class="p-6 pt-0">
+    <a
+      href="#contact"
+      class="block w-full bg-primary hover:bg-primary/90 text-white text-center px-6 py-3 rounded-full font-bold uppercase transition-colors shadow-md hover:shadow-lg text-sm"
+    >
+      Consultar esta escala
+    </a>
+  </div>
+</article>

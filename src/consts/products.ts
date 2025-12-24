@@ -153,16 +153,16 @@ export const PRODUCTS: Product[] = [
       "ARO: Saborizante Cookies",
       "EDU: Sucralosa",
     ],
-    benefits: ["Textura Crujiente", "Sabor Indulgente", "Energía Sostenida"],
+    benefits: ["Sabor Indulgente", "Energía Sostenida"],
     features: [
       "Fuente natural de proteínas y grasas saludables",
       "Sin conservantes ni azúcar agregada",
-      "Con trozos reales de cookies",
       "Ideal para snacks, bowls, tostadas o post entrenamiento",
     ],
     allergens: "Contiene derivados de maní y gluten",
     notes: [
       "Cuando necesitás energía, pero también disfrutar. HARDY: alimentá tu instinto.",
+      "Producto libre de gluten",
       "Conservar en lugar fresco y seco",
     ],
     isActive: true,
