@@ -18,10 +18,48 @@ import { INFLUENCERS } from "../consts/influencers";
   <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto px-4">
     {
       INFLUENCERS.map((influencer) => (
-        <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm">
+        <div class="w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] max-w-sm">
           <InfluencerItem influencer={influencer} />
         </div>
       ))
     }
   </div>
 </div>
+
+<script>
+  // Auto-play videos on scroll
+  document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll("[data-video-autoplay]");
+
+    const observerOptions = {
+      root: null, // viewport
+      threshold: 0.5, // 50% of video must be visible
+      rootMargin: "0px",
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        const video = entry.target as HTMLVideoElement;
+
+        if (entry.isIntersecting) {
+          // Play video when it comes into view
+          video.play().catch((error) => {
+            console.log("Auto-play prevented:", error);
+          });
+        } else {
+          // Pause video when it goes out of view
+          video.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      handleIntersection,
+      observerOptions,
+    );
+
+    videos.forEach((video) => {
+      observer.observe(video);
+    });
+  });
+</script>
