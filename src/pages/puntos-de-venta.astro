@@ -124,47 +124,51 @@ const STATES = [...new Set(activeLocations.map((loc) => loc.state))].sort();
     // State filter functionality
     document.addEventListener("DOMContentLoaded", () => {
       let activeState = null;
+      const filterContainer = document.querySelector(".state-filters");
       const filterButtons = document.querySelectorAll(".state-filter-btn");
       const locationCards = document.querySelectorAll(".location-card");
 
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const state = button.dataset.state;
+      if (!filterContainer) return;
 
-          if (!state) return;
+      filterContainer.addEventListener("click", (event) => {
+        const button = event.target.closest(".state-filter-btn");
+        if (!button) return;
 
-          // If clicking the same button, remove filter
-          if (activeState === state) {
-            activeState = null;
-            button.classList.remove("bg-primary", "text-white");
-            button.classList.add("bg-neutral-100", "text-neutral-700");
+        const state = button.dataset.state;
 
-            // Show all cards
-            locationCards.forEach((card) => {
+        if (!state) return;
+
+        // If clicking the same button, remove filter
+        if (activeState === state) {
+          activeState = null;
+          button.classList.remove("bg-primary", "text-white");
+          button.classList.add("bg-neutral-100", "text-neutral-700");
+
+          // Show all cards
+          locationCards.forEach((card) => {
+            card.style.display = "";
+          });
+        } else {
+          // Remove active state from all buttons
+          filterButtons.forEach((btn) => {
+            btn.classList.remove("bg-primary", "text-white");
+            btn.classList.add("bg-neutral-100", "text-neutral-700");
+          });
+
+          // Set new active state
+          activeState = state;
+          button.classList.remove("bg-neutral-100", "text-neutral-700");
+          button.classList.add("bg-primary", "text-white");
+
+          // Filter cards
+          locationCards.forEach((card) => {
+            if (card.dataset.state === state) {
               card.style.display = "";
-            });
-          } else {
-            // Remove active state from all buttons
-            filterButtons.forEach((btn) => {
-              btn.classList.remove("bg-primary", "text-white");
-              btn.classList.add("bg-neutral-100", "text-neutral-700");
-            });
-
-            // Set new active state
-            activeState = state;
-            button.classList.remove("bg-neutral-100", "text-neutral-700");
-            button.classList.add("bg-primary", "text-white");
-
-            // Filter cards
-            locationCards.forEach((card) => {
-              if (card.dataset.state === state) {
-                card.style.display = "";
-              } else {
-                card.style.display = "none";
-              }
-            });
-          }
-        });
+            } else {
+              card.style.display = "none";
+            }
+          });
+        }
       });
     });
   </script>
