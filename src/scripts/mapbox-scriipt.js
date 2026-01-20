@@ -100,16 +100,17 @@ if (!mapElement) {
       });
 
       // Card -> map linkage
-      const cards = document.querySelectorAll("[data-location-id]");
-      if (cards.length === 0) {
-        console.warn("[Distribuidores] No location cards found for linking");
-      }
+      if (locationsContainer) {
+        locationsContainer.addEventListener("click", (e) => {
+          const card = e.target.closest("[data-location-id]");
+          if (!card) return;
 
-      cards.forEach((card, idx) => {
-        const location = LOCATIONS[idx];
-        if (!location) return;
+          const locationId = card.dataset.locationId;
+          const idx = locationId ? parseInt(locationId.replace("loc-", ""), 10) : -1;
+          const location = LOCATIONS[idx];
 
-        card.addEventListener("click", () => {
+          if (!location) return;
+
           // Close previous popup if exists
           if (currentPopup) {
             currentPopup.remove();
@@ -137,7 +138,9 @@ if (!mapElement) {
             mapElement.focus({ preventScroll: true });
           }
         });
-      });
+      } else {
+        console.warn("[Distribuidores] No locations container found for linking");
+      }
     });
   };
 
