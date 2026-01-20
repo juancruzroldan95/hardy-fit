@@ -24,6 +24,31 @@ const { recipe } = Astro.props;
   title={`${recipe.title} - Recetas HARDY`}
   description={recipe.shortDescription}
 >
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": recipe.title,
+      "description": recipe.shortDescription,
+      "image": new URL(recipe.image.src, Astro.site),
+      "prepTime": recipe.prepTime ? `PT${recipe.prepTime}M` : undefined,
+      "recipeYield": recipe.servings,
+      "recipeIngredient": recipe.ingredients.map(
+        (i) => `${i.quantity} ${i.name}`,
+      ),
+      "recipeInstructions": recipe.instructions.map((inst, index) => ({
+        "@type": "HowToStep",
+        "text": inst,
+        "position": index + 1,
+      })),
+      "author": {
+        "@type": "Organization",
+        "name": "Hardy Market",
+      },
+    })}
+  />
   <main class="pt-16">
     <!-- Hero Section -->
     <SectionContainer

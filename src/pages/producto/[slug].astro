@@ -27,6 +27,29 @@ const otherProducts = PRODUCTS.filter(
 ---
 
 <Layout title={`${product.name} - HARDY`} description={product.description}>
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": product.name,
+      "description": product.description,
+      "image": new URL(product.image.src, Astro.site),
+      "brand": {
+        "@type": "Brand",
+        "name": "Hardy"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": product.purchaseLink || Astro.url,
+        "priceCurrency": "ARS",
+        "price": "0",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    })}
+  />
   <main class="pt-16">
     <!-- Product Hero -->
     <section class="py-16 bg-neutral-50">
