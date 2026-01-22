@@ -1,45 +1,63 @@
-# Project Context for AI Agents
+# AGENTS.md
 
-## Project Overview
+> **Purpose:** This file provides context, conventions, and instructions for coding agents working on the `hardy-fit` project.
 
-**Hardy Fit** is a web application built with [Astro](https://astro.build/). It is a fitness/brand-oriented site with a strong visual identity.
+## 1. Project Overview
 
-## Tech Stack
+**hardy-fit** is a modern web application built with [Astro](https://astro.build/). It serves as the digital presence for the **HARDY** brand, focusing on fitness, nutrition ("Alimentá tu instinto"), and a dynamic user experience.
 
-- **Framework**: Astro 5 (latest)
-- **Styling**: Tailwind CSS 4 (via `@tailwindcss/vite`)
-- **Animation**: Motion (succesor to Framer Motion/Motion One)
-- **Maps**: Mapbox GL JS (`mapbox-gl`)
-- **Language**: TypeScript / JavaScript (ES Modules)
-- **Package Manager**: NPM (implied by `package-lock.json`)
+### Key Technologies
 
-## Design System & Styling
+- **Framework:** Astro (latest)
+- **Styling:** Tailwind CSS v4 (`@tailwindcss/vite`)
+- **Maps:** Mapbox GL JS
+- **Animations:** Motion (Framer Motion equivalent)
+- **Font:** Nunito Sans (via `@fontsource-variable/nunito-sans`), though `DESIGN-SYSTEM.md` references "DIN". _Nunito Sans is the free font more similar to DIN. That's why we use it._
 
-- **Source of Truth**: See `DESIGN-SYSTEM.md` in the root for color palettes, typography rules, and brand voice.
-- **Colors**:
-  - Primary Red: `#ED3237` (Class: `bg-primary`, `text-primary`)
-  - Secondary Yellow: `#FFCD00` (Class: `bg-secondary` etc.)
-  - Accent Purple: `#4E377F`
-- **Typography**: The design system specifies **DIN**, but the project currently has `@fontsource-variable/nunito-sans` installed. Check `src/layouts/Layout.astro` or global CSS for the active font family implementation.
-- **Components**: UI components are located in `src/components`.
+## 2. Directory Structure
 
-## Key Directories
+- `src/`
+  - `components/`: Reusable Astro and UI components.
+  - `layouts/`: Page layouts (e.g., `Layout.astro`).
+  - `pages/`: File-based routing for the application.
+  - `styles/`: Global styles (likely imports Tailwind).
+  - `consts/`: Constant data files.
+  - `assets/`: Static assets like images and videos.
+- `public/`: Static files served at the root.
 
-- `src/pages`: Astro routes (file-based routing).
-- `src/layouts`: Main layout templates (e.g., `Layout.astro`).
-- `src/components`: Reusable UI components.
-- `public`: Static assets (images, fonts).
+## 3. Development Workflow
 
-## Development Conventions
+### Commands
 
-- Use **Tailwind v4** syntax (no `tailwind.config.js` needed by default, configured via CSS or plugin).
-- Prefer **functional components** in Astro.
-- Use `client:*` directives sparingly, only when interactivity is needed (Island Architecture).
-- **Language**: The codebase uses English for variable names/logic, but the content and design docs are in **Spanish**.
+- **Install Dependencies:** `npm install`
+- **Start Dev Server:** `npm run dev` (Runs on `localhost:4321` by default)
+- **Build for Production:** `npm run build`
+- **Preview Build:** `npm run preview`
+- **Lint/Format:** Uses Prettier with Astro plugin.
 
-## Agent Instructions
+### Code Style & Conventions
 
-- **Modifying UI**: Always consult `DESIGN-SYSTEM.md` for color and tone ("Hero" archetype, motivational/imperative language like "Alimentá", "Rompé").
-- **New Components**: Create them in `src/components` and export them.
-- **Styling**: Use Tailwind utility classes. Avoid inline styles unless dynamic.
-- **Images**: Use `generate_image` tool if placeholders are needed, but prefer existing assets in `public`.
+- **Styling:** Use Tailwind CSS utility classes principally. Avoid writing custom CSS unless necessary for complex animations or specific overrides.
+- **Components:** clear separation of concerns. Keep components small, focused, and reusable.
+- **Responsiveness:** Mobile-first approach using Tailwind's breakpoints.
+- **Type Safety:** Use TypeScript (even if `.astro` files don't enforce it strictly, standard `.ts` files should be typed).
+
+## 4. Design System & UI
+
+> **CRITICAL:** Before creating or modifying UI components, **read `DESIGN-SYSTEM.md`**.
+
+- **Colors:** strict adherence to the brand palette (Primary Red `#ED3237`, Secondary Yellow `#FFCD00`, Accent Purple `#4E377F`).
+- **Typography:** The design system specifies **DIN**, but the project currently has **Nunito Sans** installed. _Check `src/layouts/Layout.astro` or global CSS to see which is actually used._
+- **Tone:** "Dynamic", "Energetic", "Heroic". Use `motion` for entrance animations and interactions to reflect this.
+
+## 5. Mapbox Integration
+
+- The project uses `mapbox-gl`.
+- Ensure strictly typed interactions with the Mapbox API where possible.
+- API keys should be handled via environment variables (`.env`).
+
+## 6. What to do when starting a task?
+
+1. **Read Context:** Check `AGENTS.md` and `DESIGN-SYSTEM.md`.
+2. **Check Routes:** Look at `src/pages` to understand the current page structure.
+3. **Check Components:** Look at `src/components` to avoid duplication.

@@ -1,46 +1,82 @@
-# Astro Starter Kit: Basics
+# Hardy
 
-```sh
-npm create astro@latest -- --template basics
-```
+**hardy-fit** is the official website for the HARDY brand, designed to deliver a dynamic and energetic digital experience centered around the motto _"Alimentá tu instinto"_ (Feed your instinct).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Tech Stack
 
-## 🚀 Project Structure
+This project is built with a modern, performance-focused stack:
 
-Inside of your Astro project, you'll see the following folders and files:
+- **[Astro](https://astro.build/)**: The web framework for content-driven websites.
+- **[Tailwind CSS v4](https://tailwindcss.com/)**: For utility-first styling.
+- **[Mapbox GL](https://www.mapbox.com/)**: For interactive location maps.
+- **[Motion](https://motion.dev/)**: For smooth, high-performance animations.
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd hardy-fit
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+The app should now be running on `http://localhost:4321`.
+
+## 📂 Project Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+hardy-fit/
+├── public/       # Static assets (favicon, videos, etc.)
+├── src/
+│   ├── assets/   # Processed assets (svgs, images)
+│   ├── components/ # Reusable UI components
+│   ├── consts/   # Application constants
+│   ├── layouts/  # Page layouts
+│   ├── pages/    # File-based routing
+│   └── styles/   # Global styles and Tailwind config
+├── AGENTS.md     # 🤖 Context for AI Coding Agents
+├── DESIGN-SYSTEM.md # 🎨 Brand design guidelines
+├── README.md # For humans
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🎨 Design System
+
+This project adheres to the **Hardy Design System**.
+
+- **Primary Color**: Red (`#ED3237`)
+- **Secondary Color**: Yellow (`#FFCD00`)
+- **Accent**: Purple (`#4E377F`)
+
+For detailed design tokens and usage, please refer to [`DESIGN-SYSTEM.md`](./DESIGN-SYSTEM.md).
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `npm run dev`       | Starts local dev server at `localhost:4321`      |
+| `npm run build`     | Build your production site to `./dist/`          |
+| `npm run preview`   | Preview your build locally, before deploying     |
+| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🤖 AI Contributors
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+If you are an AI agent working on this repository, please consult [`AGENTS.md`](./AGENTS.md) first for context, guidelines, and conventions.
