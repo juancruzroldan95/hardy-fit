@@ -9,7 +9,7 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 
 <div class="relative md:hidden">
   <div class="carousel-container overflow-hidden">
-    <div class="carousel-track flex">
+    <div class="carousel-track flex touch-pan-y will-change-transform">
       {
         activeProducts.map((product) => (
           <div class="carousel-item min-w-full px-4">
@@ -202,7 +202,7 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
         finalOffset = minOffset + (newOffset - minOffset) * 0.3;
       }
 
-      this.track.style.transform = `translateX(${finalOffset}%)`;
+      this.track.style.transform = `translate3d(${finalOffset}%, 0, 0)`;
     }
 
     handleEnd() {
@@ -273,7 +273,7 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     updateCarousel() {
       // Move track
       const offset = -this.currentIndex * 100;
-      this.track.style.transform = `translateX(${offset}%)`;
+      this.track.style.transform = `translate3d(${offset}%, 0, 0)`;
       this.track.style.transition = "transform 0.5s ease-out";
 
       // Update dots
