@@ -214,9 +214,6 @@ const FILTERS = [...STATES, ...EXTRA_FILTERS];
   <script>
     import { animate, stagger, inView } from "motion";
 
-    const isMobile = window.innerWidth < 768;
-    const threshold = isMobile ? 0.1 : 0.2;
-
     inView(
       ".scrolling-section",
       (element) => {
@@ -225,17 +222,8 @@ const FILTERS = [...STATES, ...EXTRA_FILTERS];
           { opacity: [0, 1], y: [50, 0] },
           { ease: [0.39, 0.24, 0.3, 1], duration: 1 },
         );
-
-        const cards = element.querySelectorAll(".card, .location-card");
-        if (cards.length > 0) {
-          animate(
-            cards,
-            { opacity: [0, 1], y: [25, 0] },
-            { type: "spring", delay: stagger(0.2, { startDelay: 0.25 }) },
-          );
-        }
       },
-      { amount: threshold },
+      { margin: "0px 0px -20% 0px" },
     );
   </script>
 </Layout>

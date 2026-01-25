@@ -45,13 +45,21 @@ import ArrowDown from "../icons/ArrowDown.astro";
     </div>
 
     <div
-      class="hero-buttons flex flex-col sm:flex-row gap-6 justify-center items-center opacity-0 mt-8"
+      class="hero-buttons flex flex-col sm:flex-row gap-6 justify-center items-center mt-8"
     >
       <a
-        href="/productos"
-        class="bg-secondary px-8 py-4 rounded-full text-black font-semibold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 inline-block"
+        href="https://www.hardymarket.com.ar/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hero-btn opacity-0 bg-secondary px-8 py-4 rounded-full text-black font-semibold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 inline-block"
       >
-        Ver Productos
+        Quiero comprar Hardy
+      </a>
+      <a
+        href="/mayoristas"
+        class="hero-btn opacity-0 bg-accent px-8 py-4 rounded-full text-white font-semibold uppercase text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 inline-block"
+      >
+        Quiero vender Hardy
       </a>
     </div>
   </div>
@@ -106,7 +114,23 @@ import ArrowDown from "../icons/ArrowDown.astro";
     ) as HTMLElement;
     if (typewriterElement) {
       const typewriter = new Typewriter(typewriterElement, 30);
-      typewriter.start();
+      typewriter.start().then(() => {
+        const buttons = document.querySelectorAll(".hero-btn");
+        buttons.forEach((btn, index) => {
+          btn.animate(
+            [
+              { opacity: 0, transform: "translateY(20px)" },
+              { opacity: 1, transform: "translateY(0)" },
+            ],
+            {
+              duration: 800,
+              easing: "cubic-bezier(0.39, 0.24, 0.3, 1)",
+              fill: "forwards",
+              delay: index * 200, // Stagger delay
+            },
+          );
+        });
+      });
     }
   });
 </script>

@@ -106,6 +106,7 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
         { passive: false },
       );
       this.track.addEventListener("touchend", () => this.handleEnd());
+      this.track.addEventListener("touchcancel", () => this.handleEnd());
 
       // Mouse listeners for desktop testing
       this.track.addEventListener("mousedown", (e) => {
@@ -152,6 +153,9 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 
       // Disable transitions during drag
       this.track.style.transition = "none";
+
+      // Force reflow to ensure transition removal is applied immediately (Safari fix)
+      void this.track.offsetHeight;
 
       // Stop auto-advance while dragging
       if (this.autoAdvanceInterval) {
