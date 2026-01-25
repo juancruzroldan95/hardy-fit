@@ -196,10 +196,6 @@ const activeScales = COMMERCIAL_SCALES.filter(
 <script>
   import { animate, stagger, inView } from "motion";
 
-  // Detect mobile and use different thresholds
-  const isMobile = window.innerWidth < 768;
-  const threshold = isMobile ? 0.1 : 0.2;
-
   inView(
     ".scrolling-section",
     (element) => {
@@ -218,6 +214,6 @@ const activeScales = COMMERCIAL_SCALES.filter(
         );
       }
     },
-    { amount: threshold },
+    { margin: "0px 0px -20% 0px" },
   );
 </script>

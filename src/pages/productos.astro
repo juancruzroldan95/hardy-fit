@@ -110,9 +110,6 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 <script>
   import { animate, stagger, inView } from "motion";
 
-  const isMobile = window.innerWidth < 768;
-  const threshold = isMobile ? 0.05 : 0.1;
-
   inView(
     ".scrolling-section",
     (element) => {
@@ -131,6 +128,6 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
         );
       }
     },
-    { amount: threshold },
+    { margin: "0px 0px -20% 0px" },
   );
 </script>

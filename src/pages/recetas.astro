@@ -225,8 +225,7 @@ const CATEGORIES: RecipeCategory[] = ["Desayunos y Meriendas", "Pre/Post Entrena
 <script>
   import { animate, stagger, inView } from "motion";
 
-  const isMobile = window.innerWidth < 768;
-  const threshold = isMobile ? 0.02 : 0.08;
+
 
   inView(
     ".scrolling-section",
@@ -246,6 +245,6 @@ const CATEGORIES: RecipeCategory[] = ["Desayunos y Meriendas", "Pre/Post Entrena
         );
       }
     },
-    { amount: threshold },
+    { margin: "0px 0px -20% 0px" },
   );
 </script>
