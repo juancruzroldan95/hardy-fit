@@ -17,6 +17,11 @@ const activeLocations = LOCATIONS.filter((loc) => loc.isActive !== false);
 
 // Extract unique states from active locations
 const STATES = [...new Set(activeLocations.map((loc) => loc.state))].sort();
+
+// Add specific city filters
+const EXTRA_FILTERS = ["Mar del Plata"];
+
+const FILTERS = [...STATES, ...EXTRA_FILTERS];
 ---
 
 <Layout
@@ -76,13 +81,13 @@ const STATES = [...new Set(activeLocations.map((loc) => loc.state))].sort();
             class="state-filters flex flex-wrap gap-2 pb-2 border-b border-neutral-200"
           >
             {
-              STATES.map((state) => (
+              FILTERS.map((filter) => (
                 <button
                   type="button"
                   class="state-filter-btn px-3 py-1.5 text-sm font-medium rounded-lg transition-colors bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                  data-state={state}
+                  data-filter={filter}
                 >
-                  {state}
+                  {filter}
                 </button>
               ))
             }
@@ -118,51 +123,88 @@ const STATES = [...new Set(activeLocations.map((loc) => loc.state))].sort();
     </SectionContainer>
   </main>
 
-  <script src="../scripts/mapbox-scriipt.js"></script>
+  <script src="../scripts/mapbox-script.js"></script>
 
   <script is:inline>
     // State filter functionality
     document.addEventListener("DOMContentLoaded", () => {
-      let activeState = null;
+      let activeFilter = null;
       const filterButtons = document.querySelectorAll(".state-filter-btn");
       const locationCards = document.querySelectorAll(".location-card");
 
+      const applyFilter = (filter) => {
+        // Remove active state from all buttons
+        filterButtons.forEach((btn) => {
+          btn.classList.remove("bg-primary", "text-white");
+          btn.classList.add("bg-neutral-100", "text-neutral-700");
+        });
+
+        if (!filter) {
+          // Show all cards
+          locationCards.forEach((card) => {
+            card.style.display = "";
+          });
+          activeFilter = null;
+          // Clean URL
+          const url = new URL(window.location.href);
+          url.searchParams.delete("filter");
+          window.history.replaceState({}, "", url);
+          return;
+        }
+
+        // Set active button
+        const activeButton = Array.from(filterButtons).find(
+          (btn) => btn.dataset.filter === filter,
+        );
+        if (activeButton) {
+          activeButton.classList.remove("bg-neutral-100", "text-neutral-700");
+          activeButton.classList.add("bg-primary", "text-white");
+        }
+
+        activeFilter = filter;
+
+        // Update URL
+        const url = new URL(window.location.href);
+        url.searchParams.set("filter", filter);
+        window.history.replaceState({}, "", url);
+
+        // Filter cards
+        locationCards.forEach((card) => {
+          const cardState = card.dataset.state;
+          const cardCity = card.dataset.city;
+
+          let isMatch = false;
+
+          if (filter === "Mar del Plata") {
+            isMatch = cardCity === "Mar del Plata";
+          } else {
+            isMatch = cardState === filter;
+          }
+
+          if (isMatch) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      };
+
+      // Check URL for initial filter
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialFilter = urlParams.get("filter");
+      if (initialFilter) {
+        applyFilter(initialFilter);
+      }
+
       filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          const state = button.dataset.state;
+          const filter = button.dataset.filter;
+          if (!filter) return;
 
-          if (!state) return;
-
-          // If clicking the same button, remove filter
-          if (activeState === state) {
-            activeState = null;
-            button.classList.remove("bg-primary", "text-white");
-            button.classList.add("bg-neutral-100", "text-neutral-700");
-
-            // Show all cards
-            locationCards.forEach((card) => {
-              card.style.display = "";
-            });
+          if (activeFilter === filter) {
+            applyFilter(null);
           } else {
-            // Remove active state from all buttons
-            filterButtons.forEach((btn) => {
-              btn.classList.remove("bg-primary", "text-white");
-              btn.classList.add("bg-neutral-100", "text-neutral-700");
-            });
-
-            // Set new active state
-            activeState = state;
-            button.classList.remove("bg-neutral-100", "text-neutral-700");
-            button.classList.add("bg-primary", "text-white");
-
-            // Filter cards
-            locationCards.forEach((card) => {
-              if (card.dataset.state === state) {
-                card.style.display = "";
-              } else {
-                card.style.display = "none";
-              }
-            });
+            applyFilter(filter);
           }
         });
       });

@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate:geojson": "npx tsx src/scripts/generate-geojson.ts"
   },
   "dependencies": {
     "@fontsource-variable/nunito-sans": "^5.2.7",
