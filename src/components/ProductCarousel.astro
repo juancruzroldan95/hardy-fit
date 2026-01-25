@@ -61,10 +61,12 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     // Touch/drag state
     private isDragging: boolean = false;
     private startX: number = 0;
+    private startY: number = 0;
     private currentX: number = 0;
     private offsetX: number = 0;
     private startTime: number = 0;
     private velocity: number = 0;
+    private isScrolling: boolean | undefined;
 
     constructor(container: HTMLElement) {
       this.container = container;
@@ -93,14 +95,13 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
       // Touch listeners
       this.track.addEventListener(
         "touchstart",
-        (e) => this.handleStart(e.touches[0].clientX),
+        (e) => this.handleStart(e.touches[0].clientX, e.touches[0].clientY),
         { passive: false },
       );
       this.track.addEventListener(
         "touchmove",
         (e) => {
-          e.preventDefault();
-          this.handleMove(e.touches[0].clientX);
+          this.handleMove(e, e.touches[0].clientX, e.touches[0].clientY);
         },
         { passive: false },
       );
@@ -110,12 +111,11 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
       // Mouse listeners for desktop testing
       this.track.addEventListener("mousedown", (e) => {
         e.preventDefault();
-        this.handleStart(e.clientX);
+        this.handleStart(e.clientX, e.clientY);
       });
       this.track.addEventListener("mousemove", (e) => {
         if (this.isDragging) {
-          e.preventDefault();
-          this.handleMove(e.clientX);
+          this.handleMove(e, e.clientX, e.clientY);
         }
       });
       this.track.addEventListener("mouseup", () => this.handleEnd());
@@ -132,9 +132,11 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
       this.track.addEventListener("dragstart", (e) => e.preventDefault());
     }
 
-    handleStart(clientX: number) {
+    handleStart(clientX: number, clientY: number = 0) {
       this.isDragging = true;
+      this.isScrolling = undefined; // Reset scrolling state
       this.startX = clientX;
+      this.startY = clientY;
       this.currentX = clientX;
       this.startTime = Date.now();
       this.offsetX = -this.currentIndex * 100;
@@ -146,8 +148,35 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
       void this.track.offsetHeight;
     }
 
-    handleMove(clientX: number) {
+    handleMove(e: Event, clientX: number, clientY: number = 0) {
       if (!this.isDragging) return;
+
+      // Determine scroll direction if not yet determined
+      if (this.isScrolling === undefined) {
+        const diffX = Math.abs(clientX - this.startX);
+        const diffY = Math.abs(clientY - this.startY);
+
+        // If movement is mostly vertical (> 45 degrees), allow page scrolling
+        if (diffY > diffX) {
+          this.isScrolling = true;
+          this.isDragging = false; // Stop tracking horizontal drag
+          return;
+        } else {
+          // It's a horizontal swipe
+          this.isScrolling = false;
+        }
+      }
+
+      // If we are scrolling vertically, do nothing and let browser handle it
+      if (this.isScrolling) {
+        this.isDragging = false;
+        return;
+      }
+
+      // If we are swipe horizontally, prevent default page scrolling
+      if (e.cancelable) {
+        e.preventDefault();
+      }
 
       this.currentX = clientX;
       const diff = this.currentX - this.startX;
