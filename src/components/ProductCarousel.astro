@@ -65,7 +65,6 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
     private offsetX: number = 0;
     private startTime: number = 0;
     private velocity: number = 0;
-    private autoAdvanceInterval: number | null = null;
 
     constructor(container: HTMLElement) {
       this.container = container;
@@ -129,19 +128,8 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
       // Prevent image drag
       this.track.addEventListener("dragstart", (e) => e.preventDefault());
 
-      // Auto-advance every 5 seconds
-      this.startAutoAdvance();
-    }
-
-    startAutoAdvance() {
-      if (this.autoAdvanceInterval) {
-        clearInterval(this.autoAdvanceInterval);
-      }
-      this.autoAdvanceInterval = window.setInterval(() => {
-        if (!this.isDragging) {
-          this.next();
-        }
-      }, 5000);
+      // Prevent image drag
+      this.track.addEventListener("dragstart", (e) => e.preventDefault());
     }
 
     handleStart(clientX: number) {
@@ -156,11 +144,6 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 
       // Force reflow to ensure transition removal is applied immediately (Safari fix)
       void this.track.offsetHeight;
-
-      // Stop auto-advance while dragging
-      if (this.autoAdvanceInterval) {
-        clearInterval(this.autoAdvanceInterval);
-      }
     }
 
     handleMove(clientX: number) {
@@ -240,26 +223,22 @@ const activeProducts = PRODUCTS.filter((product) => product.isActive);
 
       this.currentIndex = targetIndex;
       this.updateCarousel();
-      this.startAutoAdvance();
     }
 
     prev() {
       this.currentIndex =
         (this.currentIndex - 1 + this.totalItems) % this.totalItems;
       this.updateCarousel();
-      this.startAutoAdvance();
     }
 
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.totalItems;
       this.updateCarousel();
-      this.startAutoAdvance();
     }
 
     goTo(index: number) {
       this.currentIndex = index;
       this.updateCarousel();
-      this.startAutoAdvance();
     }
 
     updateCarousel() {
