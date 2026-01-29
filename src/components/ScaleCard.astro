@@ -33,6 +33,23 @@ const { scale } = Astro.props;
         Desde {scale.minUnits} unidades
       </span>
     </div>
+    <div class="mt-2">
+      <p class="text-white/90 text-xs italic">
+        {
+          (() => {
+            if (scale.minUnits === 75)
+              return "Ideal para probar rotación con mix de sabores.";
+            if (scale.minUnits === 150)
+              return "Mejor margen + mix recomendado para salida rápida.";
+            if (scale.minUnits === 450)
+              return "Condición distribuidor + beneficios comerciales.";
+            if (scale.minUnits === 900)
+              return "Máximo beneficio + soporte comercial y territorial.";
+            return "";
+          })()
+        }
+      </p>
+    </div>
   </div>
 
   <!-- Content -->

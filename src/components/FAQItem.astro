@@ -1,0 +1,28 @@
+---
+import ChevronDown from "../icons/ChevronDown.astro";
+
+interface Props {
+  question: string;
+  answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<details class="group border border-neutral-200 rounded-lg overflow-hidden">
+  <summary
+    class="flex items-center justify-between p-6 bg-neutral-50 hover:bg-neutral-100 transition-colors cursor-pointer list-none select-none"
+  >
+    <span class="font-bold text-primary text-lg">{question}</span>
+    <span
+      class="transition-transform duration-300 group-open:rotate-180 text-primary"
+    >
+      <ChevronDown />
+    </span>
+  </summary>
+  <div
+    class="p-6 pt-2 bg-white text-neutral-700 leading-relaxed border-t border-neutral-100"
+  >
+    {answer}
+  </div>
+</details>
