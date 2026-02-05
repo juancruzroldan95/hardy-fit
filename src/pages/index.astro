@@ -16,6 +16,21 @@ import ctaBgImage from "../assets/images/skyblue-bg-image.webp";
 ---
 
 <Layout title="HARDY - Alimentá tu instinto">
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Hardy",
+      "url": "https://www.hardymarket.com.ar",
+      "logo": "https://www.hardymarket.com.ar/favicon.ico",
+      "sameAs": [
+        "https://www.instagram.com/hardy.arg/",
+        "https://www.tiktok.com/@hardy.arg"
+      ]
+    })}
+  />
   <main>
     <SectionContainer
       id="hero"
